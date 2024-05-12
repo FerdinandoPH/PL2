@@ -1,5 +1,7 @@
 package poo.pl2;
 
+import java.util.ArrayList;
+
 
 /**
  * @author perez
@@ -8,18 +10,18 @@ package poo.pl2;
  */
 public class ListManager {
 
-	private ArrayList inmuebles;
-	private ArrayList reservas;
-	private ArrayList usuarios;
-	public Usuario m_Usuario;
-	public Reserva m_Reserva;
-	public Inmueble m_Inmueble;
+	private static ArrayList<Inmueble> inmuebles;
+	private static ArrayList<Reserva> reservas;
+	private static ArrayList<Usuario> usuarios;
 
 	public ListManager(){
 
 	}
-
-	public void finalize() throws Throwable {
-
-	}
+        
+        public static boolean correoRepetido(String correo){
+            for (int i=0; i<usuarios.size(); i++)
+                if (usuarios.get(i).getCorreo().equals(correo))
+                    return true;
+            return false;
+        }
 }//end ListManager

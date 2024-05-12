@@ -1,5 +1,7 @@
 package poo.pl2;
 
+import java.time.LocalDate;
+
 
 /**
  * @author perez
@@ -13,10 +15,6 @@ public class Tarjeta {
 	private long numero;
 
 	public Tarjeta(){
-
-	}
-
-	public void finalize() throws Throwable {
 
 	}
 }//end Tarjeta

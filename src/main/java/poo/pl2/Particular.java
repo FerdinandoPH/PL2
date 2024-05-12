@@ -15,9 +15,6 @@ public class Particular extends Cliente {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public void buscarInmuebles(){
 
 	}
@@ -26,7 +23,7 @@ public class Particular extends Cliente {
 
 	}
 
-	public void resennarInmuebles(){
+	public void reseñarInmuebles(){
 
 	}
 

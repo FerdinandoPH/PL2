@@ -8,7 +8,7 @@ package poo.pl2;
  */
 public class Inmueble {
 
-	private int bannos;
+	private int baños;
 	private double calificacion;
 	private int camas;
 	private int fotografia;
@@ -19,13 +19,9 @@ public class Inmueble {
 	private Enum tipoPropiedad;
 	private String titulo;
 	private int vecesReservado;
-	public Anfitrion m_Anfitrion;
+	private Anfitrion dueño;
 
 	public Inmueble(){
-
-	}
-
-	public void finalize() throws Throwable {
 
 	}
 }//end Inmueble

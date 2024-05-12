@@ -12,9 +12,6 @@ public class Administrador extends Usuario {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public void consultarInmuebles(){
 
 	}

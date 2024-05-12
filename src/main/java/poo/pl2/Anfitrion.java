@@ -15,18 +15,11 @@ public class Anfitrion extends Cliente {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public void consultarReservas(){
 
 	}
 
 	public void crearInmueble(){
-
-	}
-
-	public void modificarDatosInmuebles(){
 
 	}
 }//end Anfitrion

@@ -8,16 +8,13 @@ package poo.pl2;
  */
 public class Usuario {
 
-	private Hash clave;
+	private String clave;
 	private String correo;
 
 	public Usuario(){
 
 	}
-
-	public void finalize() throws Throwable {
-
-	}
+        
 	public void iniciarSesion(){
 
 	}
@@ -25,4 +22,8 @@ public class Usuario {
 	public void registrar(){
 
 	}
+        
+        public String getCorreo(){
+            return correo;
+        }
 }//end Usuario

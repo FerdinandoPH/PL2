@@ -16,9 +16,6 @@ public class Cliente extends Usuario {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public void modificarDatosPersonales(){
 
 	}

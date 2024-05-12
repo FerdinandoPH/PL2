@@ -19,9 +19,6 @@ public class Reserva {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public void imprimirFactura(){
 
 	}
