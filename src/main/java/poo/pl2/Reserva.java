@@ -12,8 +12,8 @@ public class Reserva {
 	private LocalDate fechaReserva;
 	private LocalDate fechaSalida;
 	private double importe;
-	public Inmueble m_Inmueble;
-	public Particular m_Particular;
+	private Inmueble inmueble;
+	private Particular particular;
 
 	public Reserva(){
 

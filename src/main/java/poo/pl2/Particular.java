@@ -9,7 +9,7 @@ package poo.pl2;
 public class Particular extends Cliente {
 
 	private boolean esVip;
-	public Tarjeta m_Tarjeta;
+	private Tarjeta tarjeta;
 
 	public Particular(){
 

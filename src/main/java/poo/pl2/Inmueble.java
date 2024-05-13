@@ -16,7 +16,7 @@ public class Inmueble {
 	private int huespedesMaximos;
 	private double precioPorNoche;
 	private String servicios;
-	private Enum tipoPropiedad;
+	private enum tipoPropiedad {APARTAMENTO, CASA}
 	private String titulo;
 	private int vecesReservado;
 	private Anfitrion dueño;
