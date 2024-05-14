@@ -12,7 +12,7 @@ public class ListManager {
 
 	private static ArrayList<Inmueble> inmuebles;
 	private static ArrayList<Reserva> reservas;
-	private static ArrayList<Usuario> usuarios;
+	public static ArrayList<Usuario> usuarios;
 
 	public ListManager(){
 

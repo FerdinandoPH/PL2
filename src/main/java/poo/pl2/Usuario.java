@@ -8,10 +8,12 @@ package poo.pl2;
  */
 public class Usuario {
 
-	private String clave;
+	private int clave;
 	private String correo;
 
-	public Usuario(){
+	public Usuario(String correo, String claveString){
+		this.correo = correo;
+		this.clave = claveString.hashCode();
 
 	}
         
@@ -26,4 +28,10 @@ public class Usuario {
         public String getCorreo(){
             return correo;
         }
+
+		public int getClave() {
+			return clave;
+		}
+		
+	
 }//end Usuario
