@@ -13,8 +13,8 @@ public class Anfitrion extends Cliente {
 
     public Anfitrion(String correo, String claveString, String dni, String nombre, String telefono){
         super(correo, claveString, dni, nombre, telefono);
-        
-
+        this.esSuperAnfitiron = false;
+        this.fechaRegistro = LocalDate.now();
     }
 
     public void consultarReservas(){
