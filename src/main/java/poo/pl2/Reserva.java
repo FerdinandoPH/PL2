@@ -8,18 +8,18 @@ import java.time.LocalDate;
  */
 public class Reserva {
 
-	private LocalDate fechaEntrada;
-	private LocalDate fechaReserva;
-	private LocalDate fechaSalida;
-	private double importe;
-	private Inmueble inmueble;
-	private Particular particular;
+    private LocalDate fechaEntrada;
+    private LocalDate fechaReserva;
+    private LocalDate fechaSalida;
+    private double importe;
+    private Inmueble inmueble;
+    private Particular particular;
 
-	public Reserva(){
+    public Reserva(){
 
-	}
+    }
 
-	public void imprimirFactura(){
+    public void imprimirFactura(){
 
-	}
+    }
 }//end Reserva

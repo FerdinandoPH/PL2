@@ -10,13 +10,13 @@ import java.util.ArrayList;
  */
 public class ListManager {
 
-	private static ArrayList<Inmueble> inmuebles;
-	private static ArrayList<Reserva> reservas;
-	private static ArrayList<Usuario> usuarios;
+    private static ArrayList<Inmueble> inmuebles;
+    private static ArrayList<Reserva> reservas;
+    public static ArrayList<Usuario> usuarios;
 
-	public ListManager(){
+    public ListManager(){
 
-	}
+    }
         
         public static boolean correoRepetido(String correo){
             for (int i=0; i<usuarios.size(); i++)

@@ -8,20 +8,20 @@ package poo.pl2;
  */
 public class Inmueble {
 
-	private int baños;
-	private double calificacion;
-	private int camas;
-	private int fotografia;
-	private int habitaciones;
-	private int huespedesMaximos;
-	private double precioPorNoche;
-	private String servicios;
-	private enum tipoPropiedad {APARTAMENTO, CASA}
-	private String titulo;
-	private int vecesReservado;
-	private Anfitrion dueño;
+    private int baños;
+    private double calificacion;
+    private int camas;
+    private int fotografia;
+    private int habitaciones;
+    private int huespedesMaximos;
+    private double precioPorNoche;
+    private String servicios;
+    private enum tipoPropiedad {APARTAMENTO, CASA}
+    private String titulo;
+    private int vecesReservado;
+    private Anfitrion dueño;
 
-	public Inmueble(){
+    public Inmueble(){
 
-	}
+    }
 }//end Inmueble

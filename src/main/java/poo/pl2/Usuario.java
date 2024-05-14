@@ -8,22 +8,30 @@ package poo.pl2;
  */
 public class Usuario {
 
-	private String clave;
-	private String correo;
+    private int clave;
+    private String correo;
 
-	public Usuario(){
+    public Usuario(String correo, String claveString){
+        this.correo = correo;
+        this.clave = claveString.hashCode();
 
-	}
+    }
         
-	public void iniciarSesion(){
+    public void iniciarSesion(){
 
-	}
+    }
 
-	public void registrar(){
+    public void registrar(){
 
-	}
+    }
         
         public String getCorreo(){
             return correo;
         }
+
+        public int getClave() {
+            return clave;
+        }
+        
+    
 }//end Usuario

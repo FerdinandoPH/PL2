@@ -10,11 +10,11 @@ import java.time.LocalDate;
  */
 public class Tarjeta {
 
-	private LocalDate fechaCaducidad;
-	private String nombreTitular;
-	private long numero;
+    private LocalDate fechaCaducidad;
+    private String nombreTitular;
+    private long numero;
 
-	public Tarjeta(){
+    public Tarjeta(){
 
-	}
+    }
 }//end Tarjeta

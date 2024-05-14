@@ -8,18 +8,18 @@ import java.time.LocalDate;
  */
 public class Anfitrion extends Cliente {
 
-	private boolean esSuperAnfitiron;
-	private LocalDate fechaRegistro;
+    private boolean esSuperAnfitiron;
+    private LocalDate fechaRegistro;
 
-	public Anfitrion(){
+    public Anfitrion(){
 
-	}
+    }
 
-	public void consultarReservas(){
+    public void consultarReservas(){
 
-	}
+    }
 
-	public void crearInmueble(){
+    public void crearInmueble(){
 
-	}
+    }
 }//end Anfitrion
