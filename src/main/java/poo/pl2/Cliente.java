@@ -8,15 +8,15 @@ package poo.pl2;
  */
 public class Cliente extends Usuario {
 
-	private String dni;
-	private String nombre;
-	private String telefono;
+    private String dni;
+    private String nombre;
+    private String telefono;
 
-	public Cliente(){
+    public Cliente(){
 
-	}
+    }
 
-	public void modificarDatosPersonales(){
+    public void modificarDatosPersonales(){
 
-	}
+    }
 }//end Cliente

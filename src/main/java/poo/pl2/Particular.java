@@ -8,26 +8,26 @@ package poo.pl2;
  */
 public class Particular extends Cliente {
 
-	private boolean esVip;
-	private Tarjeta tarjeta;
+    private boolean esVip;
+    private Tarjeta tarjeta;
 
-	public Particular(){
+    public Particular(){
 
-	}
+    }
 
-	public void buscarInmuebles(){
+    public void buscarInmuebles(){
 
-	}
+    }
 
-	public void consultarReservas(){
+    public void consultarReservas(){
 
-	}
+    }
 
-	public void reseñarInmuebles(){
+    public void reseñarInmuebles(){
 
-	}
+    }
 
-	public void reservarInmuebles(){
+    public void reservarInmuebles(){
 
-	}
+    }
 }//end Particular
