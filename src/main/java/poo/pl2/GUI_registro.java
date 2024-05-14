@@ -4,12 +4,14 @@
  */
 package poo.pl2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tizia
  */
 public class GUI_registro extends javax.swing.JDialog {
-
+    LoginManager loginManager = new LoginManager();
     /**
      * Creates new form registro
      */
@@ -77,6 +79,11 @@ public class GUI_registro extends javax.swing.JDialog {
         });
 
         cancelarButton.setText("Cancelar");
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -162,8 +169,38 @@ public class GUI_registro extends javax.swing.JDialog {
     }//GEN-LAST:event_tipoComboBoxActionPerformed
 
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
-        // TODO add your handling code here:
+        String errores="";
+        if (correoField.getText().isEmpty() || claveField.getPassword().length==0 || clave2Field.getPassword().length==0 || nombreField.getText().isEmpty() || dniField.getText().isEmpty() || telefonoField.getText().isEmpty())
+            errores+="Es necesario rellenar todos los campos\n";
+        if (!new String(claveField.getPassword()).equals(new String(clave2Field.getPassword())))
+            errores+="Las contraseñas no coinciden\n";
+        else if (new String(claveField.getPassword()).length()<8)
+            errores+="La contraseña debe tener al menos 8 caracteres\n";
+        if (!telefonoField.getText().matches("\\+?[0-9]*"))
+            errores+="El teléfono solo puede contener números o un + al principio\n";
+        if (!dniField.getText().matches("[0-9]{8}[A-Za-z]"))//|| "TRWAGMYFPDXBNJZSQVHLCKE".charAt(Integer.parseInt(dniField.getText().substring(0, 8))%23)!=dniField.getText().charAt(8))
+            errores+="DNI inválido\n";
+        if (!correoField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"))
+            errores+="Correo inválido\n";
+        if (errores.length()>0){
+            javax.swing.JOptionPane.showMessageDialog(this, errores, "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            if (tipoComboBox.getSelectedItem().equals("Particular")){
+                GUI_datosTarjetaCredito datosTarjeta = new GUI_datosTarjetaCredito(this, true, new String [] {correoField.getText(), new String(claveField.getPassword()), nombreField.getText(), dniField.getText(), telefonoField.getText()});
+                datosTarjeta.setVisible(true);
+            }
+            else{
+                loginManager.registrar(correoField.getText(), new String(claveField.getPassword()), dniField.getText(),nombreField.getText(), telefonoField.getText());
+                JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_aceptarButtonActionPerformed
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments

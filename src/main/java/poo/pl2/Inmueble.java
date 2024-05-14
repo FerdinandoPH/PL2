@@ -6,7 +6,7 @@ package poo.pl2;
  * @version 1.0
  * @created 07-may.-2024 17:29:06
  */
-public class Inmueble {
+public class Inmueble implements java.io.Serializable{
 
     private int baños;
     private double calificacion;

@@ -13,7 +13,13 @@ public class GUI_datosTarjetaCredito extends javax.swing.JDialog {
     /**
      * Creates new form datosTarjetaCredito
      */
-    public GUI_datosTarjetaCredito(java.awt.Frame parent, boolean modal) {
+    private String[] datosPrevios;
+    public GUI_datosTarjetaCredito(java.awt.Dialog parent, boolean modal, String[] datosPrevios) {
+        super(parent, modal);
+        initComponents();
+        this.datosPrevios = datosPrevios;
+    }
+    public GUI_datosTarjetaCredito(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -185,7 +191,7 @@ public class GUI_datosTarjetaCredito extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUI_datosTarjetaCredito dialog = new GUI_datosTarjetaCredito(new javax.swing.JFrame(), true);
+                GUI_datosTarjetaCredito dialog = new GUI_datosTarjetaCredito(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

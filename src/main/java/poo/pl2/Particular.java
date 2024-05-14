@@ -11,9 +11,9 @@ public class Particular extends Cliente {
     private boolean esVip;
     private Tarjeta tarjeta;
 
-    public Particular(String correo, String claveString, String dni, String nombre, String telefono, Tarjeta tarjeta){
+    public Particular(String correo, String claveString, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta){
         super(correo, claveString, dni, nombre, telefono);
-        this.esVip = false;
+        this.esVip = esVip;
         this.tarjeta = tarjeta;
     }
 
@@ -32,4 +32,10 @@ public class Particular extends Cliente {
     public void reservarInmuebles(){
 
     }
+
+    @Override
+    public String toString() {
+        return "Particular: ["+super.toString()+", [esVip=" + esVip + ", tarjeta=" + tarjeta.toString() + "]";
+    }
+    
 }//end Particular

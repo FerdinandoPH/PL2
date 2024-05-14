@@ -6,7 +6,7 @@ import java.time.LocalDate;
  * @version 1.0
  * @created 07-may.-2024 17:29:06
  */
-public class Reserva {
+public class Reserva implements java.io.Serializable{
 
     private LocalDate fechaEntrada;
     private LocalDate fechaReserva;

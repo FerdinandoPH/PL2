@@ -4,6 +4,8 @@
  */
 package poo.pl2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tizia
@@ -38,8 +40,18 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
         setTitle("JavaBnB");
 
         inicioSesionButton.setText("Iniciar Sesión");
+        inicioSesionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inicioSesionButtonActionPerformed(evt);
+            }
+        });
 
         registroButton.setText("Registrarme");
+        registroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registroButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Correo");
 
@@ -92,6 +104,25 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void inicioSesionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionButtonActionPerformed
+        LoginManager loginManager = new LoginManager();
+        System.out.println("La clave "+new String(claveField.getPassword())+" tiene un hashcode de "+new String(claveField.getPassword()).hashCode());
+        try{
+            Usuario usu=loginManager.iniciarSesion(correoField.getText(), new String(claveField.getPassword()).hashCode());
+            if (usu instanceof Cliente)
+                JOptionPane.showMessageDialog(this, "Bienvenido "+((Cliente) usu).getNombre(), "Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_inicioSesionButtonActionPerformed
+
+    private void registroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroButtonActionPerformed
+        GUI_registro registro = new GUI_registro(this,true);
+        registro.setVisible(true);
+    }//GEN-LAST:event_registroButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -101,6 +132,7 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

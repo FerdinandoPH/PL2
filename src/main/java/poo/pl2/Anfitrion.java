@@ -24,4 +24,10 @@ public class Anfitrion extends Cliente {
     public void crearInmueble(){
 
     }
+
+    @Override
+    public String toString() {
+        return "Anfitrion: ["+super.toString()+", esSuperAnfitiron=" + esSuperAnfitiron + ", fechaRegistro=" + fechaRegistro + "]";
+    }
+    
 }//end Anfitrion
