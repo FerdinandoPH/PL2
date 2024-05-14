@@ -12,7 +12,11 @@ public class Cliente extends Usuario {
     private String nombre;
     private String telefono;
 
-    public Cliente(){
+    public Cliente(String correo, String claveString, String dni, String nombre, String telefono){
+        super(correo, claveString);
+        this.dni = dni;
+        this.nombre = nombre;
+        this.telefono = telefono;
 
     }
 

@@ -11,7 +11,9 @@ public class Anfitrion extends Cliente {
     private boolean esSuperAnfitiron;
     private LocalDate fechaRegistro;
 
-    public Anfitrion(){
+    public Anfitrion(String correo, String claveString, String dni, String nombre, String telefono){
+        super(correo, claveString, dni, nombre, telefono);
+        
 
     }
 
