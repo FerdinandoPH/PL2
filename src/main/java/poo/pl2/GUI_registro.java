@@ -5,13 +5,14 @@
 package poo.pl2;
 
 import javax.swing.JOptionPane;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 /**
  *
  * @author tizia
  */
 public class GUI_registro extends javax.swing.JDialog {
-    LoginManager loginManager = new LoginManager();
+    
     /**
      * Creates new form registro
      */
@@ -169,26 +170,22 @@ public class GUI_registro extends javax.swing.JDialog {
     }//GEN-LAST:event_tipoComboBoxActionPerformed
 
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
-        String errores="";
-        if (correoField.getText().isEmpty() || claveField.getPassword().length==0 || clave2Field.getPassword().length==0 || nombreField.getText().isEmpty() || dniField.getText().isEmpty() || telefonoField.getText().isEmpty())
-            errores+="Es necesario rellenar todos los campos\n";
-        if (!new String(claveField.getPassword()).equals(new String(clave2Field.getPassword())))
-            errores+="Las contraseñas no coinciden\n";
-        else if (new String(claveField.getPassword()).length()<8)
-            errores+="La contraseña debe tener al menos 8 caracteres\n";
-        if (!telefonoField.getText().matches("\\+?[0-9]*"))
-            errores+="El teléfono solo puede contener números o un + al principio\n";
-        if (!dniField.getText().matches("[0-9]{8}[A-Za-z]"))//|| "TRWAGMYFPDXBNJZSQVHLCKE".charAt(Integer.parseInt(dniField.getText().substring(0, 8))%23)!=dniField.getText().charAt(8))
-            errores+="DNI inválido\n";
-        if (!correoField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"))
-            errores+="Correo inválido\n";
+        LoginManager loginManager = new LoginManager();
+        String errores=loginManager.validarRegistro(correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText());
         if (errores.length()>0){
             javax.swing.JOptionPane.showMessageDialog(this, errores, "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
         else{
             if (tipoComboBox.getSelectedItem().equals("Particular")){
-                GUI_datosTarjetaCredito datosTarjeta = new GUI_datosTarjetaCredito(this, true, new String [] {correoField.getText(), new String(claveField.getPassword()), nombreField.getText(), dniField.getText(), telefonoField.getText()});
-                datosTarjeta.setVisible(true);
+                GUI_datosParticular dialogoDatosParticular = new GUI_datosParticular(this, true, new String [] {correoField.getText(), new String(claveField.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText()});
+                GUI_registro dialogoRegistro = this;
+                dialogoDatosParticular.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        dialogoRegistro.dispose();
+                    }
+                });
+                dialogoDatosParticular.setVisible(true);
             }
             else{
                 loginManager.registrar(correoField.getText(), new String(claveField.getPassword()), dniField.getText(),nombreField.getText(), telefonoField.getText());

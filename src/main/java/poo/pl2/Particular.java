@@ -35,7 +35,7 @@ public class Particular extends Cliente {
 
     @Override
     public String toString() {
-        return "Particular: ["+super.toString()+", [esVip=" + esVip + ", tarjeta=" + tarjeta.toString() + "]";
+        return "Particular: ["+super.toString()+", esVip=" + esVip + ", tarjeta=" + tarjeta.toString() + "]";
     }
     
 }//end Particular

@@ -8,7 +8,7 @@ import java.time.LocalDate;
  * @version 1.0
  * @created 07-may.-2024 17:29:06
  */
-public class Tarjeta {
+public class Tarjeta implements java.io.Serializable{
 
     private LocalDate fechaCaducidad;
     private String nombreTitular;
@@ -36,6 +36,12 @@ public class Tarjeta {
         this.nombreTitular = nombreTitular;
         this.numero = numero;
     }
+    @Override
+    public String toString() {
+        return "[fechaCaducidad=" + fechaCaducidad + ", nombreTitular=" + nombreTitular + ", numero=" + numero
+                + "]";
+    }
+    
 
     
 }//end Tarjeta

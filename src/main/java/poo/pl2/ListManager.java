@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.file.*;
 
 /**
  * @author perez
@@ -30,6 +29,7 @@ public class ListManager implements java.io.Serializable{
         oos.writeObject(usuarios);
     }
 
+    @SuppressWarnings("unchecked")
     private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
         ois.defaultReadObject();
         inmuebles = (ArrayList<Inmueble>) ois.readObject();
