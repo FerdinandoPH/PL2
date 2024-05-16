@@ -4,16 +4,24 @@
  */
 package poo.pl2;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tizia
  */
 public class GUI_mainAdmin extends javax.swing.JFrame {
-
+    Administrador usuario=null;
     /**
      * Creates new form mainAdmin
      */
-    public GUI_mainAdmin() {
+    public GUI_mainAdmin(Administrador usuario) {
+        this.usuario=usuario;
         initComponents();
     }
 
@@ -26,26 +34,41 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tipoComboBox = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        listaComboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         elementosList = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jLabel2 = new javax.swing.JLabel();
-        nombreField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        telefonoField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        dniField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        tipoUsuarioField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        vipField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        correoLabel = new javax.swing.JLabel();
         correoField = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        tipoUsuarioLabel = new javax.swing.JLabel();
+        tipoUsuarioField = new javax.swing.JTextField();
+        nombreLabel = new javax.swing.JLabel();
+        dniLabel = new javax.swing.JLabel();
+        dniField = new javax.swing.JTextField();
+        telefonoLabel = new javax.swing.JLabel();
+        telefonoField = new javax.swing.JTextField();
+        boolLabel = new javax.swing.JLabel();
+        nombreField = new javax.swing.JTextField();
+        cambiarContraseñaButton = new javax.swing.JButton();
+        boolComboBox = new javax.swing.JComboBox<>();
+        fechaRegistroLabel = new javax.swing.JLabel();
+        nombreTitularTarjetaLabel = new javax.swing.JLabel();
+        nombreTitularTarjetaField = new javax.swing.JTextField();
         fechaRegistroField = new javax.swing.JTextField();
+        numeroTarjetaLabel = new javax.swing.JLabel();
+        numeroTarjetaField = new javax.swing.JTextField();
+        caducidadLabel = new javax.swing.JLabel();
+        mesCaducidadLabel = new javax.swing.JLabel();
+        mesSpinner = new javax.swing.JSpinner();
+        añoCaducidadLabel = new javax.swing.JLabel();
+        añoSpinner = new javax.swing.JSpinner();
+        extenderButton = new javax.swing.JButton();
+        modificarButton = new javax.swing.JButton();
+        cancelarButton = new javax.swing.JButton();
+        cerrarSesionButton = new javax.swing.JButton();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jLabel8 = new javax.swing.JLabel();
         tituloField = new javax.swing.JTextField();
@@ -75,44 +98,108 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         fechaReservaField = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         importeField = new javax.swing.JTextField();
+        tituloLabel = new javax.swing.JLabel();
+        labelDebug = new javax.swing.JLabel();
+
+        jLabel21.setText("jLabel21");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaBnB");
 
-        tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuarios", "Inmuebles", "Reservas" }));
+        listaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuarios", "Inmuebles", "Reservas" }));
 
         elementosList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = ListManager.usuarios.stream().map(Usuario::getCorreo).toArray(String[]::new);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         elementosList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        elementosList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                elementosListValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(elementosList);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Lista de tipo:");
 
         jInternalFrame1.setTitle("Datos de usuario");
         jInternalFrame1.setVisible(true);
 
-        jLabel2.setText("Nombre");
+        correoLabel.setText("Correo");
 
-        nombreField.addActionListener(new java.awt.event.ActionListener() {
+        correoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreFieldActionPerformed(evt);
+                correoFieldActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Teléfono");
+        tipoUsuarioLabel.setText("Tipo de Usuario");
 
-        jLabel3.setText("DNI");
+        tipoUsuarioField.setEditable(false);
 
-        jLabel5.setText("Tipo");
+        nombreLabel.setText("Nombre");
 
-        jLabel6.setText("VIP");
+        dniLabel.setText("DNI");
 
-        jLabel7.setText("Correo");
+        telefonoLabel.setText("Teléfono");
 
-        jLabel10.setText("Fecha de registro");
+        boolLabel.setText("¿Es Súper Propietario?");
+
+        cambiarContraseñaButton.setText("Cambiar contraseña");
+        cambiarContraseñaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiarContraseñaButtonActionPerformed(evt);
+            }
+        });
+
+        boolComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sí", "No" }));
+
+        fechaRegistroLabel.setText("Fecha de Registro");
+
+        nombreTitularTarjetaLabel.setText("<html><body style=\"text-align:center;\">Nombre del Titular <br> de la Tarjeta</body></html>");
+
+        numeroTarjetaLabel.setText("Número de la Tarjeta");
+
+        caducidadLabel.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        caducidadLabel.setText("Caducidad");
+
+        mesCaducidadLabel.setText("Mes");
+
+        mesSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+
+        añoCaducidadLabel.setText("Año");
+
+        añoSpinner.setModel(new javax.swing.SpinnerNumberModel(2024, 2024, null, 1));
+
+        extenderButton.setText("Ver/Editar Reservas");
+        extenderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                extenderButtonActionPerformed(evt);
+            }
+        });
+
+        modificarButton.setText("Modificar Usuario");
+        modificarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarButtonActionPerformed(evt);
+            }
+        });
+
+        cancelarButton.setText("Cancelar Cambios");
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
+
+        cerrarSesionButton.setText("Cerrar Sesión");
+        cerrarSesionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -120,69 +207,126 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(nombreTitularTarjetaField)
+                    .addComponent(nombreTitularTarjetaLabel)
+                    .addComponent(boolComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boolLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombreField)
+                    .addComponent(nombreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(correoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(correoField, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nombreField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dniLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(telefonoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(fechaRegistroField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dniField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(telefonoField))
                             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tipoUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tipoUsuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(cambiarContraseñaButton))
+                                    .addComponent(fechaRegistroLabel)
                                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                        .addComponent(telefonoField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dniField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(numeroTarjetaField, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(numeroTarjetaLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                                .addComponent(mesCaducidadLabel)
+                                                .addGap(27, 27, 27)
+                                                .addComponent(añoCaducidadLabel))
+                                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                                .addComponent(mesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(añoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(extenderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 48, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(caducidadLabel)
+                        .addGap(51, 51, 51))))
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addComponent(tipoUsuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vipField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(correoField))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(47, 47, 47)
+                        .addComponent(modificarButton)
+                        .addGap(65, 65, 65)
+                        .addComponent(cancelarButton))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addComponent(fechaRegistroField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(154, 154, 154)
+                        .addComponent(cerrarSesionButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(correoLabel)
+                            .addComponent(tipoUsuarioLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(correoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipoUsuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cambiarContraseñaButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nombreLabel)
+                            .addComponent(dniLabel)
+                            .addComponent(telefonoLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dniField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telefonoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boolLabel)
+                            .addComponent(fechaRegistroLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boolComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaRegistroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nombreTitularTarjetaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addComponent(caducidadLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(numeroTarjetaLabel)
+                            .addComponent(mesCaducidadLabel)
+                            .addComponent(añoCaducidadLabel))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(telefonoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dniField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(nombreTitularTarjetaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numeroTarjetaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(añoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(extenderButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoUsuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(correoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fechaRegistroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(modificarButton)
+                    .addComponent(cancelarButton))
+                .addGap(10, 10, 10)
+                .addComponent(cerrarSesionButton)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Usuario", jInternalFrame1);
@@ -249,7 +393,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                             .addComponent(tipoInmuebleField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addComponent(jScrollPane4))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         jInternalFrame2Layout.setVerticalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,10 +452,9 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(importeField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                        .addComponent(entradaField, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(entradaField, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
@@ -339,38 +482,58 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Reserva", jInternalFrame3);
+
+        tituloLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        tituloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloLabel.setText("Panel de Administración");
+
+        labelDebug.setText(this.usuario.toString());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(0, 55, Short.MAX_VALUE))
+                        .addComponent(listaComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 4, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(labelDebug)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
+                .addComponent(tituloLabel)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tipoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(listaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelDebug))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("tab1\n");
@@ -378,9 +541,148 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFieldActionPerformed
+    private void correoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreFieldActionPerformed
+    }//GEN-LAST:event_correoFieldActionPerformed
+
+    private void cambiarContraseñaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContraseñaButtonActionPerformed
+        String nuevaContraseña = JOptionPane.showInputDialog(this, "Introduce la nueva contraseña", "Cambiar contraseña", JOptionPane.QUESTION_MESSAGE);
+        String nuevaContraseña2 = JOptionPane.showInputDialog(this, "Introduce la nueva contraseña de nuevo", "Cambiar contraseña", JOptionPane.QUESTION_MESSAGE);
+        try{
+            LoginManager loginManager = new LoginManager();
+            loginManager.cambiarContraseña(ListManager.usuarios.get(this.elementosList.getSelectedIndex()).getCorreo(), nuevaContraseña, nuevaContraseña2);
+            JOptionPane.showMessageDialog(this, "Contraseña cambiada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch (IllegalArgumentException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_cambiarContraseñaButtonActionPerformed
+
+    private void extenderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extenderButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_extenderButtonActionPerformed
+
+    private void modificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarButtonActionPerformed
+        try{
+            LoginManager loginManager = new LoginManager();
+            System.out.println("Se va a editar a "+ListManager.usuarios.get(elementosList.getSelectedIndex()).toString());
+            switch(ListManager.usuarios.get(elementosList.getSelectedIndex()).getClass().getSimpleName()){
+                case "Particular":
+                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.añoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
+                    break;
+                case "Anfitrion":
+                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0);
+                    break;
+                case "Administrador":
+                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()).getCorreo(), this.correoField.getText());
+                    break;
+            }
+            JOptionPane.showMessageDialog(this, "Usuario modificado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            elementosList.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = ListManager.usuarios.stream().map(Usuario::getCorreo).toArray(String[]::new);
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+        }
+        catch (IllegalArgumentException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_modificarButtonActionPerformed
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        elementosListValueChanged(null);
+    }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void elementosListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_elementosListValueChanged
+        // TODO add your handling code here:
+        if(listaComboBox.getSelectedIndex()==0){
+            if(elementosList.getSelectedIndex()!=-1){
+                Usuario usuarioSeleccionado = ListManager.usuarios.get(elementosList.getSelectedIndex());
+                this.correoField.setText(usuarioSeleccionado.getCorreo());
+                this.tipoUsuarioField.setText(usuarioSeleccionado.getClass().getSimpleName());
+                if (usuarioSeleccionado instanceof Cliente){
+                    Cliente clienteSeleccionado = (Cliente) usuarioSeleccionado;
+                    this.nombreField.setVisible(true);
+                    this.nombreLabel.setVisible(true);
+                    this.dniField.setVisible(true);
+                    this.dniLabel.setVisible(true);
+                    this.telefonoField.setVisible(true);
+                    this.telefonoLabel.setVisible(true);
+                    this.boolLabel.setVisible(true);
+                    this.boolComboBox.setVisible(true);
+                    this.extenderButton.setVisible(true);
+                    this.nombreField.setText(clienteSeleccionado.getNombre());
+                    this.dniField.setText(clienteSeleccionado.getDni());
+                    this.telefonoField.setText(clienteSeleccionado.getTelefono());
+                    if (usuarioSeleccionado instanceof Anfitrion){
+                        Anfitrion anfitrionSeleccionado = (Anfitrion) usuarioSeleccionado;
+                        this.boolLabel.setText("¿Es Súper Anfitrión?");
+                        this.boolComboBox.setSelectedIndex(anfitrionSeleccionado.isSuperAnfitrion()?0:1);
+                        this.fechaRegistroLabel.setVisible(true);
+                        this.fechaRegistroField.setVisible(true);
+                        this.fechaRegistroField.setText(anfitrionSeleccionado.getFechaRegistro().toString());
+                        this.numeroTarjetaLabel.setVisible(false);
+                        this.numeroTarjetaField.setVisible(false);
+                        this.nombreTitularTarjetaLabel.setVisible(false);
+                        this.nombreTitularTarjetaField.setVisible(false);
+                        this.caducidadLabel.setVisible(false);
+                        this.mesCaducidadLabel.setVisible(false);
+                        this.mesSpinner.setVisible(false);
+                        this.añoCaducidadLabel.setVisible(false);
+                        this.añoSpinner.setVisible(false);
+                        this.extenderButton.setText("Ver Inmuebles");
+                    }else{
+                        Particular particularSeleccionado = (Particular) usuarioSeleccionado;
+                        this.boolLabel.setText("¿Es VIP?");
+                        this.boolComboBox.setSelectedIndex(particularSeleccionado.isVip()?0:1);
+                        this.fechaRegistroLabel.setVisible(false);
+                        this.fechaRegistroField.setVisible(false);
+                        this.numeroTarjetaLabel.setVisible(true);
+                        this.numeroTarjetaField.setVisible(true);
+                        this.nombreTitularTarjetaLabel.setVisible(true);
+                        this.nombreTitularTarjetaField.setVisible(true);
+                        this.caducidadLabel.setVisible(true);
+                        this.mesCaducidadLabel.setVisible(true);
+                        this.mesSpinner.setVisible(true);
+                        this.añoCaducidadLabel.setVisible(true);
+                        this.añoSpinner.setVisible(true);
+                        this.numeroTarjetaField.setText(Long.toString(particularSeleccionado.getTarjeta().getNumero()));
+                        this.nombreTitularTarjetaField.setText(particularSeleccionado.getTarjeta().getNombreTitular());
+                        this.mesSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getMonthValue());
+                        this.añoSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getYear());
+                        this.extenderButton.setText("Ver Reservas");
+                    }
+                }else{
+                    this.nombreField.setVisible(false);
+                    this.nombreLabel.setVisible(false);
+                    this.dniField.setVisible(false);
+                    this.dniLabel.setVisible(false);
+                    this.telefonoField.setVisible(false);
+                    this.telefonoLabel.setVisible(false);
+                    this.boolLabel.setVisible(false);
+                    this.boolComboBox.setVisible(false);
+                    this.fechaRegistroLabel.setVisible(false);
+                    this.fechaRegistroField.setVisible(false);
+                    this.numeroTarjetaLabel.setVisible(false);
+                    this.numeroTarjetaField.setVisible(false);
+                    this.nombreTitularTarjetaLabel.setVisible(false);
+                    this.nombreTitularTarjetaField.setVisible(false);
+                    this.caducidadLabel.setVisible(false);
+                    this.mesCaducidadLabel.setVisible(false);
+                    this.mesSpinner.setVisible(false);
+                    this.añoCaducidadLabel.setVisible(false);
+                    this.añoSpinner.setVisible(false);
+                    this.extenderButton.setVisible(false);
+                }
+            }
+        }
+    }//GEN-LAST:event_elementosListValueChanged
+
+    private void cerrarSesionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionButtonActionPerformed
+        GUI_inicioSesion inicioSesion = new GUI_inicioSesion();
+        inicioSesion.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cerrarSesionButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -413,14 +715,14 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_mainAdmin().setVisible(true);
+                new GUI_mainAdmin(null).setVisible(true);
             }
         });
     }
     
     public void initFrames(){
         this.calificacionField.setEditable(false);
-        this.correoField.setEditable(false);
+        this.telefonoField.setEditable(false);
         this.datosArea.setEditable(false);
         this.direccionField.setEditable(false);
         this.dniField.setEditable(false);
@@ -429,26 +731,38 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         this.fechaReservaField.setEditable(false);
         this.fotoArea.setEditable(false);
         this.importeField.setEditable(false);
-        this.nombreField.setEditable(false);
+        this.correoField.setEditable(false);
         this.precioField.setEditable(false);
         this.salidaField.setEditable(false);
         this.serviciosArea.setEditable(false);
-        this.telefonoField.setEditable(false);
+        this.tipoUsuarioField.setEditable(false);
         this.tipoInmuebleField.setEditable(false);
         this.tipoUsuarioField.setEditable(false);
         this.tituloField.setEditable(false);
-        this.vipField.setEditable(false);
+        this.dniField.setEditable(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel añoCaducidadLabel;
+    private javax.swing.JSpinner añoSpinner;
+    private javax.swing.JComboBox<String> boolComboBox;
+    private javax.swing.JLabel boolLabel;
+    private javax.swing.JLabel caducidadLabel;
     private javax.swing.JTextField calificacionField;
+    private javax.swing.JButton cambiarContraseñaButton;
+    private javax.swing.JButton cancelarButton;
+    private javax.swing.JButton cerrarSesionButton;
     private javax.swing.JTextField correoField;
+    private javax.swing.JLabel correoLabel;
     private javax.swing.JTextArea datosArea;
     private javax.swing.JTextField direccionField;
     private javax.swing.JTextField dniField;
+    private javax.swing.JLabel dniLabel;
     private javax.swing.JList<String> elementosList;
     private javax.swing.JTextField entradaField;
+    private javax.swing.JButton extenderButton;
     private javax.swing.JTextField fechaRegistroField;
+    private javax.swing.JLabel fechaRegistroLabel;
     private javax.swing.JTextField fechaReservaField;
     private javax.swing.JTextArea fotoArea;
     private javax.swing.JTextField importeField;
@@ -456,7 +770,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JInternalFrame jInternalFrame3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -466,13 +779,8 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -480,15 +788,26 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel labelDebug;
+    private javax.swing.JComboBox<String> listaComboBox;
+    private javax.swing.JLabel mesCaducidadLabel;
+    private javax.swing.JSpinner mesSpinner;
+    private javax.swing.JButton modificarButton;
     private javax.swing.JTextField nombreField;
+    private javax.swing.JLabel nombreLabel;
+    private javax.swing.JTextField nombreTitularTarjetaField;
+    private javax.swing.JLabel nombreTitularTarjetaLabel;
+    private javax.swing.JTextField numeroTarjetaField;
+    private javax.swing.JLabel numeroTarjetaLabel;
     private javax.swing.JTextField precioField;
     private javax.swing.JTextField salidaField;
     private javax.swing.JTextArea serviciosArea;
     private javax.swing.JTextField telefonoField;
-    private javax.swing.JComboBox<String> tipoComboBox;
+    private javax.swing.JLabel telefonoLabel;
     private javax.swing.JTextField tipoInmuebleField;
     private javax.swing.JTextField tipoUsuarioField;
+    private javax.swing.JLabel tipoUsuarioLabel;
     private javax.swing.JTextField tituloField;
-    private javax.swing.JTextField vipField;
+    private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
 }

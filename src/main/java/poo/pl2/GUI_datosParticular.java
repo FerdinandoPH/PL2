@@ -183,7 +183,7 @@ public class GUI_datosParticular extends javax.swing.JDialog {
 
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
         LoginManager loginManager = new LoginManager();
-        String errores=loginManager.validarRegistro(nombreField.getText(), numTarjetaField.getText(), (int)mesSpinner.getValue(), (int)añoSpinner.getValue(), vipField.getText());
+        String errores=loginManager.validarInformacion(nombreField.getText(), numTarjetaField.getText(), (int)mesSpinner.getValue(), (int)añoSpinner.getValue(), vipField.getText());
         if (errores.isEmpty()){
             try{
                 loginManager.registrar(datosPrevios[0], datosPrevios[1], datosPrevios[2], datosPrevios[3], datosPrevios[4], vipField.getText().isEmpty()?false:true, new Tarjeta(LocalDate.of((int)añoSpinner.getValue(), (int)mesSpinner.getValue(), 1), nombreField.getText(), Long.parseLong(numTarjetaField.getText())));

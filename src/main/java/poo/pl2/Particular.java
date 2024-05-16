@@ -8,12 +8,28 @@ package poo.pl2;
  */
 public class Particular extends Cliente {
 
-    private boolean esVip;
+    private boolean vip;
     private Tarjeta tarjeta;
+    
+    public boolean isVip() {
+        return vip;
+    }
+
+    public void setVip(boolean esVip) {
+        this.vip = esVip;
+    }
+
+    public Tarjeta getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(Tarjeta tarjeta) {
+        this.tarjeta = tarjeta;
+    }
 
     public Particular(String correo, String claveString, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta){
         super(correo, claveString, dni, nombre, telefono);
-        this.esVip = esVip;
+        this.vip = esVip;
         this.tarjeta = tarjeta;
     }
 
@@ -35,7 +51,7 @@ public class Particular extends Cliente {
 
     @Override
     public String toString() {
-        return "Particular: ["+super.toString()+", esVip=" + esVip + ", tarjeta=" + tarjeta.toString() + "]";
+        return "Particular: ["+super.toString()+", esVip=" + vip + ", tarjeta=" + tarjeta.toString() + "]";
     }
     
 }//end Particular

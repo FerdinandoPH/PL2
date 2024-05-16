@@ -39,6 +39,18 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaBnB");
 
+        correoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correoFieldActionPerformed(evt);
+            }
+        });
+
+        claveField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                claveFieldActionPerformed(evt);
+            }
+        });
+
         inicioSesionButton.setText("Iniciar Sesión");
         inicioSesionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +122,27 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
         try{
             Usuario usu=loginManager.iniciarSesion(correoField.getText(), new String(claveField.getPassword()).hashCode());
             if (usu instanceof Cliente)
-                JOptionPane.showMessageDialog(this, "Bienvenido "+((Cliente) usu).getNombre(), "Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Bienvenido, "+((Cliente) usu).getNombre(), "Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
+            else
+                JOptionPane.showMessageDialog(this, "Bienvenido, administrador "+usu.getCorreo(), "Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
+            
+            switch(usu.getClass().getSimpleName()){
+                case "Particular":
+                    GUI_mainParticular particular = new GUI_mainParticular((Particular)usu);
+                    particular.setVisible(true);
+                    break;
+                case "Anfitrion":
+                    GUI_mainAnfitrion anfitrion = new GUI_mainAnfitrion((Anfitrion)usu);
+                    anfitrion.setVisible(true);
+                    break;
+                case "Administrador":
+                    GUI_mainAdmin admin = new GUI_mainAdmin((Administrador)usu);
+                    admin.setVisible(true);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Tipo de usuario no reconocido");
+            }
+            this.dispose();
         }
         catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
@@ -122,6 +154,14 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
         GUI_registro registro = new GUI_registro(this,true);
         registro.setVisible(true);
     }//GEN-LAST:event_registroButtonActionPerformed
+
+    private void claveFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_claveFieldActionPerformed
+        inicioSesionButtonActionPerformed(evt);
+    }//GEN-LAST:event_claveFieldActionPerformed
+
+    private void correoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoFieldActionPerformed
+        claveField.requestFocus();
+    }//GEN-LAST:event_correoFieldActionPerformed
 
     /**
      * @param args the command line arguments

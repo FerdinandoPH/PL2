@@ -69,8 +69,14 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="correoField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="correoFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="claveField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="claveFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="inicioSesionButton">
       <Properties>

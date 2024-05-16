@@ -9,11 +9,12 @@ package poo.pl2;
  * @author tizia
  */
 public class GUI_mainParticular extends javax.swing.JFrame {
-
+    Particular usuario=null;
     /**
      * Creates new form mainParticular
      */
-    public GUI_mainParticular() {
+    public GUI_mainParticular(Particular usuario) {
+        this.usuario=usuario;
         initComponents();
     }
 
@@ -26,22 +27,43 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cerrarSesionButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaBnB");
+
+        cerrarSesionButton.setText("Cerrar Sesión");
+        cerrarSesionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(cerrarSesionButton)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addComponent(cerrarSesionButton)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cerrarSesionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionButtonActionPerformed
+        GUI_inicioSesion inicioSesion = new GUI_inicioSesion();
+        inicioSesion.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarSesionButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,11 +96,12 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_mainParticular().setVisible(true);
+                new GUI_mainParticular(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cerrarSesionButton;
     // End of variables declaration//GEN-END:variables
 }

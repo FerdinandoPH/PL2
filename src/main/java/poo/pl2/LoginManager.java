@@ -1,8 +1,11 @@
 package poo.pl2;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class LoginManager {
+    static String claveVip="SoyVIP";
     public Usuario iniciarSesion(String correo, int clave) throws IllegalArgumentException{
         for (int i=0; i<ListManager.usuarios.size(); i++){
             System.out.println("Comparando " + ListManager.usuarios.get(i).getCorreo() + " con " + correo + " y " + ListManager.usuarios.get(i).getClave() + " con " + clave);
@@ -15,13 +18,14 @@ public class LoginManager {
         throw new IllegalArgumentException("Usuario no encontrado o contraseña incorrecta");
     }
     public void registrar(String correo, String clave, String dni, String nombre, String telefono) throws IllegalArgumentException{
-        if (correoRepetido(correo))
-            throw new IllegalArgumentException("Correo ya registrado");
+        if (validarInformacion(null,correo, clave, clave, dni, nombre, telefono).length()>0)
+            throw new IllegalArgumentException(validarInformacion(null,correo, clave, clave, dni, nombre, telefono));
         ListManager.usuarios.add(new Anfitrion(correo, clave, dni, nombre, telefono));
     }
     public void registrar(String correo, String clave, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta) throws IllegalArgumentException{
-        if (correoRepetido(correo))
-            throw new IllegalArgumentException("Correo ya registrado");
+        String errores=validarInformacion(null,correo, clave, clave, dni, nombre, telefono)+validarInformacion(tarjeta.getNombreTitular(), Long.toString(tarjeta.getNumero()),tarjeta.getFechaCaducidad().getYear(), tarjeta.getFechaCaducidad().getMonthValue(), new String());
+        if (errores.length()>0)
+            throw new IllegalArgumentException(errores);
         ListManager.usuarios.add(new Particular(correo, clave, dni, nombre, telefono, esVip, tarjeta));
     }
     public boolean correoRepetido(String correo){
@@ -30,10 +34,12 @@ public class LoginManager {
                 return true;
         return false;
     }
-    public String validarRegistro(String correo, String clave, String clave2,String dni, String nombre, String telefono){
+    public String validarInformacion(String correoOriginal,String correo, String clave, String clave2,String dni, String nombre, String telefono){
         String errores="";
         if (correo.isEmpty() || clave.length()==0 || clave.length()==0 || nombre.isEmpty() || dni.isEmpty() || telefono.isEmpty())
             errores+="Es necesario rellenar todos los campos\n";
+        if (!correoRepetido(correo) && !correo.equals(correoOriginal))
+            errores+="Correo ya registrado\n";
         if (!clave.equals(clave2))
             errores+="Las contraseñas no coinciden\n";
         else if (clave.length()<8)
@@ -46,16 +52,82 @@ public class LoginManager {
             errores+="Correo inválido\n";
         return errores;
     }
-    public String validarRegistro(String nombreTarjeta, String numeroTarjeta, int mes, int año, String vip){
+    public String validarInformacion(String nombreTarjeta, String numeroTarjeta, int mes, int año, String vip){
         String errores="";
         if (numeroTarjeta.isEmpty() || nombreTarjeta.isEmpty())
             errores+="Es necesario rellenar todos los campos que tengan un asterisco\n";
         if (!numeroTarjeta.matches("[0-9]{16}"))
             errores+="Número de tarjeta inválido\n";
-        if (año<LocalDate.now().getYear() || (año==LocalDate.now().getYear() && mes<LocalDate.now().getMonthValue()))
+        if (año<LocalDate.now().getYear() || (año==LocalDate.now().getYear() && mes<LocalDate.now().getMonthValue() || mes>12 || mes<1))
             errores+="Fecha de caducidad inválida\n";
-        if (!vip.isEmpty() && !vip.equals("SoyVIP"))
+        if (!vip.isEmpty() && !vip.equals(claveVip))
             errores+="Código VIP inválido. Si no eres VIP, no pongas nada\n";
         return errores;
     }
+    public String validarInformacion (String correo){
+        String errores="";
+        if (correoRepetido(correo))
+            errores+="Correo ya registrado\n";
+        if (!correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"))
+            errores+="Correo inválido\n";
+        return errores;
+    }
+    public String validarInformacion (String clave, String clave2){
+        String errores="";
+        if (!clave.equals(clave2))
+            errores+="Las contraseñas no coinciden\n";
+        else if (clave.length()<8)
+            errores+="La contraseña debe tener al menos 8 caracteres\n";
+        return errores;
+    }
+    public void editarUsuario(String correoOriginal,String correo, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta){ //Para particulares
+        String errores=validarInformacion(correoOriginal,correo, "AAAA1234", "AAAA1234", dni, nombre, telefono)+validarInformacion(tarjeta.getNombreTitular(), Long.toString(tarjeta.getNumero()),tarjeta.getFechaCaducidad().getMonthValue(), tarjeta.getFechaCaducidad().getYear(), new String());
+        if (errores.length()>0)
+            throw new IllegalArgumentException(errores);
+        for (int i=0; i<ListManager.usuarios.size(); i++)
+            if (ListManager.usuarios.get(i).getCorreo().equals(correoOriginal)){
+                ((Particular)ListManager.usuarios.get(i)).setCorreo(correo);
+                ((Particular)ListManager.usuarios.get(i)).setDni(dni);
+                ((Particular)ListManager.usuarios.get(i)).setNombre(nombre);
+                ((Particular)ListManager.usuarios.get(i)).setTelefono(telefono);
+                ((Particular)ListManager.usuarios.get(i)).setVip(esVip);
+                ((Particular)ListManager.usuarios.get(i)).setTarjeta(tarjeta);
+                break;
+            }
+    }
+    public void editarUsuario(String correoOriginal,String correo, String dni, String nombre, String telefono, boolean esSuperAnfitrion){ //Para anfitriones
+        String errores=validarInformacion(correoOriginal,correo, "AAAA1234", "AAAA1234", dni, nombre, telefono);
+        if (errores.length()>0)
+            throw new IllegalArgumentException(errores);
+        for (int i=0; i<ListManager.usuarios.size(); i++)
+            if (ListManager.usuarios.get(i).getCorreo().equals(correoOriginal)){
+                ((Anfitrion)ListManager.usuarios.get(i)).setCorreo(correo);
+                ((Anfitrion)ListManager.usuarios.get(i)).setDni(dni);
+                ((Anfitrion)ListManager.usuarios.get(i)).setNombre(nombre);
+                ((Anfitrion)ListManager.usuarios.get(i)).setTelefono(telefono);
+                ((Anfitrion)ListManager.usuarios.get(i)).setSuperAnfitrion(esSuperAnfitrion);
+                break;
+            }
+    }
+    public void editarUsuario (String correoOriginal,String correo){
+        String errores=validarInformacion(correo);
+        if (errores.length()>0)
+            throw new IllegalArgumentException(errores);
+        for (int i=0; i<ListManager.usuarios.size(); i++)
+            if (ListManager.usuarios.get(i).getCorreo().equals(correoOriginal)){
+                ((Administrador)ListManager.usuarios.get(i)).setCorreo(correo);
+                break;
+            }
+    }
+    public void cambiarContraseña(String correo, String nuevaContraseña, String nuevaContraseña2){
+        String errores=validarInformacion(nuevaContraseña,nuevaContraseña2);
+        if (errores.length()>0)
+            throw new IllegalArgumentException(errores);
+        for (int i=0; i<ListManager.usuarios.size(); i++)
+            if (ListManager.usuarios.get(i).getCorreo().equals(correo)){
+                ListManager.usuarios.get(i).setClave(nuevaContraseña);
+                break;
+            }
+    }
+
 }

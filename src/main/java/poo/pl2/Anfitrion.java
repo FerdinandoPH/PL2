@@ -8,12 +8,28 @@ import java.time.LocalDate;
  */
 public class Anfitrion extends Cliente {
 
-    private boolean esSuperAnfitiron;
+    private boolean superAnfitrion;
     private LocalDate fechaRegistro;
+    
+    public boolean isSuperAnfitrion() {
+        return superAnfitrion;
+    }
+
+    public void setSuperAnfitrion(boolean esSuperAnfitiron) {
+        this.superAnfitrion = esSuperAnfitiron;
+    }
+
+    public LocalDate getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(LocalDate fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
 
     public Anfitrion(String correo, String claveString, String dni, String nombre, String telefono){
         super(correo, claveString, dni, nombre, telefono);
-        this.esSuperAnfitiron = false;
+        this.superAnfitrion = false;
         this.fechaRegistro = LocalDate.now();
     }
 
@@ -27,7 +43,7 @@ public class Anfitrion extends Cliente {
 
     @Override
     public String toString() {
-        return "Anfitrion: ["+super.toString()+", esSuperAnfitiron=" + esSuperAnfitiron + ", fechaRegistro=" + fechaRegistro + "]";
+        return "Anfitrion: ["+super.toString()+", esSuperAnfitiron=" + superAnfitrion + ", fechaRegistro=" + fechaRegistro + "]";
     }
     
 }//end Anfitrion

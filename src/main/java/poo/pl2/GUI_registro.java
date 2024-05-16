@@ -171,7 +171,7 @@ public class GUI_registro extends javax.swing.JDialog {
 
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
         LoginManager loginManager = new LoginManager();
-        String errores=loginManager.validarRegistro(correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText());
+        String errores=loginManager.validarInformacion(null,correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText());
         if (errores.length()>0){
             javax.swing.JOptionPane.showMessageDialog(this, errores, "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
