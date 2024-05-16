@@ -6,6 +6,8 @@ package poo.pl2;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import javax.swing.DefaultListModel;
@@ -16,7 +18,9 @@ import javax.swing.JOptionPane;
  * @author tizia
  */
 public class GUI_mainAdmin extends javax.swing.JFrame {
-    Administrador usuario=null;
+    private Administrador usuario=null;
+    private ArrayList<Integer> posicionesSeparador=new ArrayList<Integer>();
+    private int seleccionAnterior=-1;
     /**
      * Creates new form mainAdmin
      */
@@ -69,6 +73,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         modificarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
         cerrarSesionButton = new javax.swing.JButton();
+        borrarUsuarioButton = new javax.swing.JButton();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jLabel8 = new javax.swing.JLabel();
         tituloField = new javax.swing.JTextField();
@@ -108,8 +113,22 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         listaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuarios", "Inmuebles", "Reservas" }));
 
+        posicionesSeparador=new ArrayList<Integer>();
+        ArrayList<String> correosLista=new ArrayList<String>();
+        String clasePrevia="";
+        int i=0;
+        for (Usuario u:ListManager.usuarios){
+            if (!u.getClass().getSimpleName().equals(clasePrevia)){
+                correosLista.add(u.getClass().getSimpleName()+"es:");
+                posicionesSeparador.add(i);
+                i++;
+            }
+            correosLista.add(u.getCorreo());
+            clasePrevia=u.getClass().getSimpleName();
+            i++;
+        }
         elementosList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = ListManager.usuarios.stream().map(Usuario::getCorreo).toArray(String[]::new);
+            String[] strings=correosLista.toArray(new String[correosLista.size()]);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -201,6 +220,10 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             }
         });
 
+        borrarUsuarioButton.setBackground(new java.awt.Color(255, 0, 0));
+        borrarUsuarioButton.setForeground(new java.awt.Color(255, 255, 255));
+        borrarUsuarioButton.setText("Borrar Usuario");
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
@@ -260,16 +283,17 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                         .addComponent(caducidadLabel)
                         .addGap(51, 51, 51))))
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(modificarButton)
-                        .addGap(65, 65, 65)
-                        .addComponent(cancelarButton))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(cerrarSesionButton)))
+                .addGap(47, 47, 47)
+                .addComponent(modificarButton)
+                .addGap(65, 65, 65)
+                .addComponent(cancelarButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(borrarUsuarioButton)
+                .addGap(88, 88, 88)
+                .addComponent(cerrarSesionButton)
+                .addContainerGap())
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,7 +349,9 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     .addComponent(modificarButton)
                     .addComponent(cancelarButton))
                 .addGap(10, 10, 10)
-                .addComponent(cerrarSesionButton)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cerrarSesionButton)
+                    .addComponent(borrarUsuarioButton))
                 .addContainerGap())
         );
 
@@ -550,7 +576,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         String nuevaContraseña2 = JOptionPane.showInputDialog(this, "Introduce la nueva contraseña de nuevo", "Cambiar contraseña", JOptionPane.QUESTION_MESSAGE);
         try{
             LoginManager loginManager = new LoginManager();
-            loginManager.cambiarContraseña(ListManager.usuarios.get(this.elementosList.getSelectedIndex()).getCorreo(), nuevaContraseña, nuevaContraseña2);
+            loginManager.cambiarContraseña(ListManager.usuarios.get(this.elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), nuevaContraseña, nuevaContraseña2);
             JOptionPane.showMessageDialog(this, "Contraseña cambiada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         }
         catch (IllegalArgumentException e){
@@ -563,23 +589,41 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_extenderButtonActionPerformed
 
     private void modificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarButtonActionPerformed
+        if (elementosList.getSelectedIndex()==-1 || posicionesSeparador.contains(elementosList.getSelectedIndex())){
+            JOptionPane.showMessageDialog(this, "Selecciona un usuario para modificar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         try{
             LoginManager loginManager = new LoginManager();
-            System.out.println("Se va a editar a "+ListManager.usuarios.get(elementosList.getSelectedIndex()).toString());
-            switch(ListManager.usuarios.get(elementosList.getSelectedIndex()).getClass().getSimpleName()){
+            System.out.println("Se va a editar a "+ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).toString());
+            switch(ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getClass().getSimpleName()){
                 case "Particular":
-                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.añoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
+                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i -> i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.añoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
                     break;
                 case "Anfitrion":
-                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0);
+                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0);
                     break;
                 case "Administrador":
-                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()).getCorreo(), this.correoField.getText());
+                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText());
                     break;
             }
             JOptionPane.showMessageDialog(this, "Usuario modificado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            posicionesSeparador=new ArrayList<Integer>();
+            ArrayList<String> correosLista=new ArrayList<String>();
+            String clasePrevia="";
+            int i=0;
+            for (Usuario u:ListManager.usuarios){
+                if (!u.getClass().getSimpleName().equals(clasePrevia)){
+                    correosLista.add(u.getClass().getSimpleName()+"es:");
+                    posicionesSeparador.add(i);
+                    i++;
+                }
+                correosLista.add(u.getCorreo());
+                clasePrevia=u.getClass().getSimpleName();
+                i++;
+            }
             elementosList.setModel(new javax.swing.AbstractListModel<String>() {
-                String[] strings = ListManager.usuarios.stream().map(Usuario::getCorreo).toArray(String[]::new);
+                String[] strings=correosLista.toArray(new String[correosLista.size()]);
                 public int getSize() { return strings.length; }
                 public String getElementAt(int i) { return strings[i]; }
             });
@@ -594,10 +638,11 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void elementosListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_elementosListValueChanged
-        // TODO add your handling code here:
         if(listaComboBox.getSelectedIndex()==0){
-            if(elementosList.getSelectedIndex()!=-1){
-                Usuario usuarioSeleccionado = ListManager.usuarios.get(elementosList.getSelectedIndex());
+            if(elementosList.getSelectedIndex()!=-1 && !posicionesSeparador.contains(elementosList.getSelectedIndex())){
+                Usuario usuarioSeleccionado = ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
+                System.out.println(posicionesSeparador.toString());
+                System.out.println(Integer.toString(elementosList.getSelectedIndex())+"-"+Integer.toString((int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()));
                 this.correoField.setText(usuarioSeleccionado.getCorreo());
                 this.tipoUsuarioField.setText(usuarioSeleccionado.getClass().getSimpleName());
                 if (usuarioSeleccionado instanceof Cliente){
@@ -674,6 +719,10 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     this.añoSpinner.setVisible(false);
                     this.extenderButton.setVisible(false);
                 }
+                seleccionAnterior=elementosList.getSelectedIndex();
+            }
+            else if (posicionesSeparador.contains(elementosList.getSelectedIndex())){
+                elementosList.setSelectedIndex(seleccionAnterior);
             }
         }
     }//GEN-LAST:event_elementosListValueChanged
@@ -747,6 +796,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JSpinner añoSpinner;
     private javax.swing.JComboBox<String> boolComboBox;
     private javax.swing.JLabel boolLabel;
+    private javax.swing.JButton borrarUsuarioButton;
     private javax.swing.JLabel caducidadLabel;
     private javax.swing.JTextField calificacionField;
     private javax.swing.JButton cambiarContraseñaButton;

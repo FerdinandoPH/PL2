@@ -3,6 +3,8 @@ package poo.pl2;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class LoginManager {
     static String claveVip="SoyVIP";
@@ -21,12 +23,52 @@ public class LoginManager {
         if (validarInformacion(null,correo, clave, clave, dni, nombre, telefono).length()>0)
             throw new IllegalArgumentException(validarInformacion(null,correo, clave, clave, dni, nombre, telefono));
         ListManager.usuarios.add(new Anfitrion(correo, clave, dni, nombre, telefono));
+        Collections.sort(ListManager.usuarios, new Comparator<Usuario>() {
+            @Override
+            public int compare(Usuario u1, Usuario u2) {
+                if (u1 instanceof Administrador && u2 instanceof Administrador) {
+                    return u1.getCorreo().compareTo(u2.getCorreo());
+                } else if (u1 instanceof Administrador) {
+                    return -1;
+                } else if (u2 instanceof Administrador) {
+                    return 1;
+                } else if (u1 instanceof Anfitrion && u2 instanceof Anfitrion) {
+                    return u1.getCorreo().compareTo(u2.getCorreo());
+                } else if (u1 instanceof Anfitrion) {
+                    return -1;
+                } else if (u2 instanceof Anfitrion) {
+                    return 1;
+                } else {
+                    return u1.getCorreo().compareTo(u2.getCorreo());
+                }
+            }
+        });
     }
     public void registrar(String correo, String clave, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta) throws IllegalArgumentException{
-        String errores=validarInformacion(null,correo, clave, clave, dni, nombre, telefono)+validarInformacion(tarjeta.getNombreTitular(), Long.toString(tarjeta.getNumero()),tarjeta.getFechaCaducidad().getYear(), tarjeta.getFechaCaducidad().getMonthValue(), new String());
+        String errores=validarInformacion(null,correo, clave, clave, dni, nombre, telefono)+validarInformacion(tarjeta.getNombreTitular(), Long.toString(tarjeta.getNumero()),tarjeta.getFechaCaducidad().getMonthValue(), tarjeta.getFechaCaducidad().getYear(), new String());
         if (errores.length()>0)
             throw new IllegalArgumentException(errores);
         ListManager.usuarios.add(new Particular(correo, clave, dni, nombre, telefono, esVip, tarjeta));
+        Collections.sort(ListManager.usuarios, new Comparator<Usuario>() {
+            @Override
+            public int compare(Usuario u1, Usuario u2) {
+                if (u1 instanceof Administrador && u2 instanceof Administrador) {
+                    return u1.getCorreo().compareTo(u2.getCorreo());
+                } else if (u1 instanceof Administrador) {
+                    return -1;
+                } else if (u2 instanceof Administrador) {
+                    return 1;
+                } else if (u1 instanceof Anfitrion && u2 instanceof Anfitrion) {
+                    return u1.getCorreo().compareTo(u2.getCorreo());
+                } else if (u1 instanceof Anfitrion) {
+                    return -1;
+                } else if (u2 instanceof Anfitrion) {
+                    return 1;
+                } else {
+                    return u1.getCorreo().compareTo(u2.getCorreo());
+                }
+            }
+        });
     }
     public boolean correoRepetido(String correo){
         for (int i=0; i<ListManager.usuarios.size(); i++)
@@ -38,7 +80,7 @@ public class LoginManager {
         String errores="";
         if (correo.isEmpty() || clave.length()==0 || clave.length()==0 || nombre.isEmpty() || dni.isEmpty() || telefono.isEmpty())
             errores+="Es necesario rellenar todos los campos\n";
-        if (!correoRepetido(correo) && !correo.equals(correoOriginal))
+        if (correoRepetido(correo) && !correo.equals(correoOriginal))
             errores+="Correo ya registrado\n";
         if (!clave.equals(clave2))
             errores+="Las contraseñas no coinciden\n";
