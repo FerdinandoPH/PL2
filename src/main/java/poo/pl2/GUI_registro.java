@@ -177,18 +177,19 @@ public class GUI_registro extends javax.swing.JDialog {
         }
         else{
             if (tipoComboBox.getSelectedItem().equals("Particular")){
-                GUI_datosParticular dialogoDatosParticular = new GUI_datosParticular(this, true, new String [] {correoField.getText(), new String(claveField.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText()});
+                GUI_datosParticular dialogoDatosParticular = new GUI_datosParticular(this, true, new String [] {correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText()});
                 GUI_registro dialogoRegistro = this;
                 dialogoDatosParticular.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosed(WindowEvent e) {
-                        dialogoRegistro.dispose();
+                        if (dialogoDatosParticular.isRegistroExitoso())
+                            dialogoRegistro.dispose();
                     }
                 });
                 dialogoDatosParticular.setVisible(true);
             }
             else{
-                loginManager.registrar(correoField.getText(), new String(claveField.getPassword()), dniField.getText(),nombreField.getText(), telefonoField.getText());
+                loginManager.registrar(correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(),nombreField.getText(), telefonoField.getText());
                 JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
             }

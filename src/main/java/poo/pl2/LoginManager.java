@@ -19,10 +19,7 @@ public class LoginManager {
         }
         throw new IllegalArgumentException("Usuario no encontrado o contraseña incorrecta");
     }
-    public void registrar(String correo, String clave, String dni, String nombre, String telefono) throws IllegalArgumentException{
-        if (validarInformacion(null,correo, clave, clave, dni, nombre, telefono).length()>0)
-            throw new IllegalArgumentException(validarInformacion(null,correo, clave, clave, dni, nombre, telefono));
-        ListManager.usuarios.add(new Anfitrion(correo, clave, dni, nombre, telefono));
+    public void reordenarUsuarios(){
         Collections.sort(ListManager.usuarios, new Comparator<Usuario>() {
             @Override
             public int compare(Usuario u1, Usuario u2) {
@@ -44,32 +41,37 @@ public class LoginManager {
             }
         });
     }
-    public void registrar(String correo, String clave, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta) throws IllegalArgumentException{
-        String errores=validarInformacion(null,correo, clave, clave, dni, nombre, telefono)+validarInformacion(tarjeta.getNombreTitular(), Long.toString(tarjeta.getNumero()),tarjeta.getFechaCaducidad().getMonthValue(), tarjeta.getFechaCaducidad().getYear(), new String());
+    public void registrar(String correo, String clave, String clave2, String dni, String nombre, String telefono) throws IllegalArgumentException{
+        if (validarInformacion(null,correo, clave, clave2, dni, nombre, telefono).length()>0)
+            throw new IllegalArgumentException(validarInformacion(null,correo, clave, clave, dni, nombre, telefono));
+        ListManager.usuarios.add(new Anfitrion(correo, clave, dni, nombre, telefono));
+        reordenarUsuarios();
+    }
+    public void registrar(String correo, String clave, String clave2, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta) throws IllegalArgumentException{
+        String errores=validarInformacion(null,correo, clave, clave2, dni, nombre, telefono)+validarInformacion(tarjeta.getNombreTitular(), Long.toString(tarjeta.getNumero()),tarjeta.getFechaCaducidad().getMonthValue(), tarjeta.getFechaCaducidad().getYear(), new String());
         if (errores.length()>0)
             throw new IllegalArgumentException(errores);
         ListManager.usuarios.add(new Particular(correo, clave, dni, nombre, telefono, esVip, tarjeta));
-        Collections.sort(ListManager.usuarios, new Comparator<Usuario>() {
-            @Override
-            public int compare(Usuario u1, Usuario u2) {
-                if (u1 instanceof Administrador && u2 instanceof Administrador) {
-                    return u1.getCorreo().compareTo(u2.getCorreo());
-                } else if (u1 instanceof Administrador) {
-                    return -1;
-                } else if (u2 instanceof Administrador) {
-                    return 1;
-                } else if (u1 instanceof Anfitrion && u2 instanceof Anfitrion) {
-                    return u1.getCorreo().compareTo(u2.getCorreo());
-                } else if (u1 instanceof Anfitrion) {
-                    return -1;
-                } else if (u2 instanceof Anfitrion) {
-                    return 1;
-                } else {
-                    return u1.getCorreo().compareTo(u2.getCorreo());
-                }
-            }
-        });
+        reordenarUsuarios();
     }
+    public void registrar (String correo, String clave, String clave2){
+        String errores=validarInformacion(clave, clave2)+validarInformacion(correo);
+        if (errores.length()>0)
+            throw new IllegalArgumentException(errores);
+        ListManager.usuarios.add(new Administrador(correo, clave));
+        reordenarUsuarios();
+    }
+    public void borrarUsuario(String correo){
+        for (int i=0; i<ListManager.usuarios.size(); i++)
+            if (ListManager.usuarios.get(i).getCorreo().equals(correo)){
+                if (ListManager.usuarios.get(i) instanceof Administrador && ListManager.usuarios.stream().filter(u->u instanceof Administrador).count()==1)
+                    throw new IllegalArgumentException("No se puede borrar el único administrador\n Crea otro administrador antes de borrar este");{
+                }
+                ListManager.usuarios.remove(i);
+                break;
+            }
+    }
+    //public void registrar(String correo, String clave)
     public boolean correoRepetido(String correo){
         for (int i=0; i<ListManager.usuarios.size(); i++)
             if (ListManager.usuarios.get(i).getCorreo().equals(correo))

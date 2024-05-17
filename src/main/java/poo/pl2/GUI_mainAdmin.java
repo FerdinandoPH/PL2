@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -73,7 +74,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         modificarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
         cerrarSesionButton = new javax.swing.JButton();
-        borrarUsuarioButton = new javax.swing.JButton();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jLabel8 = new javax.swing.JLabel();
         tituloField = new javax.swing.JTextField();
@@ -105,6 +105,8 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         importeField = new javax.swing.JTextField();
         tituloLabel = new javax.swing.JLabel();
         labelDebug = new javax.swing.JLabel();
+        añadirAdminButton = new javax.swing.JButton();
+        borrarUsuarioButton = new javax.swing.JButton();
 
         jLabel21.setText("jLabel21");
 
@@ -220,10 +222,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             }
         });
 
-        borrarUsuarioButton.setBackground(new java.awt.Color(255, 0, 0));
-        borrarUsuarioButton.setForeground(new java.awt.Color(255, 255, 255));
-        borrarUsuarioButton.setText("Borrar Usuario");
-
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
@@ -290,8 +288,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(borrarUsuarioButton)
-                .addGap(88, 88, 88)
                 .addComponent(cerrarSesionButton)
                 .addContainerGap())
         );
@@ -349,9 +345,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     .addComponent(modificarButton)
                     .addComponent(cancelarButton))
                 .addGap(10, 10, 10)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cerrarSesionButton)
-                    .addComponent(borrarUsuarioButton))
+                .addComponent(cerrarSesionButton)
                 .addContainerGap())
         );
 
@@ -519,23 +513,24 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         labelDebug.setText(this.usuario.toString());
 
+        añadirAdminButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/añadirAdmin.png"))); // NOI18N
+        añadirAdminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirAdminButtonActionPerformed(evt);
+            }
+        });
+
+        borrarUsuarioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/borrarUsuario.png"))); // NOI18N
+        borrarUsuarioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarUsuarioButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(listaComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 4, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(190, 190, 190)
                 .addComponent(labelDebug)
@@ -544,6 +539,24 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(tituloLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(añadirAdminButton)
+                            .addComponent(borrarUsuarioButton)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 35, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listaComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -555,7 +568,12 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(listaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(añadirAdminButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(borrarUsuarioButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -566,7 +584,27 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void refrescarLista(){
+        posicionesSeparador=new ArrayList<Integer>();
+                ArrayList<String> correosLista=new ArrayList<String>();
+                String clasePrevia="";
+                int i=0;
+                for (Usuario u:ListManager.usuarios){
+                    if (!u.getClass().getSimpleName().equals(clasePrevia)){
+                        correosLista.add(u.getClass().getSimpleName()+"es:");
+                        posicionesSeparador.add(i);
+                        i++;
+                    }
+                    correosLista.add(u.getCorreo());
+                    clasePrevia=u.getClass().getSimpleName();
+                    i++;
+                }
+                elementosList.setModel(new javax.swing.AbstractListModel<String>() {
+                    String[] strings=correosLista.toArray(new String[correosLista.size()]);
+                    public int getSize() { return strings.length; }
+                    public String getElementAt(int i) { return strings[i]; }
+                });
+    }
     private void correoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_correoFieldActionPerformed
@@ -608,25 +646,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     break;
             }
             JOptionPane.showMessageDialog(this, "Usuario modificado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            posicionesSeparador=new ArrayList<Integer>();
-            ArrayList<String> correosLista=new ArrayList<String>();
-            String clasePrevia="";
-            int i=0;
-            for (Usuario u:ListManager.usuarios){
-                if (!u.getClass().getSimpleName().equals(clasePrevia)){
-                    correosLista.add(u.getClass().getSimpleName()+"es:");
-                    posicionesSeparador.add(i);
-                    i++;
-                }
-                correosLista.add(u.getCorreo());
-                clasePrevia=u.getClass().getSimpleName();
-                i++;
-            }
-            elementosList.setModel(new javax.swing.AbstractListModel<String>() {
-                String[] strings=correosLista.toArray(new String[correosLista.size()]);
-                public int getSize() { return strings.length; }
-                public String getElementAt(int i) { return strings[i]; }
-            });
+            refrescarLista();
         }
         catch (IllegalArgumentException e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -733,6 +753,51 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cerrarSesionButtonActionPerformed
 
+    private void añadirAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirAdminButtonActionPerformed
+        GUI_dialogoAñadirAdmin dialogoAñadirAdmin = new GUI_dialogoAñadirAdmin(this, true);
+        dialogoAñadirAdmin.setVisible(true);
+        dialogoAñadirAdmin.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                refrescarLista();
+            }
+        });
+    }//GEN-LAST:event_añadirAdminButtonActionPerformed
+
+    private void borrarUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarUsuarioButtonActionPerformed
+        if (elementosList.getSelectedIndex()==-1 || posicionesSeparador.contains(elementosList.getSelectedIndex())){
+            JOptionPane.showMessageDialog(this, "Selecciona un usuario para borrar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try{
+            boolean continuarBorradoPropio=false;
+            LoginManager loginManager = new LoginManager();
+            Usuario usuarioABorrar=ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
+            boolean comenzarBorrado=JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres borrar a "+usuarioABorrar.getCorreo()+"?", "Borrar usuario", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION;
+            if (!comenzarBorrado)
+                return;
+            if (usuarioABorrar instanceof Administrador){
+                boolean continuarBorradoAdmin=JOptionPane.showConfirmDialog(this, "El usuario seleccionado es un administrador. ¿Seguro que quieres seguir?", "Borrar usuario", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
+                if (!continuarBorradoAdmin)
+                    return;
+            }
+            if (usuarioABorrar.equals(usuario)){
+                continuarBorradoPropio=JOptionPane.showConfirmDialog(this, "El usuario seleccionado es el usuario actual. ¿Seguro que quieres seguir?\nSe cerrará la sesión", "Borrar usuario", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
+                if (!continuarBorradoPropio)
+                    return;
+            }
+            loginManager.borrarUsuario(usuarioABorrar.getCorreo());
+            JOptionPane.showMessageDialog(this, "Usuario borrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            refrescarLista();
+            if (continuarBorradoPropio){
+                cerrarSesionButtonActionPerformed(evt);
+            }
+        }
+        catch (IllegalArgumentException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_borrarUsuarioButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -792,6 +857,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton añadirAdminButton;
     private javax.swing.JLabel añoCaducidadLabel;
     private javax.swing.JSpinner añoSpinner;
     private javax.swing.JComboBox<String> boolComboBox;
