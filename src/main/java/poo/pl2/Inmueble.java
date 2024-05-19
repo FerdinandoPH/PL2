@@ -138,6 +138,15 @@ public class Inmueble implements java.io.Serializable{
                 + precioPorNoche + ", servicios=" + servicios + ", tipo=" + tipo + ", vecesReservado=" + vecesReservado
                 + ", reseñas=" + reseñas.toString() + "]";
     }
-    
+    public static ArrayList<Inmueble> getInmuebles(){
+        ArrayList<Inmueble> inmuebles = new ArrayList<Inmueble>();
+        for (Usuario u: ListManager.usuarios){
+            if (u instanceof Anfitrion){
+                Anfitrion a = (Anfitrion) u;
+                inmuebles.addAll(a.getInmuebles());
+            }
+        }
+        return inmuebles;
+    }
     
 }//end Inmueble
