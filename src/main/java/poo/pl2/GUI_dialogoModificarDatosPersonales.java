@@ -343,7 +343,20 @@ public class GUI_dialogoModificarDatosPersonales extends javax.swing.JDialog {
     }//GEN-LAST:event_volverButtonActionPerformed
 
     private void boolComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boolComboBoxActionPerformed
-        boolComboBox.setSelectedIndex(indiceFijoBCB);
+        if (this.cliente instanceof Particular && !((Particular)this.cliente).isVip() && boolComboBox.getSelectedIndex()==0){
+            String codigoVip=JOptionPane.showInputDialog(this, "Introduce el código VIP", "Código VIP", JOptionPane.QUESTION_MESSAGE);
+            if (codigoVip!=null && codigoVip.equals(LoginManager.claveVip)){
+                JOptionPane.showMessageDialog(this, "Código VIP correcto", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                indiceFijoBCB=0;
+                cambioRealizado();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Código VIP incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+                boolComboBox.setSelectedIndex(indiceFijoBCB);
+            }
+        }
+        else
+            boolComboBox.setSelectedIndex(indiceFijoBCB);
     }//GEN-LAST:event_boolComboBoxActionPerformed
 
     private void borrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarButtonActionPerformed
@@ -362,6 +375,7 @@ public class GUI_dialogoModificarDatosPersonales extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_borrarButtonActionPerformed
     private void cargarDatos(){
+        indiceFijoBCB=cliente instanceof Particular? ((Particular)cliente).isVip()?0:1 : ((Anfitrion)cliente).isSuperAnfitrion()?0:1;
         Cliente clienteSeleccionado = this.cliente;
         this.correoField.setText(clienteSeleccionado.getCorreo());
         this.nombreField.setVisible(true);
@@ -411,7 +425,7 @@ public class GUI_dialogoModificarDatosPersonales extends javax.swing.JDialog {
             this.mesSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getMonthValue());
             this.añoSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getYear());
         }
-        indiceFijoBCB=this.boolComboBox.getSelectedIndex();
+        
     }
     private void cambioRealizado(){
         modificarButton.setEnabled(true);
