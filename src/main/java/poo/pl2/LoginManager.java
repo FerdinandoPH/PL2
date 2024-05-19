@@ -139,7 +139,7 @@ public class LoginManager {
                 break;
             }
     }
-    public void editarUsuario(String correoOriginal,String correo, String dni, String nombre, String telefono, boolean esSuperAnfitrion){ //Para anfitriones
+    public void editarUsuario(String correoOriginal,String correo, String dni, String nombre, String telefono){ //Para anfitriones
         String errores=validarInformacion(correoOriginal,correo, "AAAA1234", "AAAA1234", dni, nombre, telefono);
         if (errores.length()>0)
             throw new IllegalArgumentException(errores);
@@ -149,7 +149,6 @@ public class LoginManager {
                 ((Anfitrion)ListManager.usuarios.get(i)).setDni(dni);
                 ((Anfitrion)ListManager.usuarios.get(i)).setNombre(nombre);
                 ((Anfitrion)ListManager.usuarios.get(i)).setTelefono(telefono);
-                ((Anfitrion)ListManager.usuarios.get(i)).setSuperAnfitrion(esSuperAnfitrion);
                 break;
             }
     }

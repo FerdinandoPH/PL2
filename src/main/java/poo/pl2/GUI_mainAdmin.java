@@ -25,6 +25,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private Administrador usuario=null;
     private ArrayList<Integer> posicionesSeparador=new ArrayList<Integer>();
     private int seleccionAnterior=-1;
+    private int indiceFijoBCB;
     /**
      * Creates new form mainAdmin
      */
@@ -194,10 +195,17 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         });
 
         boolComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sí", "No" }));
+        boolComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boolComboBoxActionPerformed(evt);
+            }
+        });
 
         fechaRegistroLabel.setText("Fecha de Registro");
 
         nombreTitularTarjetaLabel.setText("<html><body style=\"text-align:center;\">Nombre del Titular <br> de la Tarjeta</body></html>");
+
+        fechaRegistroField.setEditable(false);
 
         numeroTarjetaLabel.setText("Número de la Tarjeta");
 
@@ -657,7 +665,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i -> i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.añoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
                     break;
                 case "Anfitrion":
-                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0);
+                    loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText());
                     break;
                 case "Administrador":
                     loginManager.editarUsuario(ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText());
@@ -735,6 +743,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                         this.añoSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getYear());
                         this.extenderButton.setText("Ver Reservas");
                     }
+                    indiceFijoBCB=this.boolComboBox.getSelectedIndex();
                 }else{
                     this.nombreField.setVisible(false);
                     this.nombreLabel.setVisible(false);
@@ -815,6 +824,12 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_borrarUsuarioButtonActionPerformed
+
+    private void boolComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boolComboBoxActionPerformed
+        if (ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()) instanceof Anfitrion){
+            boolComboBox.setSelectedIndex(indiceFijoBCB);
+        }
+    }//GEN-LAST:event_boolComboBoxActionPerformed
 
     /**
      * @param args the command line arguments

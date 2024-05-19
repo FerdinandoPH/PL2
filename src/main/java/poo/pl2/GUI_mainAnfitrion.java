@@ -28,6 +28,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private void initComponents() {
 
         cerrarSesionButton = new javax.swing.JButton();
+        modificarDatosPersonalesButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaBnB");
@@ -39,6 +40,13 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             }
         });
 
+        modificarDatosPersonalesButton.setText("Modificar Datos Personales");
+        modificarDatosPersonalesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarDatosPersonalesButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -46,14 +54,20 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(147, 147, 147)
                 .addComponent(cerrarSesionButton)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addComponent(modificarDatosPersonalesButton)
+                .addGap(111, 111, 111))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addComponent(cerrarSesionButton)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(modificarDatosPersonalesButton)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
@@ -64,6 +78,19 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         inicioSesion.setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_cerrarSesionButtonActionPerformed
+
+    private void modificarDatosPersonalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDatosPersonalesButtonActionPerformed
+        GUI_dialogoModificarDatosPersonales dialogoModificarDatosPersonales = new GUI_dialogoModificarDatosPersonales(this, true, usuario);
+        dialogoModificarDatosPersonales.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                if(dialogoModificarDatosPersonales.isForzarCierreSesion()){
+                    cerrarSesionButtonActionPerformed(null);
+                }
+            }
+        });
+        dialogoModificarDatosPersonales.setVisible(true);
+    }//GEN-LAST:event_modificarDatosPersonalesButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,5 +130,6 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cerrarSesionButton;
+    private javax.swing.JButton modificarDatosPersonalesButton;
     // End of variables declaration//GEN-END:variables
 }
