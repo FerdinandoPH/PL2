@@ -1,6 +1,9 @@
 package poo.pl2;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Collections;
 /**
  * @author perez
  * @version 1.0
@@ -108,6 +111,12 @@ public class Inmueble implements java.io.Serializable{
         public void setDireccion(Direccion direccion) {
             this.direccion = direccion;
         }
+        public int getId() {
+            return id;
+        }
+        public void setId(int id) {
+            this.id = id;
+        }
         public void actualizarCalificacion(){
 
             calificacion = reseñas.stream().mapToDouble(Reseña::getCalificacion).average().orElse(0);
@@ -146,6 +155,13 @@ public class Inmueble implements java.io.Serializable{
                 inmuebles.addAll(a.getInmuebles());
             }
         }
+        Collections.sort(inmuebles, new Comparator<Inmueble>(){
+            @Override
+            public int compare(Inmueble i1, Inmueble i2){
+                return !i1.getDueño().equals(i2.getDueño()) ? i1.getDueño().getCorreo().compareTo(i2.getDueño().getCorreo()) : Integer.valueOf(i1.getId()).compareTo(Integer.valueOf(i2.getId()));
+            }
+        }
+        );
         return inmuebles;
     }
     

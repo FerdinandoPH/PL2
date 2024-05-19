@@ -13,7 +13,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
+import java.awt.Color;
+import java.awt.Component;
 /**
  *
  * @author tizia
@@ -129,6 +132,21 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             clasePrevia=u.getClass().getSimpleName();
             i++;
         }
+        elementosList.setCellRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+                // Cambia el color de fondo de los elementos en los índices impares
+                if (posicionesSeparador.contains(index)) {
+                    c.setBackground(new Color(225,225,225));
+                } else {
+                    c.setBackground(Color.WHITE);
+                }
+
+                return c;
+            }
+        });
         elementosList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings=correosLista.toArray(new String[correosLista.size()]);
             public int getSize() { return strings.length; }
