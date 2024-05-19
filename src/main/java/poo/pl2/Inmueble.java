@@ -7,7 +7,9 @@ import java.util.ArrayList;
  * @created 07-may.-2024 17:29:06
  */
 public class Inmueble implements java.io.Serializable{
-
+    private Direccion direccion;
+    private String titulo;
+    private Anfitrion dueño;
     private int baños;
     private double calificacion=0;
     private int camas;
@@ -18,11 +20,9 @@ public class Inmueble implements java.io.Serializable{
     private String servicios;
     public static enum tipoPropiedad {APARTAMENTO, CASA}
     private tipoPropiedad tipo;
-    private String titulo;
     private int vecesReservado=0;
-    private Anfitrion dueño;
     private ArrayList<Reseña> reseñas = new ArrayList<Reseña>();
-    private Direccion direccion;
+    private int id;
     //region gettersYsetters
         public int getBaños() {
             return baños;
@@ -114,7 +114,7 @@ public class Inmueble implements java.io.Serializable{
         }
     //endregion
     public Inmueble(Direccion direccion, String titulo, Anfitrion dueño, int baños, int camas, ImageIcon fotografia, int habitaciones, int huespedesMaximos,
-            double precioPorNoche, String servicios, tipoPropiedad tipo) {
+            double precioPorNoche, String servicios, tipoPropiedad tipo, int id) {
         if (baños<1 || camas<1 || habitaciones<1 || huespedesMaximos<1 || precioPorNoche<1 || titulo.isEmpty()){
             throw new IllegalArgumentException("Los datos introducidos no son válidos");
         }
@@ -129,6 +129,15 @@ public class Inmueble implements java.io.Serializable{
         this.titulo = titulo;
         this.dueño = dueño;
         this.direccion = direccion;
+        this.id = id;
     }
+    @Override
+    public String toString() {
+        return "Inmueble [direccion=" + direccion.toString() + ", titulo=" + titulo + ", dueño=" + dueño.getCorreo() + ", baños=" + baños
+                + ", calificacion=" + calificacion + ", camas=" + camas + ", habitaciones=" + habitaciones + ", huespedesMaximos=" + huespedesMaximos + ", precioPorNoche="
+                + precioPorNoche + ", servicios=" + servicios + ", tipo=" + tipo + ", vecesReservado=" + vecesReservado
+                + ", reseñas=" + reseñas.toString() + "]";
+    }
+    
     
 }//end Inmueble

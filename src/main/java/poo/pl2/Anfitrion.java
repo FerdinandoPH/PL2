@@ -42,13 +42,24 @@ public class Anfitrion extends Cliente {
 
     }
 
-    public void añadirInmueble(String calle, String numero, String ciudad, String codigoPostal, String titulo, int baños, int camas, ImageIcon fotografia, int habitaciones, int huespedesMaximos,
+    public void añadirInmueble(Direccion direccion, String titulo, int baños, int camas, ImageIcon fotografia, int habitaciones, int huespedesMaximos,
             double precioPorNoche, String servicios, tipoPropiedad tipo){
 
-        Inmueble inmueble = new Inmueble(new Direccion(calle, numero, ciudad, codigoPostal),titulo, this, baños, camas, fotografia, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo);
+        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, fotografia, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, inmuebles.size());
+        inmuebles.add(inmueble);
+    }
+    public void añadirInmueble(Inmueble inmueble){
         inmuebles.add(inmueble);
     }
 
+    public void eliminarInmueble(int id){
+        inmuebles.remove(id);
+    }
+    public void editarInmueble(int id, Direccion direccion, String titulo, int baños, int camas, ImageIcon fotografia, int habitaciones, int huespedesMaximos,
+            double precioPorNoche, String servicios, tipoPropiedad tipo){
+        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, fotografia, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, id);
+        inmuebles.set(id, inmueble);
+    }
     @Override
     public String toString() {
         return "Anfitrion: ["+super.toString()+", esSuperAnfitiron=" + superAnfitrion + ", fechaRegistro=" + fechaRegistro + "]";
