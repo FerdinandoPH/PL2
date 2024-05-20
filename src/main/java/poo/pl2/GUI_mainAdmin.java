@@ -5,13 +5,9 @@
 package poo.pl2;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
@@ -25,7 +21,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private Administrador usuario=null;
     private ArrayList<Integer> posicionesSeparador=new ArrayList<Integer>();
     private int seleccionAnterior=-1;
-    private int indiceFijoBCB;
+    private int indiceFijoBCB=0;
     /**
      * Creates new form mainAdmin
      */
@@ -48,7 +44,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         elementosList = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        datosPanel = new javax.swing.JTabbedPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         correoLabel = new javax.swing.JLabel();
         correoField = new javax.swing.JTextField();
@@ -375,7 +371,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Usuario", jInternalFrame1);
+        datosPanel.addTab("Usuario", jInternalFrame1);
 
         jInternalFrame2.setTitle("Datos de inmueble");
         jInternalFrame2.setVisible(true);
@@ -477,7 +473,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Inmueble", jInternalFrame2);
+        datosPanel.addTab("Inmueble", jInternalFrame2);
 
         jInternalFrame3.setTitle("Datos de reserva");
         jInternalFrame3.setVisible(true);
@@ -531,7 +527,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addContainerGap(280, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Reserva", jInternalFrame3);
+        datosPanel.addTab("Reserva", jInternalFrame3);
 
         tituloLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         tituloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -576,7 +572,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                             .addComponent(borrarUsuarioButton)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 35, Short.MAX_VALUE)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(datosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -601,12 +597,12 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(borrarUsuarioButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(datosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelDebug))
         );
 
-        jTabbedPane1.getAccessibleContext().setAccessibleName("tab1\n");
+        datosPanel.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -826,7 +822,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_borrarUsuarioButtonActionPerformed
 
     private void boolComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boolComboBoxActionPerformed
-        if (ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()) instanceof Anfitrion){
+        if (elementosList.getSelectedIndex()!=-1 && ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()) instanceof Anfitrion){
             boolComboBox.setSelectedIndex(indiceFijoBCB);
         }
     }//GEN-LAST:event_boolComboBoxActionPerformed
@@ -904,6 +900,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField correoField;
     private javax.swing.JLabel correoLabel;
     private javax.swing.JTextArea datosArea;
+    private javax.swing.JTabbedPane datosPanel;
     private javax.swing.JTextField direccionField;
     private javax.swing.JTextField dniField;
     private javax.swing.JLabel dniLabel;
@@ -936,7 +933,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelDebug;
     private javax.swing.JComboBox<String> listaComboBox;
     private javax.swing.JLabel mesCaducidadLabel;

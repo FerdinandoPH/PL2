@@ -428,6 +428,11 @@ public class GUI_dialogoModificarDatosPersonales extends javax.swing.JDialog {
         
     }
     private void cambioRealizado(){
+        if (this.nombreField.getText().equals(this.cliente.getNombre()) && this.correoField.getText().equals(this.cliente.getCorreo()) && this.dniField.getText().equals(this.cliente.getDni()) && this.telefonoField.getText().equals(this.cliente.getTelefono()) &&( this.cliente instanceof Anfitrion || (this.cliente instanceof Particular && (this.numeroTarjetaField.getText().equals(Long.toString(((Particular)this.cliente).getTarjeta().getNumero())) && this.nombreTitularTarjetaField.getText().equals(((Particular)this.cliente).getTarjeta().getNombreTitular()) && (int)this.mesSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getMonthValue() && (int)this.añoSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getYear()) && (this.boolComboBox.getSelectedIndex()==0)==((Particular)this.cliente).isVip()))){
+            modificarButton.setEnabled(false);
+            cancelarButton.setEnabled(false);
+            return;
+        }
         modificarButton.setEnabled(true);
         cancelarButton.setEnabled(true);
     }
