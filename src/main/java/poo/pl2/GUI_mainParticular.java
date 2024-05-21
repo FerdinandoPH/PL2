@@ -29,6 +29,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
 
         cerrarSesionButton = new javax.swing.JButton();
         modificarDatosPersonalesButton = new javax.swing.JButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaBnB");
@@ -60,11 +61,17 @@ public class GUI_mainParticular extends javax.swing.JFrame {
                         .addGap(158, 158, 158)
                         .addComponent(modificarDatosPersonalesButton)))
                 .addContainerGap(177, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(329, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
                 .addComponent(modificarDatosPersonalesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cerrarSesionButton)
@@ -131,6 +138,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cerrarSesionButton;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JButton modificarDatosPersonalesButton;
     // End of variables declaration//GEN-END:variables
 }
