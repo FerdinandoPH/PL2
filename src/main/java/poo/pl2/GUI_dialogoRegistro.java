@@ -11,12 +11,12 @@ import java.awt.event.WindowEvent;
  *
  * @author tizia
  */
-public class GUI_registro extends javax.swing.JDialog {
+public class GUI_dialogoRegistro extends javax.swing.JDialog {
     
     /**
      * Creates new form registro
      */
-    public GUI_registro(java.awt.Frame parent, boolean modal) {
+    public GUI_dialogoRegistro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -177,8 +177,8 @@ public class GUI_registro extends javax.swing.JDialog {
         }
         else{
             if (tipoComboBox.getSelectedItem().equals("Particular")){
-                GUI_datosParticular dialogoDatosParticular = new GUI_datosParticular(this, true, new String [] {correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText()});
-                GUI_registro dialogoRegistro = this;
+                GUI_dialogoDatosParticular dialogoDatosParticular = new GUI_dialogoDatosParticular(this, true, new String [] {correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText()});
+                GUI_dialogoRegistro dialogoRegistro = this;
                 dialogoDatosParticular.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosed(WindowEvent e) {
@@ -217,21 +217,23 @@ public class GUI_registro extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogoRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogoRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogoRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogoRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUI_registro dialog = new GUI_registro(new javax.swing.JFrame(), true);
+                GUI_dialogoRegistro dialog = new GUI_dialogoRegistro(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

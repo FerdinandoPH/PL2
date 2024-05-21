@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  *
  * @author tizia
  */
-public class GUI_datosParticular extends javax.swing.JDialog {
+public class GUI_dialogoDatosParticular extends javax.swing.JDialog {
 
     /**
      * Creates new form datosTarjetaCredito
@@ -24,12 +24,12 @@ public class GUI_datosParticular extends javax.swing.JDialog {
     public void setRegistroExitoso(boolean registroExitoso) {
         this.registroExitoso = registroExitoso;
     }
-    public GUI_datosParticular(java.awt.Dialog parent, boolean modal, String[] datosPrevios) {
+    public GUI_dialogoDatosParticular(java.awt.Dialog parent, boolean modal, String[] datosPrevios) {
         super(parent, modal);
         initComponents();
         this.datosPrevios = datosPrevios;
     }
-    public GUI_datosParticular(java.awt.Dialog parent, boolean modal) {
+    public GUI_dialogoDatosParticular(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -98,7 +98,6 @@ public class GUI_datosParticular extends javax.swing.JDialog {
         jLabel4.setText("Tarjeta");
 
         numTarjetaField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("################"))));
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -227,14 +226,18 @@ public class GUI_datosParticular extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_datosParticular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogoDatosParticular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_datosParticular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogoDatosParticular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_datosParticular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogoDatosParticular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_datosParticular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogoDatosParticular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -243,7 +246,7 @@ public class GUI_datosParticular extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUI_datosParticular dialog = new GUI_datosParticular(new javax.swing.JDialog(), true);
+                GUI_dialogoDatosParticular dialog = new GUI_dialogoDatosParticular(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

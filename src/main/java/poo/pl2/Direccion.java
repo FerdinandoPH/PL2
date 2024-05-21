@@ -39,8 +39,8 @@ public class Direccion implements java.io.Serializable{
     }
     @Override
     public String toString() {
-        return "Direccion [calle=" + calle + ", numero=" + numero + ", ciudad=" + ciudad + ", codigoPostal="
-                + codigoPostal + "]";
+        return "Calle=" + calle + ", numero=" + numero + ", ciudad=" + ciudad + ", codigoPostal="
+                + codigoPostal;
     }
     
     
