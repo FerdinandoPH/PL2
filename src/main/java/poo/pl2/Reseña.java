@@ -3,7 +3,7 @@ package poo.pl2;
 public class Reseña implements java.io.Serializable{
     private String comentario;
     private int calificacion;
-    private Cliente cliente;
+    private Particular particular;
     private Inmueble inmueble;
     
     public String getComentario() {
@@ -22,12 +22,12 @@ public class Reseña implements java.io.Serializable{
         this.calificacion = calificacion;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Particular getParticular() {
+        return particular;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setParticular(Particular particular) {
+        this.particular = particular;
     }
 
     public Inmueble getInmueble() {
@@ -38,10 +38,10 @@ public class Reseña implements java.io.Serializable{
         this.inmueble = inmueble;
     }
 
-    public Reseña(Cliente cliente, Inmueble inmueble, String comentario, int calificacion) {
+    public Reseña(Particular particular, Inmueble inmueble, String comentario, int calificacion) {
         this.comentario = comentario;
         this.calificacion = Math.max(1, Math.min(5, calificacion));
-        this.cliente = cliente;
+        this.particular = particular;
         this.inmueble = inmueble;
     }
     

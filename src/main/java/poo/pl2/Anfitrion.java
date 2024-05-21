@@ -15,10 +15,19 @@ public class Anfitrion extends Cliente {
     private boolean superAnfitrion;
     private LocalDate fechaRegistro;
     private ArrayList<Inmueble> inmuebles = new ArrayList<Inmueble>();
+    public ArrayList<Inmueble> getInmuebles() {
+        return inmuebles;
+    }
+
+    public void setInmuebles(ArrayList<Inmueble> inmuebles) {
+        this.inmuebles = inmuebles;
+    }
     public boolean isSuperAnfitrion() {
         return superAnfitrion;
     }
-
+    public void actualizarSuperAnfitrion(){
+        superAnfitrion= inmuebles.stream().mapToDouble(Inmueble::getCalificacion).average().orElse(0)>4?true:false;
+    }
     public void setSuperAnfitrion(boolean esSuperAnfitiron) {
         this.superAnfitrion = esSuperAnfitiron;
     }
@@ -63,14 +72,6 @@ public class Anfitrion extends Cliente {
     @Override
     public String toString() {
         return "Anfitrion: ["+super.toString()+", esSuperAnfitiron=" + superAnfitrion + ", fechaRegistro=" + fechaRegistro + "]";
-    }
-
-    public ArrayList<Inmueble> getInmuebles() {
-        return inmuebles;
-    }
-
-    public void setInmuebles(ArrayList<Inmueble> inmuebles) {
-        this.inmuebles = inmuebles;
     }
     
 }//end Anfitrion

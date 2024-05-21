@@ -1,9 +1,11 @@
 package poo.pl2;
 import javax.swing.ImageIcon;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.Collections;
+import java.time.temporal.ChronoUnit;
 /**
  * @author perez
  * @version 1.0
@@ -102,9 +104,6 @@ public class Inmueble implements java.io.Serializable{
         public ArrayList<Reseña> getReseñas() {
             return reseñas;
         }
-        public void setReseñas(ArrayList<Reseña> reseñas) {
-            this.reseñas = reseñas;
-        }
         public Direccion getDireccion() {
             return direccion;
         }
@@ -120,11 +119,12 @@ public class Inmueble implements java.io.Serializable{
         public void actualizarCalificacion(){
 
             calificacion = reseñas.stream().mapToDouble(Reseña::getCalificacion).average().orElse(0);
+            dueño.actualizarSuperAnfitrion();
         }
     //endregion
     public Inmueble(Direccion direccion, String titulo, Anfitrion dueño, int baños, int camas, ImageIcon fotografia, int habitaciones, int huespedesMaximos,
             double precioPorNoche, String servicios, tipoPropiedad tipo, int id) {
-        if (baños<1 || camas<1 || habitaciones<1 || huespedesMaximos<1 || precioPorNoche<1 || titulo.isEmpty()){
+        if (baños<1 || camas<1 || habitaciones<1 || huespedesMaximos<1 || precioPorNoche<1 || titulo.isEmpty()|| precioPorNoche<0){
             throw new IllegalArgumentException("Los datos introducidos no son válidos");
         }
         this.baños = baños;
@@ -164,5 +164,10 @@ public class Inmueble implements java.io.Serializable{
         );
         return inmuebles;
     }
+    public void añadirReseña(Reseña reseña){
+        reseñas.add(reseña);
+        actualizarCalificacion();
+    }
+
     
 }//end Inmueble
