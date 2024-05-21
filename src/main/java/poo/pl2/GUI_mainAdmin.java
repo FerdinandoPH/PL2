@@ -557,6 +557,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         labelDebug.setText(this.usuario.toString());
 
         añadirAdminButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/añadirAdmin.png"))); // NOI18N
+        añadirAdminButton.setToolTipText("Añadir Administrador");
         añadirAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 añadirAdminButtonActionPerformed(evt);
@@ -564,6 +565,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         });
 
         borrarUsuarioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/borrarUsuario.png"))); // NOI18N
+        borrarUsuarioButton.setToolTipText("Borrar Usuario Seleccionado");
         borrarUsuarioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarUsuarioButtonActionPerformed(evt);
