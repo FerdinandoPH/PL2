@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
+import java.util.Collections;
+import java.util.Comparator;
 /**
  * @author perez
  * @version 1.0
@@ -12,19 +13,20 @@ import java.io.ObjectOutputStream;
  */
 public class ListManager implements java.io.Serializable{
 
-    public static ArrayList<Inmueble> inmuebles;
-    public static ArrayList<Reserva> reservas;
+    private static ArrayList<Reserva> reservas;
     public static ArrayList<Usuario> usuarios;
 
+    public static ArrayList<Reserva> getReservas(){
+        return reservas;
+    }
     public ListManager(){
-        inmuebles = new ArrayList<Inmueble>();
         reservas = new ArrayList<Reserva>();
         usuarios = new ArrayList<Usuario>();
 
     }
+
     private void writeObject(ObjectOutputStream oos) throws IOException {
         oos.defaultWriteObject();
-        oos.writeObject(inmuebles);
         oos.writeObject(reservas);
         oos.writeObject(usuarios);
     }
@@ -32,7 +34,6 @@ public class ListManager implements java.io.Serializable{
     @SuppressWarnings("unchecked")
     private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
         ois.defaultReadObject();
-        inmuebles = (ArrayList<Inmueble>) ois.readObject();
         reservas = (ArrayList<Reserva>) ois.readObject();
         usuarios = (ArrayList<Usuario>) ois.readObject();
     }
