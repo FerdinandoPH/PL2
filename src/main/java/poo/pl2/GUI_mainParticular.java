@@ -81,7 +81,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarSesionButtonActionPerformed
 
     private void modificarDatosPersonalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDatosPersonalesButtonActionPerformed
-        GUI_dialogoModificarDatosPersonales dialogoModificarDatosPersonales = new GUI_dialogoModificarDatosPersonales(this, true, usuario);
+        GUI_dialogModificarDatosPersonales dialogoModificarDatosPersonales = new GUI_dialogModificarDatosPersonales(this, true, usuario);
         dialogoModificarDatosPersonales.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosed(java.awt.event.WindowEvent windowEvent) {

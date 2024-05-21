@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author perez
  */
-public class GUI_dialogoAñadirAdmin extends javax.swing.JDialog {
+public class GUI_dialogAñadirAdmin extends javax.swing.JDialog {
 
     /**
      * Creates new form GUI_dialogoAñadirAdmin
      */
-    public GUI_dialogoAñadirAdmin(java.awt.Frame parent, boolean modal) {
+    public GUI_dialogAñadirAdmin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -156,20 +156,21 @@ public class GUI_dialogoAñadirAdmin extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_dialogoAñadirAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogAñadirAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_dialogoAñadirAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogAñadirAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_dialogoAñadirAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogAñadirAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_dialogoAñadirAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogAñadirAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUI_dialogoAñadirAdmin dialog = new GUI_dialogoAñadirAdmin(new javax.swing.JFrame(), true);
+                GUI_dialogAñadirAdmin dialog = new GUI_dialogAñadirAdmin(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

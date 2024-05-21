@@ -798,7 +798,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarSesionButtonActionPerformed
 
     private void añadirAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirAdminButtonActionPerformed
-        GUI_dialogoAñadirAdmin dialogoAñadirAdmin = new GUI_dialogoAñadirAdmin(this, true);
+        GUI_dialogAñadirAdmin dialogoAñadirAdmin = new GUI_dialogAñadirAdmin(this, true);
         dialogoAñadirAdmin.setVisible(true);
         dialogoAñadirAdmin.addWindowListener(new WindowAdapter() {
             @Override

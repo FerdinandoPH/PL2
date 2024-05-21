@@ -13,7 +13,7 @@ import javax.swing.event.ChangeEvent;
  *
  * @author perez
  */
-public class GUI_dialogoModificarDatosPersonales extends javax.swing.JDialog {
+public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
     private Cliente cliente;
     private int indiceFijoBCB;
     private boolean forzarCierreSesion=false;
@@ -25,7 +25,7 @@ public class GUI_dialogoModificarDatosPersonales extends javax.swing.JDialog {
     /**
      * Creates new form GUI_dialogoModificarDatosPersonales
      */
-    public GUI_dialogoModificarDatosPersonales(java.awt.Frame parent, boolean modal, Cliente cliente) {
+    public GUI_dialogModificarDatosPersonales(java.awt.Frame parent, boolean modal, Cliente cliente) {
         super(parent, modal);
         this.cliente = cliente;
         initComponents();
@@ -552,20 +552,21 @@ public class GUI_dialogoModificarDatosPersonales extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_dialogoModificarDatosPersonales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogModificarDatosPersonales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_dialogoModificarDatosPersonales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogModificarDatosPersonales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_dialogoModificarDatosPersonales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogModificarDatosPersonales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_dialogoModificarDatosPersonales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_dialogModificarDatosPersonales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUI_dialogoModificarDatosPersonales dialog = new GUI_dialogoModificarDatosPersonales(new javax.swing.JFrame(), true, null);
+                GUI_dialogModificarDatosPersonales dialog = new GUI_dialogModificarDatosPersonales(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
