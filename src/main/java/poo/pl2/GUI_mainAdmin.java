@@ -378,28 +378,41 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         jLabel8.setText("Título");
 
+        tituloField.setEditable(false);
+
         jLabel11.setText("Dirección");
+
+        direccionField.setEditable(false);
 
         jLabel9.setText("Tipo");
 
+        tipoInmuebleField.setEditable(false);
+
         jLabel13.setText("Precio por noche");
+
+        precioField.setEditable(false);
 
         jLabel15.setText("Calificación");
 
+        calificacionField.setEditable(false);
+
         jLabel14.setText("Servicios");
 
+        serviciosArea.setEditable(false);
         serviciosArea.setColumns(20);
         serviciosArea.setRows(5);
         jScrollPane2.setViewportView(serviciosArea);
 
         jLabel12.setText("Datos");
 
+        datosArea.setEditable(false);
         datosArea.setColumns(20);
         datosArea.setRows(5);
         jScrollPane3.setViewportView(datosArea);
 
         jLabel16.setText("Foto");
 
+        fotoArea.setEditable(false);
         fotoArea.setColumns(20);
         fotoArea.setRows(5);
         jScrollPane4.setViewportView(fotoArea);
@@ -480,11 +493,19 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         jLabel17.setText("Fecha de entrada");
 
+        entradaField.setEditable(false);
+
         jLabel18.setText("Fecha de salida");
+
+        salidaField.setEditable(false);
 
         jLabel19.setText("Fecha de reserva");
 
+        fechaReservaField.setEditable(false);
+
         jLabel20.setText("Importe");
+
+        importeField.setEditable(false);
 
         javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
         jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
@@ -493,8 +514,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(importeField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(entradaField, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -505,7 +524,11 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(fechaReservaField))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jInternalFrame3Layout.setVerticalGroup(
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,17 +537,15 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel18)
-                    .addComponent(jLabel19))
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entradaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salidaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaReservaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                    .addComponent(fechaReservaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
 
         datosPanel.addTab("Reserva", jInternalFrame3);
@@ -865,28 +886,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         });
     }
     
-    public void initFrames(){
-        this.calificacionField.setEditable(false);
-        this.telefonoField.setEditable(false);
-        this.datosArea.setEditable(false);
-        this.direccionField.setEditable(false);
-        this.dniField.setEditable(false);
-        this.entradaField.setEditable(false);
-        this.fechaRegistroField.setEditable(false);
-        this.fechaReservaField.setEditable(false);
-        this.fotoArea.setEditable(false);
-        this.importeField.setEditable(false);
-        this.correoField.setEditable(false);
-        this.precioField.setEditable(false);
-        this.salidaField.setEditable(false);
-        this.serviciosArea.setEditable(false);
-        this.tipoUsuarioField.setEditable(false);
-        this.tipoInmuebleField.setEditable(false);
-        this.tipoUsuarioField.setEditable(false);
-        this.tituloField.setEditable(false);
-        this.dniField.setEditable(false);
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton añadirAdminButton;
     private javax.swing.JLabel añoCaducidadLabel;

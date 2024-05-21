@@ -54,21 +54,21 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
+                        .addGap(193, 193, 193)
                         .addComponent(cerrarSesionButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
+                        .addGap(158, 158, 158)
                         .addComponent(modificarDatosPersonalesButton)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
+                .addContainerGap(329, Short.MAX_VALUE)
+                .addComponent(modificarDatosPersonalesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cerrarSesionButton)
-                .addGap(45, 45, 45)
-                .addComponent(modificarDatosPersonalesButton)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         pack();
