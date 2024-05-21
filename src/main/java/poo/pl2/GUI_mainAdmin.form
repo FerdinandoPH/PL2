@@ -585,6 +585,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tituloField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
@@ -592,6 +595,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="direccionField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
@@ -599,6 +605,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tipoInmuebleField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
@@ -606,6 +615,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="precioField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
@@ -613,6 +625,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="calificacionField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
@@ -628,6 +643,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextArea" name="serviciosArea">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
@@ -648,6 +664,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextArea" name="datosArea">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
@@ -668,6 +685,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextArea" name="fotoArea">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
@@ -695,8 +713,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="importeField" pref="100" max="32767" attributes="0"/>
-                          <Component id="jLabel20" max="32767" attributes="0"/>
                           <Component id="jLabel17" alignment="0" pref="100" max="32767" attributes="0"/>
                           <Component id="entradaField" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -710,7 +726,12 @@
                           <Component id="jLabel19" pref="100" max="32767" attributes="0"/>
                           <Component id="fechaReservaField" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel20" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="importeField" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="25" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -722,18 +743,16 @@
                           <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="entradaField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="salidaField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fechaReservaField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="importeField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="importeField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="280" max="32767" attributes="0"/>
+                      <EmptySpace pref="330" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -745,6 +764,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="entradaField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
@@ -752,6 +774,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="salidaField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel19">
               <Properties>
@@ -759,6 +784,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="fechaReservaField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel20">
               <Properties>
@@ -766,6 +794,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="importeField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
