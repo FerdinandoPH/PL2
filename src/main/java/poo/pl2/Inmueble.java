@@ -1,11 +1,9 @@
 package poo.pl2;
 import javax.swing.ImageIcon;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collections;
-import java.time.temporal.ChronoUnit;
 /**
  * @author perez
  * @version 1.0
