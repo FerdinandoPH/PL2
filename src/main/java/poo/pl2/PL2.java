@@ -37,6 +37,7 @@ public class PL2 {
         }catch (IOException | ClassNotFoundException e){
             System.out.println(e.getMessage());
             listManager = new ListManager();
+            ListManager.usuarios.add(new Administrador("a@a.com","Admin1234"));
         }
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {

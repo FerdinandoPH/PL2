@@ -24,33 +24,6 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel15" min="-2" pref="100" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel16" min="-2" pref="100" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="crearButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="fotoButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -58,7 +31,7 @@
                           <Group type="102" attributes="0">
                               <Component id="ciudadField" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="CalleField" max="32767" attributes="0"/>
+                              <Component id="calleField" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jLabel4" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -120,11 +93,36 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="serviciosField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
+                          <Component id="imagenLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel15" min="-2" pref="100" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel16" min="-2" pref="100" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
+                      <Component id="fotoButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+                      <Component id="crearButton" min="-2" pref="172" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -172,7 +170,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="ciudadField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CalleField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="calleField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="numeroField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="codigoPostalField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -183,8 +181,8 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel17" min="-2" pref="96" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
+              <Component id="imagenLabel" min="-2" pref="206" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="fotoButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="crearButton" min="-2" max="-2" attributes="0"/>
@@ -244,7 +242,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tipo de inmuele"/>
+        <Property name="text" type="java.lang.String" value="Tipo de inmueble"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="tipoComboBox">
@@ -294,7 +292,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="ciudadField">
     </Component>
-    <Component class="javax.swing.JTextField" name="CalleField">
+    <Component class="javax.swing.JTextField" name="calleField">
     </Component>
     <Component class="javax.swing.JTextField" name="numeroField">
     </Component>
@@ -304,6 +302,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">
       <Properties>
@@ -317,7 +318,7 @@
         <Property name="text" type="java.lang.String" value="Foto"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel17">
+    <Component class="javax.swing.JLabel" name="imagenLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="No hay foto seleccionada"/>
         <Property name="verticalAlignment" type="int" value="1"/>
@@ -327,6 +328,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Elegir foto"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fotoButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

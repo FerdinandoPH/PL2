@@ -833,7 +833,7 @@
     <Component class="javax.swing.JButton" name="a&#xf1;adirAdminButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/poo/pl2/Recursos/a&#xf1;adirAdmin.png"/>
+          <Image iconType="2" name="C:\Users\perez\Documents\OneDrive - Universidad de Alcala\0_UNI\0_programas\PROG\PL2\Recursos\a&#xf1;adirAdmin.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="A&#xf1;adir Administrador"/>
       </Properties>
@@ -844,7 +844,7 @@
     <Component class="javax.swing.JButton" name="borrarUsuarioButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/poo/pl2/Recursos/borrarUsuario.png"/>
+          <Image iconType="2" name="C:\Users\perez\Documents\OneDrive - Universidad de Alcala\0_UNI\0_programas\PROG\PL2\Recursos\borrarUsuario.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Borrar Usuario Seleccionado"/>
       </Properties>

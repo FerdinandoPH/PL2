@@ -1,8 +1,9 @@
 package poo.pl2;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
+
 
 import poo.pl2.Inmueble.tipoPropiedad;
 /**
@@ -11,7 +12,7 @@ import poo.pl2.Inmueble.tipoPropiedad;
  * @created 07-may.-2024 17:29:06
  */
 public class Anfitrion extends Cliente {
-
+    
     private boolean superAnfitrion;
     private LocalDate fechaRegistro;
     private ArrayList<Inmueble> inmuebles = new ArrayList<Inmueble>();
@@ -51,22 +52,22 @@ public class Anfitrion extends Cliente {
 
     }
 
-    public void añadirInmueble(Direccion direccion, String titulo, int baños, int camas, ImageIcon fotografia, int habitaciones, int huespedesMaximos,
-            double precioPorNoche, String servicios, tipoPropiedad tipo){
+    public void añadirInmueble(Direccion direccion, String titulo, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos, double precioPorNoche, String servicios, tipoPropiedad tipo){
 
-        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, fotografia, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, inmuebles.size());
+        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, inmuebles.size());
         inmuebles.add(inmueble);
     }
     public void añadirInmueble(Inmueble inmueble){
         inmuebles.add(inmueble);
     }
 
-    public void eliminarInmueble(int id){
+    public void borrarInmueble(int id){
         inmuebles.remove(id);
     }
-    public void editarInmueble(int id, Direccion direccion, String titulo, int baños, int camas, ImageIcon fotografia, int habitaciones, int huespedesMaximos,
+    public void editarInmueble(int id, Direccion direccion, String titulo, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
             double precioPorNoche, String servicios, tipoPropiedad tipo){
-        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, fotografia, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, id);
+        Inmueble inmuebleAEditar=inmuebles.get(id);
+        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, rutaImagenInmueble.isEmpty()?inmuebleAEditar.getFotografia().getRuta():rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, id, true);
         inmuebles.set(id, inmueble);
     }
     @Override

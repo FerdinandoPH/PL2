@@ -4,17 +4,31 @@
  */
 package poo.pl2;
 
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author tizia
  */
 public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
-
+    private String rutaImagenInmueble="";
+    private Anfitrion anfitrion;
     /**
      * Creates new form GUI_dialogCrearInmueble
      */
-    public GUI_dialogCrearInmueble(java.awt.Frame parent, boolean modal) {
+    public GUI_dialogCrearInmueble(java.awt.Frame parent, boolean modal, Anfitrion anfitrion) {
         super(parent, modal);
+        this.anfitrion=anfitrion;
         initComponents();
     }
 
@@ -48,14 +62,14 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         ciudadField = new javax.swing.JTextField();
-        CalleField = new javax.swing.JTextField();
+        calleField = new javax.swing.JTextField();
         numeroField = new javax.swing.JTextField();
         codigoPostalField = new javax.swing.JTextField();
         crearButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         serviciosField = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        imagenLabel = new javax.swing.JLabel();
         fotoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -75,7 +89,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
 
         jLabel7.setText("Baños");
 
-        jLabel8.setText("Tipo de inmuele");
+        jLabel8.setText("Tipo de inmueble");
 
         tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Apartamento" }));
 
@@ -92,39 +106,30 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
         jLabel14.setText("Código postal");
 
         crearButton.setText("Crear");
+        crearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearButtonActionPerformed(evt);
+            }
+        });
 
         jLabel15.setText("Servicios");
 
         jLabel16.setText("Foto");
 
-        jLabel17.setText("No hay foto seleccionada");
-        jLabel17.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        imagenLabel.setText("No hay foto seleccionada");
+        imagenLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         fotoButton.setText("Elegir foto");
+        fotoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fotoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(crearButton))
-                            .addComponent(fotoButton))))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +138,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ciudadField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(CalleField))
+                                .addComponent(calleField))
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -180,8 +185,26 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(serviciosField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(imagenLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(fotoButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(crearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +245,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ciudadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CalleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numeroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(codigoPostalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -232,8 +255,8 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(imagenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(fotoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(crearButton)
@@ -242,6 +265,59 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fotoButtonActionPerformed
+        FileDialog fileDialog = new FileDialog((Frame)null, "Seleccionar Imagen");
+        fileDialog.setMode(FileDialog.LOAD);
+        fileDialog.setFilenameFilter((dir, name) -> name.endsWith(".jpg") || name.endsWith(".png") || name.endsWith(".gif") || name.endsWith(".bmp"));
+        fileDialog.setVisible(true);
+        String file = fileDialog.getFile();
+        if (file != null) {
+            String carpeta = fileDialog.getDirectory();
+            File archivoSeleccionado = new File(carpeta + file);
+            System.out.println(archivoSeleccionado.getAbsolutePath());
+            Path rutaOrigen = Paths.get(archivoSeleccionado.getAbsolutePath());
+            if (!(archivoSeleccionado.getAbsolutePath().endsWith(".jpg") || archivoSeleccionado.getAbsolutePath().endsWith(".jpeg") ||archivoSeleccionado.getAbsolutePath().endsWith(".png") || archivoSeleccionado.getAbsolutePath().endsWith(".gif") || archivoSeleccionado.getAbsolutePath().endsWith(".bmp"))){
+                JOptionPane.showMessageDialog(this, "El archivo seleccionado no tiene un formato de imagen reconocido (válidos: png, jpg, bmp, gif)", "Error", JOptionPane.ERROR_MESSAGE);
+                rutaImagenInmueble="";
+                return;
+            }
+            //Path rutaDestino = Paths.get(System.getProperty("user.dir"), "Recursos","fotos", archivoSeleccionado.getName());
+            try {
+                //Files.copy(rutaOrigen, rutaDestino, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                BufferedImage imagenOriginal = ImageIO.read(rutaOrigen.toFile());
+                Image imagenEscalada = imagenOriginal.getScaledInstance(Inmueble.getEscala(),Inmueble.getEscala(), Image.SCALE_SMOOTH);
+                rutaImagenInmueble=rutaOrigen.toString();
+                imagenLabel.setIcon(new ImageIconConRuta(imagenEscalada,rutaImagenInmueble));
+                imagenLabel.setText("");
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al copiar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_fotoButtonActionPerformed
+
+    private void crearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearButtonActionPerformed
+        try{
+
+            this.anfitrion.añadirInmueble(new Direccion(calleField.getText(), numeroField.getText(), ciudadField.getText(),codigoPostalField.getText()), tituloField.getText(), Integer.parseInt(bañosField.getText()),Integer.parseInt(camasField.getText()),rutaImagenInmueble,Integer.parseInt(habitacionesField.getText()),Integer.parseInt(huespedesField.getText()),Double.parseDouble(precioField.getText()),serviciosField.getText(),Inmueble.tipoPropiedad.valueOf(tipoComboBox.getSelectedItem().toString().toUpperCase()));
+            JOptionPane.showMessageDialog(this, "Inmueble creado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }
+        catch (IllegalArgumentException i){
+            if (i instanceof NumberFormatException){
+                JOptionPane.showMessageDialog(this, "Los datos introducidos no son válidos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+                JOptionPane.showMessageDialog(this, i.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            i.printStackTrace();
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Error al crear el inmueble", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_crearButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,7 +349,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUI_dialogCrearInmueble dialog = new GUI_dialogCrearInmueble(new javax.swing.JFrame(), true);
+                GUI_dialogCrearInmueble dialog = new GUI_dialogCrearInmueble(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -286,8 +362,8 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CalleField;
     private javax.swing.JTextField bañosField;
+    private javax.swing.JTextField calleField;
     private javax.swing.JTextField camasField;
     private javax.swing.JTextField ciudadField;
     private javax.swing.JTextField codigoPostalField;
@@ -295,6 +371,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
     private javax.swing.JButton fotoButton;
     private javax.swing.JTextField habitacionesField;
     private javax.swing.JTextField huespedesField;
+    private javax.swing.JLabel imagenLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -303,7 +380,6 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

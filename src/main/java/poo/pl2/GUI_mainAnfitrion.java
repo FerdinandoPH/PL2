@@ -3,19 +3,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package poo.pl2;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 
 /**
  *
  * @author tizia
  */
 public class GUI_mainAnfitrion extends javax.swing.JFrame {
-    Anfitrion usuario=null;
+    private Anfitrion usuario=null;
+    private boolean fotoCambiada=false;
+    private boolean cambiandoInmueble=false;
+    private String rutaImagenInmueble="";
     /**
      * Creates new form mainAnfitrion
      */
     public GUI_mainAnfitrion(Anfitrion usuario) {
         this.usuario=usuario;
         initComponents();
+        actualizarInmuebleMostrado();
+        prepararListenersCambio();
     }
 
     /**
@@ -29,30 +51,44 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         cerrarSesionButton = new javax.swing.JButton();
         modificarDatosPersonalesButton = new javax.swing.JButton();
         inmueblesComboBox = new javax.swing.JComboBox<>();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
+        infoPanel = new javax.swing.JTabbedPane();
+        datosFrame = new javax.swing.JInternalFrame();
         jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        direccionField = new javax.swing.JTextField();
         tituloField = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        precioField = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         calificacionField = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        serviciosArea = new javax.swing.JTextArea();
-        jLabel12 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        datosArea = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
-        fotoLabel = new javax.swing.JLabel();
+        imagenLabel = new javax.swing.JLabel();
         tipoComboBox = new javax.swing.JComboBox<>();
         elegirFotoButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        editarButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jLabel18 = new javax.swing.JLabel();
+        codigoPostalField = new javax.swing.JTextField();
+        serviciosField = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        numeroField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        calleField = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        ciudadField = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        cancelarCambiosButton = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        precioField = new javax.swing.JFormattedTextField();
+        huespedesField = new javax.swing.JFormattedTextField();
+        habitacionesField = new javax.swing.JFormattedTextField();
+        camasField = new javax.swing.JFormattedTextField();
+        bañosField = new javax.swing.JFormattedTextField();
+        jLabel17 = new javax.swing.JLabel();
+        reservasFrame = new javax.swing.JInternalFrame();
         jScrollPane5 = new javax.swing.JScrollPane();
         reservasList = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
@@ -64,7 +100,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         importeField = new javax.swing.JTextField();
         clienteField = new javax.swing.JTextField();
         crearInmuebleButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        borrarInmuebleButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,135 +120,253 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             }
         });
 
-        inmueblesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        inmueblesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "null" }));
+        actualizarInmuebles();
+        inmueblesComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inmueblesComboBoxActionPerformed(evt);
+            }
+        });
 
-        jInternalFrame2.setVisible(true);
+        datosFrame.setVisible(true);
 
         jLabel8.setText("Título");
 
-        jLabel11.setText("Dirección");
-
         jLabel9.setText("Tipo");
-
-        jLabel13.setText("Precio por noche");
 
         jLabel15.setText("Calificación");
 
         calificacionField.setEditable(false);
 
-        jLabel14.setText("Servicios");
-
-        serviciosArea.setColumns(20);
-        serviciosArea.setRows(5);
-        jScrollPane2.setViewportView(serviciosArea);
-
-        jLabel12.setText("Datos");
-
-        datosArea.setColumns(20);
-        datosArea.setRows(5);
-        jScrollPane3.setViewportView(datosArea);
-
         jLabel16.setText("Foto");
 
-        fotoLabel.setText("No hay foto disponible");
-        fotoLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        imagenLabel.setText("No hay foto disponible");
+        imagenLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Apartamento" }));
+        tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CASA", "APARTAMENTO" }));
 
-        elegirFotoButton.setText("Elegir foto");
+        elegirFotoButton.setText("Elegir nueva foto");
+        elegirFotoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elegirFotoButtonActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Guardar cambios");
+        editarButton.setText("Guardar cambios");
+        editarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarButtonActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Ver reseñas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
-        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
-        jInternalFrame2Layout.setHorizontalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fotoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                                        .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(precioField)
-                                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        jLabel18.setText("Código postal");
+
+        jLabel19.setText("Servicios");
+
+        jLabel13.setText("Número");
+
+        jLabel12.setText("Calle");
+
+        jLabel11.setText("Ciudad");
+
+        jLabel10.setText("Dirección");
+
+        jLabel7.setText("Baños");
+
+        jLabel6.setText("Camas");
+
+        jLabel20.setText("Habitaciones");
+
+        jLabel21.setText("Huéspedes máximos");
+
+        jLabel22.setText("Datos");
+
+        cancelarCambiosButton.setText("Cancelar cambios");
+        cancelarCambiosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarCambiosButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Precio por noche");
+
+        habitacionesField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                habitacionesFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("€");
+
+        javax.swing.GroupLayout datosFrameLayout = new javax.swing.GroupLayout(datosFrame.getContentPane());
+        datosFrame.getContentPane().setLayout(datosFrameLayout);
+        datosFrameLayout.setHorizontalGroup(
+            datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datosFrameLayout.createSequentialGroup()
+                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(datosFrameLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(serviciosField)
+                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(datosFrameLayout.createSequentialGroup()
+                                        .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(datosFrameLayout.createSequentialGroup()
+                                                    .addComponent(ciudadField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(calleField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(datosFrameLayout.createSequentialGroup()
+                                                    .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGroup(datosFrameLayout.createSequentialGroup()
+                                                    .addComponent(huespedesField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(habitacionesField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                                .addComponent(jLabel21)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                                .addGap(16, 16, 16)
+                                                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(datosFrameLayout.createSequentialGroup()
+                                                        .addComponent(camasField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(27, 27, 27)
+                                                        .addComponent(bañosField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(datosFrameLayout.createSequentialGroup()
+                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(datosFrameLayout.createSequentialGroup()
+                                        .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(tituloField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(direccionField)
-                                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(calificacionField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(tipoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                                            .addComponent(tituloField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tipoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                                .addGap(2, 2, 2)
+                                                .addComponent(numeroField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(codigoPostalField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel14))
+                                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(calificacionField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(precioField, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel17)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))))
+                    .addGroup(datosFrameLayout.createSequentialGroup()
+                        .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                .addGap(153, 153, 153)
+                                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(elegirFotoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addComponent(editarButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(cancelarCambiosButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(elegirFotoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jInternalFrame2Layout.setVerticalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
+        datosFrameLayout.setVerticalGroup(
+            datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datosFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tituloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(direccionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
+                    .addComponent(jLabel9)
                     .addComponent(jLabel15)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(precioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(calificacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2))
+                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calificacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(huespedesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(habitacionesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(camasField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bañosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ciudadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numeroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codigoPostalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(serviciosField, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(elegirFotoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editarButton)
+                    .addComponent(cancelarCambiosButton))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Datos", jInternalFrame2);
+        infoPanel.addTab("Datos", datosFrame);
 
-        jInternalFrame1.setVisible(true);
+        reservasFrame.setVisible(true);
 
         reservasList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane5.setViewportView(reservasList);
@@ -233,61 +387,71 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
 
         clienteField.setEditable(false);
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+        javax.swing.GroupLayout reservasFrameLayout = new javax.swing.GroupLayout(reservasFrame.getContentPane());
+        reservasFrame.getContentPane().setLayout(reservasFrameLayout);
+        reservasFrameLayout.setHorizontalGroup(
+            reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reservasFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reservasFrameLayout.createSequentialGroup()
+                        .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fechaEntradaField)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fechaSalidaField)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(reservasFrameLayout.createSequentialGroup()
+                        .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(importeField, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                            .addComponent(importeField, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
                         .addGap(76, 76, 76)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(clienteField, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))))
                 .addContainerGap())
         );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+        reservasFrameLayout.setVerticalGroup(
+            reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reservasFrameLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fechaEntradaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fechaSalidaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clienteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Reservas", jInternalFrame1);
+        infoPanel.addTab("Reservas", reservasFrame);
 
         crearInmuebleButton.setText("Crear inmueble");
+        crearInmuebleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearInmuebleButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/borrarUsuario.png"))); // NOI18N
+        borrarInmuebleButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\perez\\Documents\\OneDrive - Universidad de Alcala\\0_UNI\\0_programas\\PROG\\PL2\\Recursos\\borrarUsuario.png")); // NOI18N
+        borrarInmuebleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarInmuebleButtonActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setText("Mis inmuebles");
@@ -306,33 +470,34 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                         .addComponent(modificarDatosPersonalesButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(inmueblesComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTabbedPane1))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(crearInmuebleButton)
-                            .addComponent(jButton2))))
-                .addContainerGap(10, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(185, 185, 185))
+                            .addComponent(inmueblesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(borrarInmuebleButton)
+                                    .addComponent(crearInmuebleButton)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(jLabel5)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addGap(29, 29, 29)
+                .addGap(33, 33, 33)
                 .addComponent(inmueblesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+                    .addComponent(infoPanel)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
                         .addComponent(crearInmuebleButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(borrarInmuebleButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(modificarDatosPersonalesButton)
@@ -363,6 +528,301 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         dialogoModificarDatosPersonales.setVisible(true);
     }//GEN-LAST:event_modificarDatosPersonalesButtonActionPerformed
 
+    private void crearInmuebleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearInmuebleButtonActionPerformed
+        GUI_dialogCrearInmueble dialogoCrearInmueble = new GUI_dialogCrearInmueble(this, true, usuario);
+        dialogoCrearInmueble.setVisible(true);
+        actualizarInmuebles();
+        actualizarInmuebleMostrado();
+    }//GEN-LAST:event_crearInmuebleButtonActionPerformed
+
+    private void inmueblesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inmueblesComboBoxActionPerformed
+        cambiandoInmueble=true;
+        actualizarInmuebleMostrado();
+    }//GEN-LAST:event_inmueblesComboBoxActionPerformed
+
+    private void borrarInmuebleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarInmuebleButtonActionPerformed
+        boolean confirmacion=JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres borrar este inmueble?", "Confirmación", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION;
+        if(confirmacion){
+            this.usuario.borrarInmueble(this.usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()).getId());
+            actualizarInmuebles();
+            actualizarInmuebleMostrado();
+        }
+    }//GEN-LAST:event_borrarInmuebleButtonActionPerformed
+
+    private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
+        try{
+            this.usuario.editarInmueble(this.usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()).getId(), new Direccion(calleField.getText(), numeroField.getText(), ciudadField.getText(), codigoPostalField.getText()), tituloField.getText(), Integer.parseInt(bañosField.getText()), Integer.parseInt(camasField.getText()), rutaImagenInmueble, Integer.parseInt(habitacionesField.getText()), Integer.parseInt(huespedesField.getText()), Double.parseDouble(precioField.getText()), serviciosField.getText(), Inmueble.tipoPropiedad.valueOf(tipoComboBox.getSelectedItem().toString().toUpperCase()));
+            JOptionPane.showMessageDialog(this, "Inmueble editado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            actualizarInmuebleMostrado();
+            fotoCambiada=false;
+            rutaImagenInmueble="";
+            cambioRealizado();
+        }
+        catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_editarButtonActionPerformed
+
+    private void elegirFotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirFotoButtonActionPerformed
+        FileDialog fileDialog = new FileDialog((Frame)null, "Seleccionar Imagen");
+        fileDialog.setMode(FileDialog.LOAD);
+        fileDialog.setFilenameFilter((dir, name) -> name.endsWith(".jpg") || name.endsWith(".png") || name.endsWith(".gif") || name.endsWith(".bmp"));
+        fileDialog.setVisible(true);
+        String file = fileDialog.getFile();
+        if (file != null) {
+            String carpeta = fileDialog.getDirectory();
+            File archivoSeleccionado = new File(carpeta + file);
+            System.out.println(archivoSeleccionado.getAbsolutePath());
+            Path rutaOrigen = Paths.get(archivoSeleccionado.getAbsolutePath());
+            if (!(archivoSeleccionado.getAbsolutePath().endsWith(".jpg") || archivoSeleccionado.getAbsolutePath().endsWith(".jpeg") ||archivoSeleccionado.getAbsolutePath().endsWith(".png") || archivoSeleccionado.getAbsolutePath().endsWith(".gif") || archivoSeleccionado.getAbsolutePath().endsWith(".bmp"))){
+                JOptionPane.showMessageDialog(this, "El archivo seleccionado no tiene un formato de imagen reconocido (válidos: png, jpg, bmp, gif)", "Error", JOptionPane.ERROR_MESSAGE);
+                rutaImagenInmueble="";
+                return;
+            }
+            //Path rutaDestino = Paths.get(System.getProperty("user.dir"), "Recursos","fotos", archivoSeleccionado.getName());
+            try {
+                //Files.copy(rutaOrigen, rutaDestino, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                BufferedImage imagenOriginal = ImageIO.read(rutaOrigen.toFile());
+                Image imagenEscalada = imagenOriginal.getScaledInstance(Inmueble.getEscala(),Inmueble.getEscala(), Image.SCALE_SMOOTH);
+                rutaImagenInmueble=rutaOrigen.toString();
+                fotoCambiada=true;
+                cambioRealizado();
+                imagenLabel.setIcon(new ImageIconConRuta(imagenEscalada,rutaImagenInmueble));
+                imagenLabel.setText("");
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al copiar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_elegirFotoButtonActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cancelarCambiosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCambiosButtonActionPerformed
+        actualizarInmuebleMostrado();
+        fotoCambiada=false;
+        cambioRealizado();
+    }//GEN-LAST:event_cancelarCambiosButtonActionPerformed
+
+    private void habitacionesFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habitacionesFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_habitacionesFieldActionPerformed
+    private void actualizarInmuebleMostrado(){
+        if(inmueblesComboBox.getSelectedIndex()==-1){
+            setEnableRecursivo(infoPanel, false);
+            borrarInmuebleButton.setEnabled(false);
+            return;
+        }
+        setEnableRecursivo(infoPanel, true);
+        borrarInmuebleButton.setEnabled(true);
+        Inmueble inmueble=this.usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex());
+        tituloField.setText(inmueble.getTitulo());
+        tipoComboBox.setSelectedItem(inmueble.getTipo().toString());
+        this.calificacionField.setText(String.valueOf(inmueble.getCalificacion()));
+        huespedesField.setText(String.valueOf(inmueble.getHuespedesMaximos()));
+        habitacionesField.setText(String.valueOf(inmueble.getHabitaciones()));
+        camasField.setText(String.valueOf(inmueble.getCamas()));
+        bañosField.setText(String.valueOf(inmueble.getBaños()));
+        ciudadField.setText(inmueble.getDireccion().getCiudad());
+        calleField.setText(inmueble.getDireccion().getCalle());
+        numeroField.setText(inmueble.getDireccion().getNumero());
+        codigoPostalField.setText(inmueble.getDireccion().getCodigoPostal());
+        serviciosField.setText(inmueble.getServicios());
+        precioField.setText(String.valueOf(inmueble.getPrecioPorNoche()));
+        imagenLabel.setText("");
+        imagenLabel.setIcon(inmueble.getFotografia());
+        cambioRealizado();
+        cambiandoInmueble=false;
+        
+    }
+    private void actualizarInmuebles(){
+        ArrayList<String> listaInmuebles=this.usuario.getInmuebles().stream().map(Inmueble::getTitulo).collect(Collectors.toCollection(ArrayList::new));
+        String[] arrayInmuebles=listaInmuebles.toArray(new String[listaInmuebles.size()]);
+        inmueblesComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(arrayInmuebles));
+    }
+    private void setEnableRecursivo(Component container, boolean enable) {
+        container.setEnabled(enable);
+    
+        try {
+            Component[] components = ((Container) container).getComponents();
+            for (Component component : components) {
+                setEnableRecursivo(component, enable);
+            }
+        } catch (ClassCastException e) {
+            // No es un contenedor, no hay nada que hacer
+        }
+    }
+    private void cambioRealizado(){
+        Inmueble inmueble=this.usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex());
+        if((tituloField.getText().equals(inmueble.getTitulo())&&
+                tipoComboBox.getSelectedItem().toString().equals(inmueble.getTipo().toString())&&
+                huespedesField.getText().equals(String.valueOf(inmueble.getHuespedesMaximos()))&&
+                habitacionesField.getText().equals(String.valueOf(inmueble.getHabitaciones()))&&
+                camasField.getText().equals(String.valueOf(inmueble.getCamas()))&&
+                bañosField.getText().equals(String.valueOf(inmueble.getBaños()))&&
+                ciudadField.getText().equals(inmueble.getDireccion().getCiudad())&&
+                calleField.getText().equals(inmueble.getDireccion().getCalle())&&
+                numeroField.getText().equals(inmueble.getDireccion().getNumero())&&
+                codigoPostalField.getText().equals(inmueble.getDireccion().getCodigoPostal())&&
+                serviciosField.getText().equals(inmueble.getServicios()) && !fotoCambiada) || cambiandoInmueble){
+            editarButton.setEnabled(false);
+            cancelarCambiosButton.setEnabled(false);
+        }else{
+            editarButton.setEnabled(true);
+            cancelarCambiosButton.setEnabled(true);
+        }
+    }
+    private void prepararListenersCambio(){
+        tituloField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+        tipoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambioRealizado();
+            }
+        });
+        huespedesField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+        habitacionesField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+        camasField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+        bañosField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+        ciudadField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+        calleField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+        numeroField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+        codigoPostalField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+        serviciosField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                cambioRealizado();
+            }
+        });
+
+    }
     /**
      * @param args the command line arguments
      */
@@ -400,44 +860,58 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField bañosField;
+    private javax.swing.JButton borrarInmuebleButton;
     private javax.swing.JTextField calificacionField;
+    private javax.swing.JTextField calleField;
+    private javax.swing.JFormattedTextField camasField;
+    private javax.swing.JButton cancelarCambiosButton;
     private javax.swing.JButton cerrarSesionButton;
+    private javax.swing.JTextField ciudadField;
     private javax.swing.JTextField clienteField;
+    private javax.swing.JTextField codigoPostalField;
     private javax.swing.JButton crearInmuebleButton;
-    private javax.swing.JTextArea datosArea;
-    private javax.swing.JTextField direccionField;
+    private javax.swing.JInternalFrame datosFrame;
+    private javax.swing.JButton editarButton;
     private javax.swing.JButton elegirFotoButton;
     private javax.swing.JTextField fechaEntradaField;
     private javax.swing.JTextField fechaSalidaField;
-    private javax.swing.JLabel fotoLabel;
+    private javax.swing.JFormattedTextField habitacionesField;
+    private javax.swing.JFormattedTextField huespedesField;
+    private javax.swing.JLabel imagenLabel;
     private javax.swing.JTextField importeField;
+    private javax.swing.JTabbedPane infoPanel;
     private javax.swing.JComboBox<String> inmueblesComboBox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton modificarDatosPersonalesButton;
-    private javax.swing.JTextField precioField;
+    private javax.swing.JTextField numeroField;
+    private javax.swing.JFormattedTextField precioField;
+    private javax.swing.JInternalFrame reservasFrame;
     private javax.swing.JList<String> reservasList;
-    private javax.swing.JTextArea serviciosArea;
+    private javax.swing.JTextField serviciosField;
     private javax.swing.JComboBox<String> tipoComboBox;
     private javax.swing.JTextField tituloField;
     // End of variables declaration//GEN-END:variables

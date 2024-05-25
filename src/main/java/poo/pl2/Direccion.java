@@ -42,6 +42,37 @@ public class Direccion implements java.io.Serializable{
         return "Calle=" + calle + ", numero=" + numero + ", ciudad=" + ciudad + ", codigoPostal="
                 + codigoPostal;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Direccion other = (Direccion) obj;
+        if (calle == null) {
+            if (other.calle != null)
+                return false;
+        } else if (!calle.equals(other.calle))
+            return false;
+        if (ciudad == null) {
+            if (other.ciudad != null)
+                return false;
+        } else if (!ciudad.equals(other.ciudad))
+            return false;
+        if (codigoPostal == null) {
+            if (other.codigoPostal != null)
+                return false;
+        } else if (!codigoPostal.equals(other.codigoPostal))
+            return false;
+        if (numero == null) {
+            if (other.numero != null)
+                return false;
+        } else if (!numero.equals(other.numero))
+            return false;
+        return true;
+    }
     
     
 }

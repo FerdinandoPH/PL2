@@ -150,7 +150,7 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_inicioSesionButtonActionPerformed
 
     private void registroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroButtonActionPerformed
-        GUI_dialogoRegistro registro = new GUI_dialogoRegistro(this,true);
+        GUI_dialogRegistro registro = new GUI_dialogRegistro(this,true);
         registro.setVisible(true);
     }//GEN-LAST:event_registroButtonActionPerformed
 
