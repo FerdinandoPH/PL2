@@ -178,6 +178,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
 
         jLabel11.setText("Ciudad");
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel10.setText("Dirección");
 
         jLabel7.setText("Baños");
@@ -188,6 +189,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
 
         jLabel21.setText("Huéspedes máximos");
 
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel22.setText("Datos");
 
         cancelarCambiosButton.setText("Cancelar cambios");
