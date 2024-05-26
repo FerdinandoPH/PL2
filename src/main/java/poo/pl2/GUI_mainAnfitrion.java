@@ -452,6 +452,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             }
         });
 
+        borrarInmuebleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/borrarUsuario.png"))); // NOI18N
         borrarInmuebleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarInmuebleButtonActionPerformed(evt);
@@ -483,8 +484,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(borrarInmuebleButton)
-                                    .addComponent(crearInmuebleButton))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(crearInmuebleButton)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addComponent(jLabel5)))
@@ -511,7 +511,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                         .addComponent(crearInmuebleButton)
                         .addGap(18, 18, 18)
                         .addComponent(borrarInmuebleButton)
-                        .addContainerGap(455, Short.MAX_VALUE))))
+                        .addContainerGap(415, Short.MAX_VALUE))))
         );
 
         pack();
