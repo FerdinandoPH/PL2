@@ -154,7 +154,7 @@ public class Reserva implements java.io.Serializable{
             }
         }
         for (Reserva r:ListManager.getReservas()){
-            if (r.getInmueble().equals(inmueble)&&!((fechaSalida.isAfter(r.getFechaSalida())&& fechaEntrada.isAfter(r.getFechaEntrada()))||(fechaSalida.isBefore(r.getFechaSalida())&& fechaEntrada.isBefore(r.getFechaEntrada()))))
+            if (r.getInmueble().equals(inmueble)&&!((fechaSalida.isAfter(r.getFechaSalida())&& (fechaEntrada.isAfter(r.getFechaSalida())||fechaEntrada.equals(r.getFechaSalida())))||((fechaSalida.isBefore(r.getFechaEntrada())||fechaSalida.equals(r.getFechaEntrada()))&& fechaEntrada.isBefore(r.getFechaEntrada()))))
                 errores+="El inmueble ya está reservado en esas fechas\n";
         }
         return errores;
