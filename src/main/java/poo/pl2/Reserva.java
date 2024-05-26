@@ -18,7 +18,7 @@ public class Reserva implements java.io.Serializable{
     private Inmueble inmueble;
     private Particular particular;
     private int id;
-    private boolean yaReservado=false;
+    private boolean yaReseñado=false;
     //region gettersYsetters
         
         public LocalDate getFechaReserva() {
@@ -103,11 +103,11 @@ public class Reserva implements java.io.Serializable{
             this.id = id;
         }
 
-        public boolean getYaReservado() {
-            return yaReservado;
+        public boolean isYaReseñado() {
+            return yaReseñado;
         }
-        public void setYaReservado(boolean yaReservado) {
-            this.yaReservado = yaReservado;
+        public void setYaReseñado(boolean yaReservado) {
+            this.yaReseñado = yaReservado;
         }
     //endregion
 
@@ -139,7 +139,25 @@ public class Reserva implements java.io.Serializable{
         inmueble.setVecesReservado(inmueble.getVecesReservado()+1);
     }
     public static void borrarReserva (int id){
-        ListManager.getReservas().remove(id);
+        // ArrayList<Reserva> reservasOrdenadas=Reserva.getReservas();
+        // Collections.sort(reservasOrdenadas, new Comparator<Reserva>(){
+        //     public int compare(Reserva r1, Reserva r2){
+        //         return Integer.valueOf(r1.id).compareTo(r2.id);
+        //     }
+        // });
+        // for (Reserva r:reservasOrdenadas){
+        //     if (r.getId()>id)
+        //         r.setId(r.getId()-1);
+        // }
+        for (Reserva r: ListManager.getReservas()){
+            if (r.getId()==id){
+                if (r.getFechaSalida().isBefore(LocalDate.now()))
+                    throw new IllegalArgumentException("No se puede borrar una reserva pasada");
+                r.getInmueble().setVecesReservado(r.getInmueble().getVecesReservado()-1);
+                ListManager.getReservas().remove(r);
+                return;
+            }
+        }
     }
     public static String validarReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
     Particular particular){

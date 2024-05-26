@@ -53,7 +53,7 @@ public class Reseña implements java.io.Serializable{
         this.particular = particular;
         this.inmueble = inmueble;
         this.reserva = reserva;
-        this.reserva.setYaReservado(true);
+        this.reserva.setYaReseñado(true);
         this.fechaReseña = fechaReseña;
     }
 }

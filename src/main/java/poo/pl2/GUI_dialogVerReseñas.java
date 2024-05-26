@@ -42,7 +42,7 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
         fechaReseñaField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        comentarioArea = new javax.swing.JTextArea();
         salirButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -50,11 +50,19 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Reseñas");
 
-        ArrayList<Reseña> reseñas = inmueble.getReseñas();
+        ArrayList<String> reseñasLista= new ArrayList<String>();
+        for (Reseña r: inmueble.getReseñas()){
+            reseñasLista.add(r.getParticular().getNombre()+"("+r.getFechaReseña().toString()+")");
+        }
         reseñasList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = reseñasLista.toArray(new String[reseñasLista.size()]);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        reseñasList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                reseñasListValueChanged(evt);
+            }
         });
         jScrollPane2.setViewportView(reseñasList);
 
@@ -68,9 +76,9 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
 
         jLabel4.setText("Comentario");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        comentarioArea.setColumns(20);
+        comentarioArea.setRows(5);
+        jScrollPane1.setViewportView(comentarioArea);
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -149,7 +157,7 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(salirButton)
                 .addContainerGap())
         );
@@ -160,6 +168,20 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
+
+    private void reseñasListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_reseñasListValueChanged
+        if (reseñasList.getSelectedIndex() != -1){
+            Reseña r = inmueble.getReseñas().get(reseñasList.getSelectedIndex());
+            calificacionField.setText(String.valueOf(r.getCalificacion()));
+            fechaReseñaField.setText(r.getFechaReseña().toString());
+            comentarioArea.setText(r.getComentario());
+        }
+        else{
+            calificacionField.setText("");
+            fechaReseñaField.setText("");
+            comentarioArea.setText("");
+        }
+    }//GEN-LAST:event_reseñasListValueChanged
 
     /**
      * @param args the command line arguments
@@ -205,6 +227,7 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField calificacionField;
+    private javax.swing.JTextArea comentarioArea;
     private javax.swing.JTextField fechaReseñaField;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -213,7 +236,6 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JList<String> reseñasList;
     private javax.swing.JButton salirButton;
     // End of variables declaration//GEN-END:variables

@@ -58,11 +58,11 @@ public class Anfitrion extends Cliente {
     }
 
     public void añadirInmueble(Direccion direccion, String titulo, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos, double precioPorNoche, String servicios, tipoPropiedad tipo){
-
+        for (Inmueble i: inmuebles){
+            if (i.getTitulo().equals(titulo))
+                throw new IllegalArgumentException("Ya tienes un inmueble con ese título");
+        }
         Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, inmuebles.size());
-        inmuebles.add(inmueble);
-    }
-    public void añadirInmueble(Inmueble inmueble){
         inmuebles.add(inmueble);
     }
 
@@ -71,8 +71,18 @@ public class Anfitrion extends Cliente {
     }
     public void editarInmueble(int id, Direccion direccion, String titulo, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
             double precioPorNoche, String servicios, tipoPropiedad tipo){
-        Inmueble inmuebleAEditar=inmuebles.get(id);
+        Inmueble inmuebleAEditar=inmuebles.stream().filter(i->i.getId()==id).findFirst().orElse(null);
+        if (inmuebleAEditar==null)
+            throw new IllegalArgumentException("No existe un inmueble con ese id");
+        for (Inmueble i: Inmueble.getInmuebles()){
+            if (i.getDireccion().equals(direccion)&&i.getId()!=id)
+                throw new IllegalArgumentException("Ya existe un inmueble con esa dirección");
+        }
         inmuebleAEditar.setDireccion(direccion);
+        for (Inmueble i: inmuebles){
+            if (i.getTitulo().equals(titulo)&&i.getId()!=id)
+                throw new IllegalArgumentException("Ya tienes un inmueble con ese título");
+        }
         inmuebleAEditar.setTitulo(titulo);
         inmuebleAEditar.setBaños(baños);
         inmuebleAEditar.setCamas(camas);

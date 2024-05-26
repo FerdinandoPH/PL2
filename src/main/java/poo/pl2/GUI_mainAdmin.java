@@ -6,6 +6,8 @@ package poo.pl2;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -36,6 +38,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private ArrayList<Integer> posicionesSeparador=new ArrayList<Integer>();
     private int seleccionAnterior=-1;
     private int indiceFijoBCB=0;
+    private ArrayList<Reserva> reservasOrdenadas;
     /**
      * Creates new form mainAdmin
      */
@@ -97,6 +100,10 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         fechaReservaField = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         importeField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        inmuebleField = new javax.swing.JTextField();
+        particularField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         inmuebleFrame = new javax.swing.JInternalFrame();
         jLabel8 = new javax.swing.JLabel();
@@ -423,28 +430,44 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         importeField.setEditable(false);
 
+        jLabel2.setText("Inmueble");
+
+        jLabel3.setText("Particular");
+
         javax.swing.GroupLayout reservaFrameLayout = new javax.swing.GroupLayout(reservaFrame.getContentPane());
         reservaFrame.getContentPane().setLayout(reservaFrameLayout);
         reservaFrameLayout.setHorizontalGroup(
             reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reservaFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(entradaField, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(salidaField))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(fechaReservaField))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addGroup(reservaFrameLayout.createSequentialGroup()
+                        .addComponent(inmuebleField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(particularField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(reservaFrameLayout.createSequentialGroup()
+                        .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(entradaField, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(reservaFrameLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(salidaField))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(fechaReservaField))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(importeField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                            .addGroup(reservaFrameLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         reservaFrameLayout.setVerticalGroup(
             reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,7 +484,15 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     .addComponent(salidaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fechaReservaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inmuebleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(particularField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
 
         datosPanel.addTab("Reserva", reservaFrame);
@@ -745,19 +776,16 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(datosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(añadirAdminButton)
+                            .addComponent(borrarButton)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(añadirAdminButton)
-                                    .addComponent(borrarButton)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(listaComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listaComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -846,6 +874,38 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 });
                 break;
             case 1:
+                posicionesSeparador=new ArrayList<Integer>();
+                reservasOrdenadas=new ArrayList<Reserva>(Reserva.getReservas());
+                Collections.sort(reservasOrdenadas, new Comparator<Reserva>(){
+                    public int compare(Reserva r1, Reserva r2){
+                        if (!r1.getInmueble().getDueño().getCorreo().equals(r2.getInmueble().getDueño().getCorreo())){
+                            return r1.getInmueble().getDueño().getCorreo().compareTo(r2.getInmueble().getDueño().getCorreo());
+                        }
+                        else if(!r1.getInmueble().getTitulo().equals(r2.getInmueble().getTitulo())){
+                            return r1.getInmueble().getTitulo().compareTo(r2.getInmueble().getTitulo());
+                        }
+                        else{
+                            return r1.getFechaReserva().compareTo(r2.getFechaReserva());
+                        }
+                    }
+                });
+                String inmueblePrevio="";
+                ArrayList<String> reservasLista=new ArrayList<String>();
+                for (Reserva r: reservasOrdenadas){
+                    if (!r.getInmueble().getTitulo().equals(inmueblePrevio)){
+                        reservasLista.add(r.getInmueble().getDueño().getCorreo()+": "+r.getInmueble().getTitulo());
+                        posicionesSeparador.add(i);
+                        i++;
+                    }
+                    reservasLista.add(r.getParticular().getCorreo()+":"+r.getFechaEntrada().toString()+"-"+r.getFechaSalida().toString());
+                    inmueblePrevio=r.getInmueble().getTitulo();
+                    i++;
+                }
+                elementosList.setModel(new javax.swing.AbstractListModel<String>() {
+                    String[] strings=reservasLista.toArray(new String[reservasLista.size()]);
+                    public int getSize() { return strings.length; }
+                    public String getElementAt(int i) { return strings[i]; }
+                });
                 break;
         }
     }
@@ -988,7 +1048,29 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             }
         }
         else if (listaComboBox.getSelectedIndex()==2){
-            actualizarInmuebleMostrado();
+            if (elementosList.getSelectedIndex()!=-1 && !posicionesSeparador.contains(elementosList.getSelectedIndex())){
+                actualizarInmuebleMostrado();
+                seleccionAnterior=elementosList.getSelectedIndex();
+            }
+            else if (posicionesSeparador.contains(elementosList.getSelectedIndex())){
+                elementosList.setSelectedIndex(seleccionAnterior);
+            }
+            
+        }
+        else{
+            if(elementosList.getSelectedIndex()!=-1 && !posicionesSeparador.contains(elementosList.getSelectedIndex())){
+                Reserva reservaSeleccionada = Reserva.getReservas().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
+                this.entradaField.setText(reservaSeleccionada.getFechaEntrada().toString());
+                this.salidaField.setText(reservaSeleccionada.getFechaSalida().toString());
+                this.fechaReservaField.setText(reservaSeleccionada.getFechaReserva().toString());
+                this.importeField.setText(Double.toString(reservaSeleccionada.getImporte()));
+                this.inmuebleField.setText(reservaSeleccionada.getInmueble().getDueño().getCorreo()+":"+reservaSeleccionada.getInmueble().getTitulo());
+                this.particularField.setText(reservaSeleccionada.getParticular().getCorreo());
+                seleccionAnterior=elementosList.getSelectedIndex();
+            }
+            else if (posicionesSeparador.contains(elementosList.getSelectedIndex())){
+                elementosList.setSelectedIndex(seleccionAnterior);
+            }
         }
     }//GEN-LAST:event_elementosListValueChanged
 
@@ -1010,36 +1092,71 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_añadirAdminButtonActionPerformed
 
     private void borrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarUsuarioButtonActionPerformed
-        if (elementosList.getSelectedIndex()==-1 || posicionesSeparador.contains(elementosList.getSelectedIndex())){
-            JOptionPane.showMessageDialog(this, "Selecciona un usuario para borrar", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        try{
-            boolean continuarBorradoPropio=false;
-            LoginManager loginManager = new LoginManager();
-            Usuario usuarioABorrar=ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
-            boolean comenzarBorrado=JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres borrar a "+usuarioABorrar.getCorreo()+"?", "Borrar usuario", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION;
-            if (!comenzarBorrado)
-                return;
-            if (usuarioABorrar instanceof Administrador){
-                boolean continuarBorradoAdmin=JOptionPane.showConfirmDialog(this, "El usuario seleccionado es un administrador. ¿Seguro que quieres seguir?", "Borrar usuario", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
-                if (!continuarBorradoAdmin)
+        switch(listaComboBox.getSelectedIndex()){
+            case 0:
+                if (elementosList.getSelectedIndex()==-1 || posicionesSeparador.contains(elementosList.getSelectedIndex())){
+                    JOptionPane.showMessageDialog(this, "Selecciona un usuario para borrar", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
-            }
-            if (usuarioABorrar.equals(usuario)){
-                continuarBorradoPropio=JOptionPane.showConfirmDialog(this, "El usuario seleccionado es el usuario actual. ¿Seguro que quieres seguir?\nSe cerrará la sesión", "Borrar usuario", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
-                if (!continuarBorradoPropio)
+                }
+                try{
+                    boolean continuarBorradoPropio=false;
+                    LoginManager loginManager = new LoginManager();
+                    Usuario usuarioABorrar=ListManager.usuarios.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
+                    boolean comenzarBorrado=JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres borrar a "+usuarioABorrar.getCorreo()+"?", "Borrar usuario", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION;
+                    if (!comenzarBorrado)
+                        return;
+                    if (usuarioABorrar instanceof Administrador){
+                        boolean continuarBorradoAdmin=JOptionPane.showConfirmDialog(this, "El usuario seleccionado es un administrador. ¿Seguro que quieres seguir?", "Borrar usuario", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
+                        if (!continuarBorradoAdmin)
+                            return;
+                    }
+                    if (usuarioABorrar.equals(usuario)){
+                        continuarBorradoPropio=JOptionPane.showConfirmDialog(this, "El usuario seleccionado es el usuario actual. ¿Seguro que quieres seguir?\nSe cerrará la sesión", "Borrar usuario", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
+                        if (!continuarBorradoPropio)
+                            return;
+                    }
+                    loginManager.borrarUsuario(usuarioABorrar.getCorreo());
+                    JOptionPane.showMessageDialog(this, "Usuario borrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    refrescarLista();
+                    if (continuarBorradoPropio){
+                        cerrarSesionButtonActionPerformed(evt);
+                    }
+                }
+                catch (IllegalArgumentException e){
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case 1:
+                if(elementosList.getSelectedIndex()==-1 || posicionesSeparador.contains(elementosList.getSelectedIndex())){
+                    JOptionPane.showMessageDialog(this, "Selecciona una reserva para borrar", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
-            }
-            loginManager.borrarUsuario(usuarioABorrar.getCorreo());
-            JOptionPane.showMessageDialog(this, "Usuario borrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            refrescarLista();
-            if (continuarBorradoPropio){
-                cerrarSesionButtonActionPerformed(evt);
-            }
-        }
-        catch (IllegalArgumentException e){
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                try{
+                    Reserva.borrarReserva(reservasOrdenadas.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getId());
+                    JOptionPane.showMessageDialog(this, "Reserva borrada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    elementosList.setSelectedIndex(-1);
+                    refrescarLista();
+                }
+                catch(IllegalArgumentException e){
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case 2:
+                if(elementosList.getSelectedIndex()==-1 || posicionesSeparador.contains(elementosList.getSelectedIndex())){
+                    JOptionPane.showMessageDialog(this, "Selecciona un inmueble para borrar", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                try{
+                    Inmueble inmuebleSeleccionado=Inmueble.getInmuebles().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
+                    inmuebleSeleccionado.getDueño().borrarInmueble(inmuebleSeleccionado.getId());
+                    JOptionPane.showMessageDialog(this, "Inmueble borrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    elementosList.setSelectedIndex(-1);
+                    refrescarLista();
+                }
+                catch(IllegalArgumentException e){
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
         }
     }//GEN-LAST:event_borrarUsuarioButtonActionPerformed
 
@@ -1418,6 +1535,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField huespedesField;
     private javax.swing.JLabel imagenLabel;
     private javax.swing.JTextField importeField;
+    private javax.swing.JTextField inmuebleField;
     private javax.swing.JInternalFrame inmuebleFrame;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -1431,6 +1549,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1439,6 +1558,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1457,6 +1577,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField numeroField;
     private javax.swing.JTextField numeroTarjetaField;
     private javax.swing.JLabel numeroTarjetaLabel;
+    private javax.swing.JTextField particularField;
     private javax.swing.JFormattedTextField precioField;
     private javax.swing.JInternalFrame reservaFrame;
     private javax.swing.JTextField salidaField;
