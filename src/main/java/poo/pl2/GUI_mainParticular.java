@@ -7,6 +7,7 @@ package poo.pl2;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 /**
@@ -300,6 +301,11 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         precioReservaField.setEditable(false);
 
         reservaButton.setText("Hacer reserva");
+        reservaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservaButtonActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -517,6 +523,12 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             public void windowClosed(WindowEvent e){
                 mp.setFechaEntrada(pickDate.getFecha());
                 mp.fechaEntradaField.setText(fechaEntrada.toString());
+                try{
+                    mp.precioReservaField.setText(String.valueOf((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()));
+                }
+                catch (Exception ex){
+                    ex.printStackTrace();
+                }
             }
         });
         pickDate.setVisible(true);
@@ -530,10 +542,20 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             public void windowClosed(WindowEvent e){
                 mp.setFechaSalida(pickDate.getFecha());
                 mp.fechaSalidaField.setText(fechaSalida.toString());
+                try{
+                    mp.precioReservaField.setText(String.valueOf((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()));
+                }
+                catch (Exception ex){
+                    ex.printStackTrace();
+                }
             }
         });
         pickDate.setVisible(true);
     }//GEN-LAST:event_elegirFechaSalidaButtonActionPerformed
+
+    private void reservaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservaButtonActionPerformed
+        
+    }//GEN-LAST:event_reservaButtonActionPerformed
 
     
     private void updateDatos(){

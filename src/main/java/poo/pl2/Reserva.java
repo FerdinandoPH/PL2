@@ -131,17 +131,17 @@ public class Reserva implements java.io.Serializable{
         });
         return reservas;
     }
-    public void añadirReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
+    public static void añadirReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
             Particular particular){
         if (validarReserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular).isEmpty())
                 throw new IllegalArgumentException(validarReserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular));
         ListManager.getReservas().add(new Reserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular, ListManager.getReservas().size()));
         inmueble.setVecesReservado(inmueble.getVecesReservado()+1);
     }
-    public void borrarReserva (int id){
+    public static void borrarReserva (int id){
         ListManager.getReservas().remove(id);
     }
-    public String validarReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
+    public static String validarReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
     Particular particular){
         String errores="";
         if(fechaReserva.isAfter(fechaEntrada) || fechaReserva.isAfter(fechaSalida))
@@ -156,12 +156,12 @@ public class Reserva implements java.io.Serializable{
             errores+="No se pueden reservar inmuebles por más de dos meses\n";
         for (Reserva r: Reserva.getReservas()){
             if (r.getParticular().equals(particular)){
-                if (!((fechaSalida.isAfter(r.getFechaSalida())&& fechaEntrada.isAfter(r.getFechaEntrada()))||(fechaSalida.isBefore(r.getFechaSalida())&& fechaEntrada.isBefore(r.getFechaEntrada()))))
+                if (!((fechaSalida.isAfter(r.getFechaSalida())&& (fechaEntrada.isAfter(r.getFechaSalida())||fechaEntrada.equals(r.getFechaSalida())))||((fechaSalida.isBefore(r.getFechaEntrada())||fechaSalida.equals(r.getFechaEntrada()))&& fechaEntrada.isBefore(r.getFechaEntrada()))))
                     errores+="Ya tienes una reserva en esas fechas\n";
             }
         }
         for (Reserva r:ListManager.getReservas()){
-            if (r.getInmueble().equals(inmueble)&&!((fechaSalida.isAfter(r.getFechaSalida())&& fechaEntrada.isAfter(r.getFechaEntrada()))||(fechaSalida.isBefore(r.getFechaSalida())&& fechaEntrada.isBefore(r.getFechaEntrada()))))
+            if (r.getInmueble().equals(inmueble)&&!((fechaSalida.isAfter(r.getFechaSalida())&& (fechaEntrada.isAfter(r.getFechaSalida())||fechaEntrada.equals(r.getFechaSalida())))||((fechaSalida.isBefore(r.getFechaEntrada())||fechaSalida.equals(r.getFechaEntrada()))&& fechaEntrada.isBefore(r.getFechaEntrada()))))
                 errores+="El inmueble ya está reservado en esas fechas\n";
         }
         return errores;
