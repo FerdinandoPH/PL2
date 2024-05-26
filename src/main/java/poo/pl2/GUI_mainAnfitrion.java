@@ -52,6 +52,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         modificarDatosPersonalesButton = new javax.swing.JButton();
         inmueblesComboBox = new javax.swing.JComboBox<>();
         infoPanel = new javax.swing.JTabbedPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         datosFrame = new javax.swing.JInternalFrame();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -215,7 +216,6 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(imagenLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(serviciosField)
                             .addGroup(datosFrameLayout.createSequentialGroup()
                                 .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(datosFrameLayout.createSequentialGroup()
@@ -285,7 +285,10 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                                                 .addComponent(precioField, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel17)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))
+                            .addGroup(datosFrameLayout.createSequentialGroup()
+                                .addComponent(serviciosField, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(datosFrameLayout.createSequentialGroup()
                         .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(datosFrameLayout.createSequentialGroup()
@@ -348,7 +351,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(serviciosField, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addComponent(serviciosField, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -364,7 +367,9 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        infoPanel.addTab("Datos", datosFrame);
+        jScrollPane1.setViewportView(datosFrame);
+
+        infoPanel.addTab("Datos", jScrollPane1);
 
         reservasFrame.setVisible(true);
 
@@ -434,7 +439,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clienteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         infoPanel.addTab("Reservas", reservasFrame);
@@ -446,7 +451,6 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             }
         });
 
-        borrarInmuebleButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\perez\\Documents\\OneDrive - Universidad de Alcala\\0_UNI\\0_programas\\PROG\\PL2\\Recursos\\borrarUsuario.png")); // NOI18N
         borrarInmuebleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarInmuebleButtonActionPerformed(evt);
@@ -463,25 +467,27 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(cerrarSesionButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(modificarDatosPersonalesButton))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(inmueblesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(139, 139, 139)
+                                        .addComponent(cerrarSesionButton))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(107, 107, 107)
+                                        .addComponent(modificarDatosPersonalesButton)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(borrarInmuebleButton)
-                                    .addComponent(crearInmuebleButton)))))
+                                    .addComponent(crearInmuebleButton))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addComponent(jLabel5)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,20 +496,21 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(33, 33, 33)
                 .addComponent(inmueblesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(infoPanel)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(modificarDatosPersonalesButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cerrarSesionButton)
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
                         .addComponent(crearInmuebleButton)
                         .addGap(18, 18, 18)
                         .addComponent(borrarInmuebleButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(modificarDatosPersonalesButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cerrarSesionButton)
-                .addGap(15, 15, 15))
+                        .addContainerGap(455, Short.MAX_VALUE))))
         );
 
         pack();
@@ -906,6 +913,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton modificarDatosPersonalesButton;
     private javax.swing.JTextField numeroField;

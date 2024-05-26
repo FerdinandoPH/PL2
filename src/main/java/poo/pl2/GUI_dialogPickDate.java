@@ -4,17 +4,23 @@
  */
 package poo.pl2;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+
 /**
  *
  * @author tizia
  */
 public class GUI_dialogPickDate extends javax.swing.JDialog {
 
+    LocalDate fecha;
+    public java.awt.Frame parent;
     /**
      * Creates new form GUI_dialogPickDate
      */
     public GUI_dialogPickDate(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.parent=parent;
         initComponents();
     }
 
@@ -31,7 +37,18 @@ public class GUI_dialogPickDate extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        calendar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                calendarPropertyChange(evt);
+            }
+        });
+
         aceptarButton.setText("Aceptar");
+        aceptarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,6 +77,18 @@ public class GUI_dialogPickDate extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_aceptarButtonActionPerformed
+
+    private void calendarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarPropertyChange
+        fecha = this.calendar.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }//GEN-LAST:event_calendarPropertyChange
+
+    public LocalDate getFecha(){
+        return fecha;
+    }
+    
     /**
      * @param args the command line arguments
      */

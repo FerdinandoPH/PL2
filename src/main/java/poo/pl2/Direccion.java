@@ -37,10 +37,14 @@ public class Direccion implements java.io.Serializable{
         this.codigoPostal = codigoPostal;
         this.numero = numero;
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
-        return "Calle=" + calle + ", numero=" + numero + ", ciudad=" + ciudad + ", codigoPostal="
-                + codigoPostal;
+        return "C/ " + calle + " " + numero + " " + ciudad + " " + codigoPostal;
     }
     @Override
     public boolean equals(Object obj) {
@@ -73,6 +77,7 @@ public class Direccion implements java.io.Serializable{
             return false;
         return true;
     }
+    
     
     
 }

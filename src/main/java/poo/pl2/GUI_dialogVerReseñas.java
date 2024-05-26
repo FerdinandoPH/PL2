@@ -13,9 +13,12 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
     /**
      * Creates new form GUI_dialogVerReseñas
      */
-    public GUI_dialogVerReseñas(java.awt.Frame parent, boolean modal) {
+    private Inmueble inmueble;
+    
+    public GUI_dialogVerReseñas(java.awt.Frame parent, boolean modal, Inmueble inmueble) {
         super(parent, modal);
         initComponents();
+        this.inmueble = inmueble;
     }
 
     /**
@@ -29,7 +32,6 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -40,8 +42,6 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
-
-        jButton1.setText("Volver");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,10 +57,6 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
                         .addComponent(jLabel1)
                         .addGap(0, 141, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,9 +64,7 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -107,7 +101,7 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUI_dialogVerReseñas dialog = new GUI_dialogVerReseñas(new javax.swing.JFrame(), true);
+                GUI_dialogVerReseñas dialog = new GUI_dialogVerReseñas(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -120,7 +114,6 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
