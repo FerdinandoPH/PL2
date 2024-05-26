@@ -529,10 +529,10 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             @Override
             public void windowClosed(WindowEvent e){
                 mp.setFechaSalida(pickDate.getFecha());
+                mp.fechaSalidaField.setText(fechaSalida.toString());
             }
         });
         pickDate.setVisible(true);
-        this.fechaSalidaField.setText(fechaSalida.toString());
     }//GEN-LAST:event_elegirFechaSalidaButtonActionPerformed
 
     

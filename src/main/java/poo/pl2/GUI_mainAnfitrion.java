@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -595,7 +596,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 rutaImagenInmueble=rutaOrigen.toString();
                 fotoCambiada=true;
                 cambioRealizado();
-                imagenLabel.setIcon(new ImageIconConRuta(imagenEscalada,rutaImagenInmueble));
+                imagenLabel.setIcon(new ImageIcon(imagenEscalada));
                 imagenLabel.setText("");
             } catch (java.io.IOException e) {
                 e.printStackTrace();
