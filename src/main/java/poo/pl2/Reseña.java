@@ -47,13 +47,15 @@ public class Reseña implements java.io.Serializable{
     public void setFechaReseña(LocalDate fechaReseña) {
         this.fechaReseña = fechaReseña;
     }
-    public Reseña(Particular particular, Inmueble inmueble, Reserva reserva, LocalDate fechaReseña, int calificacion, String comentario) {
+    public Reseña(Particular particular, Inmueble inmueble, Reserva reserva, int calificacion, String comentario) {
         this.comentario = comentario;
         this.calificacion = Math.max(1, Math.min(5, calificacion));
         this.particular = particular;
         this.inmueble = inmueble;
         this.reserva = reserva;
         this.reserva.setYaReseñado(true);
-        this.fechaReseña = fechaReseña;
+        if (LocalDate.now().isBefore(reserva.getFechaSalida()))
+            throw new IllegalArgumentException("No se puede reseñar una reserva que no ha finalizado");
+        this.fechaReseña = LocalDate.now();
     }
 }
