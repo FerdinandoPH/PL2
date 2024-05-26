@@ -18,7 +18,7 @@ public class Reserva implements java.io.Serializable{
     private Inmueble inmueble;
     private Particular particular;
     private int id;
-    
+    private boolean yaReseñada=false;
     //region gettersYsetters
 
         public LocalDate getFechaReserva() {
