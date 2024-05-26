@@ -4,6 +4,7 @@
 
 package poo.pl2;
 
+import java.awt.List;
 import java.io.FileInputStream;
 //import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -38,6 +39,7 @@ public class PL2 {
             System.out.println(e.getMessage());
             listManager = new ListManager();
             ListManager.usuarios.add(new Administrador("a@a.com","Admin1234"));
+            ListManager.usuarios.add(new Administrador("admin@javabnb.com","admin"));
         }
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
