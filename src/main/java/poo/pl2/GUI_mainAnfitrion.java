@@ -449,7 +449,8 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
 
         infoPanel.addTab("Reservas", reservasFrame);
 
-        crearInmuebleButton.setText("Crear inmueble");
+        crearInmuebleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/añadirInmueble.png"))); // NOI18N
+        crearInmuebleButton.setToolTipText("Añadir Inmueble");
         crearInmuebleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearInmuebleButtonActionPerformed(evt);
@@ -515,7 +516,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                         .addComponent(crearInmuebleButton)
                         .addGap(18, 18, 18)
                         .addComponent(borrarInmuebleButton)
-                        .addContainerGap(415, Short.MAX_VALUE))))
+                        .addContainerGap(391, Short.MAX_VALUE))))
         );
 
         pack();

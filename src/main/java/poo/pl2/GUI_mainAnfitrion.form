@@ -81,7 +81,7 @@
                       <Component id="crearInmuebleButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="borrarInmuebleButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="415" max="32767" attributes="0"/>
+                      <EmptySpace pref="391" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -671,7 +671,10 @@
     </Container>
     <Component class="javax.swing.JButton" name="crearInmuebleButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Crear inmueble"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/poo/pl2/Recursos/a&#xf1;adirInmueble.png"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="A&#xf1;adir Inmueble"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearInmuebleButtonActionPerformed"/>

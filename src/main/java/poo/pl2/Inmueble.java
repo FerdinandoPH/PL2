@@ -108,6 +108,11 @@ public class Inmueble implements java.io.Serializable{
             this.dueño = dueño;
         }
         public ArrayList<Reseña> getReseñas() {
+            Collections.sort(reseñas, new Comparator<Reseña>(){
+                public int compare(Reseña r1, Reseña r2){
+                    return r1.getFechaReseña().compareTo(r2.getFechaReseña());
+                }
+            });
             return reseñas;
         }
         public Direccion getDireccion() {

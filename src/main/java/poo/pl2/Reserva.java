@@ -18,9 +18,9 @@ public class Reserva implements java.io.Serializable{
     private Inmueble inmueble;
     private Particular particular;
     private int id;
-    private boolean yaReseñada=false;
+    private boolean yaReservado=false;
     //region gettersYsetters
-
+        
         public LocalDate getFechaReserva() {
             return fechaReserva;
         }
@@ -102,6 +102,13 @@ public class Reserva implements java.io.Serializable{
         public void setId(int id) {
             this.id = id;
         }
+
+        public boolean getYaReservado() {
+            return yaReservado;
+        }
+        public void setYaReservado(boolean yaReservado) {
+            this.yaReservado = yaReservado;
+        }
     //endregion
 
 
@@ -164,4 +171,8 @@ public class Reserva implements java.io.Serializable{
     public void imprimirFactura(){
 
     }
+
+
+
+
 }//end Reserva

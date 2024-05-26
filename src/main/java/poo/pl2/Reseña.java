@@ -1,10 +1,14 @@
 package poo.pl2;
 
+import java.time.LocalDate;
+
 public class Reseña implements java.io.Serializable{
     private String comentario;
     private int calificacion;
     private Particular particular;
     private Inmueble inmueble;
+    private Reserva reserva;
+    private LocalDate fechaReseña;
     
     public String getComentario() {
         return comentario;
@@ -37,12 +41,19 @@ public class Reseña implements java.io.Serializable{
     public void setInmueble(Inmueble inmueble) {
         this.inmueble = inmueble;
     }
-
-    public Reseña(Particular particular, Inmueble inmueble, String comentario, int calificacion) {
+    public LocalDate getFechaReseña() {
+        return fechaReseña;
+    }
+    public void setFechaReseña(LocalDate fechaReseña) {
+        this.fechaReseña = fechaReseña;
+    }
+    public Reseña(Particular particular, Inmueble inmueble, Reserva reserva, LocalDate fechaReseña, int calificacion, String comentario) {
         this.comentario = comentario;
         this.calificacion = Math.max(1, Math.min(5, calificacion));
         this.particular = particular;
         this.inmueble = inmueble;
+        this.reserva = reserva;
+        this.reserva.setYaReservado(true);
+        this.fechaReseña = fechaReseña;
     }
-    
 }
