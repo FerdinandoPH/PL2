@@ -132,7 +132,7 @@ public class Inmueble implements java.io.Serializable{
         }
     //endregion
     public Inmueble(Direccion direccion, String titulo, Anfitrion dueño, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
-            double precioPorNoche, String servicios, tipoPropiedad tipo, int id, boolean ignorarDireccionRepetida) {
+            double precioPorNoche, String servicios, tipoPropiedad tipo, int id, int ignorarDireccion) {
         if (baños<1 || camas<1 || habitaciones<1 || huespedesMaximos<1 || precioPorNoche<1 || titulo.isEmpty()|| precioPorNoche<0 ||rutaImagenInmueble.isEmpty()){
             throw new IllegalArgumentException("Los datos introducidos no son válidos");
         }
@@ -163,9 +163,9 @@ public class Inmueble implements java.io.Serializable{
         this.tipo = tipo;
         this.titulo = titulo;
         this.dueño = dueño;
-        if (!ignorarDireccionRepetida){
+        if (ignorarDireccion<1){
             for (Inmueble i: Inmueble.getInmuebles()){
-                if (i.getDireccion().equals(direccion)){
+                if (i.getDireccion().equals(direccion) && i.getId()!=ignorarDireccion){
                     throw new IllegalArgumentException("Ya existe un inmueble con esa dirección");
                 }
             }
@@ -175,7 +175,7 @@ public class Inmueble implements java.io.Serializable{
     }
     public Inmueble(Direccion direccion, String titulo, Anfitrion dueño, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
             double precioPorNoche, String servicios, tipoPropiedad tipo, int id) {
-        this(direccion, titulo, dueño, baños, camas, rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, id, false);
+        this(direccion, titulo, dueño, baños, camas, rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, id, -1);
     }
     @Override
     public String toString() {

@@ -67,7 +67,7 @@ public class Anfitrion extends Cliente {
     public void editarInmueble(int id, Direccion direccion, String titulo, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
             double precioPorNoche, String servicios, tipoPropiedad tipo){
         Inmueble inmuebleAEditar=inmuebles.get(id);
-        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, rutaImagenInmueble.isEmpty()?inmuebleAEditar.getFotografia().getRuta():rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, id, true);
+        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, rutaImagenInmueble.isEmpty()?inmuebleAEditar.getFotografia().getRuta():rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, id, id);
         inmuebles.set(id, inmueble);
     }
     @Override

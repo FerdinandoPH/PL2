@@ -28,6 +28,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     public GUI_mainAdmin(Administrador usuario) {
         this.usuario=usuario;
         initComponents();
+        actualizarPestañas();
     }
 
     /**
@@ -859,7 +860,9 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             boolComboBox.setSelectedIndex(indiceFijoBCB);
         }
     }//GEN-LAST:event_boolComboBoxActionPerformed
-
+    private void actualizarPestañas(){
+        
+    }
     /**
      * @param args the command line arguments
      */

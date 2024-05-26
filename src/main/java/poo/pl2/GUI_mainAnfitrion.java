@@ -634,6 +634,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         precioField.setText(String.valueOf(inmueble.getPrecioPorNoche()));
         imagenLabel.setText("");
         imagenLabel.setIcon(inmueble.getFotografia());
+        rutaImagenInmueble="";
         cambioRealizado();
         cambiandoInmueble=false;
         
