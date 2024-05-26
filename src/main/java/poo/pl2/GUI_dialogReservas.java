@@ -4,18 +4,29 @@
  */
 package poo.pl2;
 
+import java.util.ArrayList;
 /**
  *
  * @author tizia
  */
 public class GUI_dialogReservas extends javax.swing.JDialog {
 
+    ArrayList<Reserva> reservas = new ArrayList();
+    Particular usuario;
     /**
      * Creates new form GUI_dialogReseñas
      */
-    public GUI_dialogReservas(java.awt.Frame parent, boolean modal) {
+    public GUI_dialogReservas(java.awt.Frame parent, boolean modal, Particular usuario) {
         super(parent, modal);
         initComponents();
+        this.usuario = usuario;
+        for (int i=0; i<Reserva.getReservas().size(); i++)
+            if (Reserva.getReservas().get(i).getParticular().equals(usuario))
+                reservas.add(Reserva.getReservas().get(i));
+        String[] listaFinal = new String[reservas.size()];
+        for (int i=0; i<reservas.size(); i++)
+            listaFinal[i] = reservas.get(i).getInmueble().getTitulo()+"; "+reservas.get(i).getFechaEntrada().toString()+" - "+reservas.get(i).getFechaSalida().toString();
+        this.reservasList.setListData(listaFinal);
     }
 
     /**
@@ -29,7 +40,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         calificacionButtonGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        reservasList = new javax.swing.JList<>();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jLabel3 = new javax.swing.JLabel();
@@ -75,7 +86,13 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Mis reservas");
 
-        jScrollPane1.setViewportView(jList1);
+        reservasList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        reservasList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                reservasListValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(reservasList);
 
         jInternalFrame1.setVisible(true);
 
@@ -348,13 +365,10 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1)))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -365,12 +379,16 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void reservasListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_reservasListValueChanged
+        
+    }//GEN-LAST:event_reservasListValueChanged
 
     /**
      * @param args the command line arguments
@@ -403,7 +421,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUI_dialogReservas dialog = new GUI_dialogReservas(new javax.swing.JFrame(), true);
+                GUI_dialogReservas dialog = new GUI_dialogReservas(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -448,13 +466,13 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField precioField;
+    private javax.swing.JList<String> reservasList;
     private javax.swing.JTextArea serviciosArea;
     private javax.swing.JTextField tipoInmuebleField;
     private javax.swing.JTextField tituloField;
