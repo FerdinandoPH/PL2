@@ -654,7 +654,7 @@
     <Component class="javax.swing.JButton" name="borrarInmuebleButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\perez\Documents\OneDrive - Universidad de Alcala\0_UNI\0_programas\PROG\PL2\Recursos\borrarUsuario.png"/>
+          <Image iconType="3" name="/poo/pl2/Recursos/borrarUsuario.png"/>
         </Property>
       </Properties>
       <Events>

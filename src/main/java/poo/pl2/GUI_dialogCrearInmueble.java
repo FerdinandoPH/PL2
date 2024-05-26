@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import javax.swing.ImageIcon;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
@@ -288,7 +288,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
                 BufferedImage imagenOriginal = ImageIO.read(rutaOrigen.toFile());
                 Image imagenEscalada = imagenOriginal.getScaledInstance(Inmueble.getEscala(),Inmueble.getEscala(), Image.SCALE_SMOOTH);
                 rutaImagenInmueble=rutaOrigen.toString();
-                imagenLabel.setIcon(new ImageIconConRuta(imagenEscalada,rutaImagenInmueble));
+                imagenLabel.setIcon(new ImageIcon(imagenEscalada));
                 imagenLabel.setText("");
             } catch (java.io.IOException e) {
                 e.printStackTrace();

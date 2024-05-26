@@ -1,9 +1,14 @@
 package poo.pl2;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import poo.pl2.Inmueble.tipoPropiedad;
 /**
@@ -67,8 +72,25 @@ public class Anfitrion extends Cliente {
     public void editarInmueble(int id, Direccion direccion, String titulo, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
             double precioPorNoche, String servicios, tipoPropiedad tipo){
         Inmueble inmuebleAEditar=inmuebles.get(id);
-        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, rutaImagenInmueble.isEmpty()?inmuebleAEditar.getFotografia().getRuta():rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, id, id);
-        inmuebles.set(id, inmueble);
+        inmuebleAEditar.setDireccion(direccion);
+        inmuebleAEditar.setTitulo(titulo);
+        inmuebleAEditar.setBaños(baños);
+        inmuebleAEditar.setCamas(camas);
+        if (!rutaImagenInmueble.equals("")) {
+            try{
+                BufferedImage imagenOriginal = ImageIO.read(Paths.get(rutaImagenInmueble).toFile());
+                Image imagenEscalada = imagenOriginal.getScaledInstance(Inmueble.getEscala(),Inmueble.getEscala(), Image.SCALE_SMOOTH);
+                inmuebleAEditar.setFotografia(new ImageIcon(imagenEscalada));
+            }
+            catch (IOException e){
+                throw new IllegalArgumentException("No se ha podido cargar la imagen");
+            }
+        }
+        inmuebleAEditar.setHabitaciones(habitaciones);
+        inmuebleAEditar.setHuespedesMaximos(huespedesMaximos);
+        inmuebleAEditar.setPrecioPorNoche(precioPorNoche);
+        inmuebleAEditar.setServicios(servicios);
+        inmuebleAEditar.setTipo(tipo);
     }
     @Override
     public String toString() {

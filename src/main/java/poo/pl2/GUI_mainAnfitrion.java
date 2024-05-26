@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-
+import javax.swing.ImageIcon;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
@@ -446,7 +446,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             }
         });
 
-        borrarInmuebleButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\perez\\Documents\\OneDrive - Universidad de Alcala\\0_UNI\\0_programas\\PROG\\PL2\\Recursos\\borrarUsuario.png")); // NOI18N
+        borrarInmuebleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/borrarUsuario.png"))); // NOI18N
         borrarInmuebleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 borrarInmuebleButtonActionPerformed(evt);
@@ -588,7 +588,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 rutaImagenInmueble=rutaOrigen.toString();
                 fotoCambiada=true;
                 cambioRealizado();
-                imagenLabel.setIcon(new ImageIconConRuta(imagenEscalada,rutaImagenInmueble));
+                imagenLabel.setIcon(new ImageIcon(imagenEscalada));
                 imagenLabel.setText("");
             } catch (java.io.IOException e) {
                 e.printStackTrace();

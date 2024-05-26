@@ -1,12 +1,9 @@
 package poo.pl2;
 import javax.imageio.ImageIO;
-
+import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -27,7 +24,7 @@ public class Inmueble implements java.io.Serializable{
     private int baños;
     private double calificacion=0;
     private int camas;
-    private ImageIconConRuta fotografia;
+    private ImageIcon fotografia;
     private int habitaciones;
     private int huespedesMaximos;
     private double precioPorNoche;
@@ -56,10 +53,10 @@ public class Inmueble implements java.io.Serializable{
         public void setCamas(int camas) {
             this.camas = camas;
         }
-        public ImageIconConRuta getFotografia() {
+        public ImageIcon getFotografia() {
             return fotografia;
         }
-        public void setFotografia(ImageIconConRuta fotografia) {
+        public void setFotografia(ImageIcon fotografia) {
             this.fotografia = fotografia;
         }
         public int getHabitaciones() {
@@ -139,19 +136,10 @@ public class Inmueble implements java.io.Serializable{
         this.baños = baños;
         this.camas = camas;
         try{
-            Path rutaDestino=Paths.get(System.getProperty("user.dir"), "Recursos","fotos", new File(rutaImagenInmueble).getName());
-            int sufijo = 1;
-            while (Files.exists(rutaDestino)) {
-                String stringRuta = new File(rutaImagenInmueble).getName();
-                String nombreSinExt = stringRuta.substring(0, stringRuta.lastIndexOf('.'));
-                String extension = stringRuta.substring(stringRuta.lastIndexOf('.'));
-                rutaDestino = Paths.get(System.getProperty("user.dir"), "Recursos","fotos", nombreSinExt + "(" + sufijo + ")" + extension);
-                sufijo++;
-            }
-            Files.copy(Paths.get(rutaImagenInmueble), rutaDestino);
-            BufferedImage imagenOriginal = ImageIO.read(rutaDestino.toFile());
+            
+            BufferedImage imagenOriginal = ImageIO.read(Paths.get(rutaImagenInmueble).toFile());
             Image imagenEscalada = imagenOriginal.getScaledInstance(escala,escala, Image.SCALE_SMOOTH);
-            this.fotografia = new ImageIconConRuta(imagenEscalada, rutaDestino.toString());
+            this.fotografia = new ImageIcon(imagenEscalada);
         }catch(IOException e){
             e.printStackTrace();
             throw new IllegalArgumentException("No se ha podido cargar la imagen");
