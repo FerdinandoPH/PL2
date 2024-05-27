@@ -1308,6 +1308,9 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             fotoCambiada=false;
             cambiandoInmueble=false;
         }
+        else{
+            actualizarInmuebleMostrado();
+        }
         if (ix!=0){
             añadirAdminButton.setVisible(false);
         }

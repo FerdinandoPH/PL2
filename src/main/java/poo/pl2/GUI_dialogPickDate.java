@@ -13,8 +13,12 @@ import java.time.ZoneId;
  */
 public class GUI_dialogPickDate extends javax.swing.JDialog {
 
-    LocalDate fecha;
+    private LocalDate fecha;
+    private boolean fechaSeleccionada=false;
     public java.awt.Frame parent;
+    public boolean isFechaSeleccionada() {
+        return fechaSeleccionada;
+    }
     /**
      * Creates new form GUI_dialogPickDate
      */
@@ -78,6 +82,7 @@ public class GUI_dialogPickDate extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
+        fechaSeleccionada=true;
         this.dispose();
     }//GEN-LAST:event_aceptarButtonActionPerformed
 

@@ -522,13 +522,16 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         pickDate.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e){
-                mp.setFechaEntrada(pickDate.getFecha());
-                mp.fechaEntradaField.setText(fechaEntrada.toString());
-                try{
-                    mp.precioReservaField.setText(String.valueOf((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()));
-                }
-                catch (Exception ex){
-                    ex.printStackTrace();
+                if (pickDate.isFechaSeleccionada()){
+                    mp.setFechaEntrada(pickDate.getFecha());
+                    mp.fechaEntradaField.setText(fechaEntrada.toString());
+                    try{
+                        if(!mp.fechaSalidaField.getText().isEmpty())
+                        mp.precioReservaField.setText(String.valueOf((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()));
+                    }
+                    catch (Exception ex){
+                        ex.printStackTrace();
+                    }
                 }
             }
         });
@@ -541,13 +544,16 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         pickDate.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e){
-                mp.setFechaSalida(pickDate.getFecha());
-                mp.fechaSalidaField.setText(fechaSalida.toString());
-                try{
-                    mp.precioReservaField.setText(String.valueOf(ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)*mp.inmueble.getPrecioPorNoche()));
-                }
-                catch (Exception ex){
-                    ex.printStackTrace();
+                if (pickDate.isFechaSeleccionada()){
+                    mp.setFechaSalida(pickDate.getFecha());
+                    mp.fechaSalidaField.setText(fechaSalida.toString());
+                    try{
+                        if(!mp.fechaEntradaField.getText().isEmpty())
+                        mp.precioReservaField.setText(String.valueOf(ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)*mp.inmueble.getPrecioPorNoche()));
+                    }
+                    catch (Exception ex){
+                        ex.printStackTrace();
+                    }
                 }
             }
         });

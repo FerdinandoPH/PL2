@@ -133,7 +133,7 @@ public class Reserva implements java.io.Serializable{
     }
     public static void añadirReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
             Particular particular){
-        if (validarReserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular).isEmpty())
+        if (!validarReserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular).isEmpty())
                 throw new IllegalArgumentException(validarReserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular));
         ListManager.getReservas().add(new Reserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular, ListManager.getReservas().size()));
         inmueble.setVecesReservado(inmueble.getVecesReservado()+1);
@@ -162,11 +162,13 @@ public class Reserva implements java.io.Serializable{
     public static String validarReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
     Particular particular){
         String errores="";
+        if(fechaEntrada.isAfter(fechaSalida)){
+            errores+="La fecha de entrada no puede ser posterior a la fecha de salida\n";
+            return errores;
+        }
         if(fechaReserva.isAfter(fechaEntrada) || fechaReserva.isAfter(fechaSalida))
             errores+="La fecha de reserva no puede ser posterior a la fecha de entrada o salida\n";
-        if(fechaEntrada.isAfter(fechaSalida))
-            errores+="La fecha de entrada no puede ser posterior a la fecha de salida\n";
-        if (fechaReserva.isBefore(LocalDate.now().plusDays(1)) || fechaEntrada.isBefore(LocalDate.now().plusDays(1)) || fechaSalida.isBefore(LocalDate.now().plusDays(1)))
+        if (fechaEntrada.isBefore(LocalDate.now().plusDays(1)) || fechaSalida.isBefore(LocalDate.now().plusDays(1)))
             errores+="No se puede reservar antes de mañana\n";
         if (ChronoUnit.YEARS.between(fechaReserva, fechaEntrada)>0 || ChronoUnit.YEARS.between(fechaReserva, fechaSalida)>0)
             errores+="No se pueden reservar inmuebles a más de un año vista\n";
@@ -176,11 +178,13 @@ public class Reserva implements java.io.Serializable{
             if (r.getParticular().equals(particular)){
                 if (!((fechaSalida.isAfter(r.getFechaSalida())&& (fechaEntrada.isAfter(r.getFechaSalida())||fechaEntrada.equals(r.getFechaSalida())))||((fechaSalida.isBefore(r.getFechaEntrada())||fechaSalida.equals(r.getFechaEntrada()))&& fechaEntrada.isBefore(r.getFechaEntrada()))))
                     errores+="Ya tienes una reserva en esas fechas\n";
+                    break;
             }
         }
         for (Reserva r:ListManager.getReservas()){
             if (r.getInmueble().equals(inmueble)&&!((fechaSalida.isAfter(r.getFechaSalida())&& (fechaEntrada.isAfter(r.getFechaSalida())||fechaEntrada.equals(r.getFechaSalida())))||((fechaSalida.isBefore(r.getFechaEntrada())||fechaSalida.equals(r.getFechaEntrada()))&& fechaEntrada.isBefore(r.getFechaEntrada()))))
                 errores+="El inmueble ya está reservado en esas fechas\n";
+                break;
         }
         return errores;
     }

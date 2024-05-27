@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class GUI_dialogReservas extends javax.swing.JDialog {
 
-    ArrayList<Reserva> reservas = new ArrayList();
+    ArrayList<Reserva> reservas = new ArrayList<>();
     Particular usuario;
     /**
      * Creates new form GUI_dialogReseñas
@@ -25,7 +25,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                 reservas.add(Reserva.getReservas().get(i));
         String[] listaFinal = new String[reservas.size()];
         for (int i=0; i<reservas.size(); i++)
-            listaFinal[i] = reservas.get(i).getInmueble().getTitulo()+"; "+reservas.get(i).getFechaEntrada().toString()+" - "+reservas.get(i).getFechaSalida().toString();
+            listaFinal[i] = reservas.get(i).getInmueble().getTitulo()+": "+reservas.get(i).getFechaEntrada().toString()+" - "+reservas.get(i).getFechaSalida().toString();
         this.reservasList.setListData(listaFinal);
     }
 
