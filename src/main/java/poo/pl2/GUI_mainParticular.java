@@ -593,7 +593,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         String str = "";
         for (Reserva r:ListManager.getReservas()){
             if (r.getInmueble() == inmueble)
-                str += r.getFechaEntrada().toString()+" - "+r.getFechaSalida().toString();
+                str += r.getFechaEntrada().toString()+" - "+r.getFechaSalida().toString()+'\n';
         }
         this.fechasOcupArea.setText(str);
     }
