@@ -81,7 +81,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         precioReservaField = new javax.swing.JTextField();
         reservaButton = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        fechasOcupArea = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         actualizarButton = new javax.swing.JButton();
 
@@ -308,9 +308,9 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        fechasOcupArea.setColumns(20);
+        fechasOcupArea.setRows(5);
+        jScrollPane4.setViewportView(fechasOcupArea);
 
         jLabel7.setText("Fechas ocupadas");
 
@@ -478,6 +478,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     private void inmueblesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_inmueblesListValueChanged
         this.inmueble = lista.get(inmueblesList.getSelectedIndex());
         updateDatos();
+        updateFechasOcupadas();
     }//GEN-LAST:event_inmueblesListValueChanged
 
     private void filtroComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtroComboBoxItemStateChanged
@@ -567,6 +568,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         }
         catch (IllegalArgumentException iae){
             javax.swing.JOptionPane.showMessageDialog(this, iae.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            updateFechasOcupadas();
         }
     }//GEN-LAST:event_reservaButtonActionPerformed
 
@@ -585,6 +587,15 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         this.serviciosArea.setText(inmueble.getServicios());
         this.datosArea.setText("Baños: "+inmueble.getBaños()+"\nCamas: "+inmueble.getCamas()+"\nHabitaciones: "+inmueble.getHabitaciones()+"\nHuéspedes máximos: "+inmueble.getHuespedesMaximos());
         this.fotoLabel.setIcon(inmueble.getFotografia());
+    }
+    
+    private void updateFechasOcupadas(){
+        String str = "";
+        for (Reserva r:ListManager.getReservas()){
+            if (r.getInmueble() == inmueble)
+                str += r.getFechaEntrada().toString()+" - "+r.getFechaSalida().toString();
+        }
+        this.fechasOcupArea.setText(str);
     }
     
     public void setFechaEntrada(LocalDate fecha){
@@ -640,6 +651,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     private javax.swing.JButton elegirFechaSalidaButton;
     private javax.swing.JTextField fechaEntradaField;
     private javax.swing.JTextField fechaSalidaField;
+    private javax.swing.JTextArea fechasOcupArea;
     private javax.swing.JComboBox<String> filtroComboBox;
     private javax.swing.JLabel fotoLabel;
     private javax.swing.JList<String> inmueblesList;
@@ -668,7 +680,6 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton modificarDatosPersonalesButton;
     private javax.swing.JTextField precioField;
     private javax.swing.JTextField precioReservaField;

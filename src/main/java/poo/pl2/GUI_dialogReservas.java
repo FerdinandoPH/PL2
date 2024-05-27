@@ -49,6 +49,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         fechaEntradaField = new javax.swing.JTextField();
         fechaSalidaField = new javax.swing.JTextField();
         importeField = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
         jInternalFrame3 = new javax.swing.JInternalFrame();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -80,6 +81,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         comentarioArea = new javax.swing.JTextArea();
+        volverButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -143,7 +145,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Datos", jInternalFrame1);
@@ -227,7 +229,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addGap(112, 112, 112)
                 .addComponent(verReseñasButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -260,16 +262,18 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(verReseñasButton)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fotoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(verReseñasButton)
-                .addContainerGap())
+                .addComponent(fotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Inmueble", jInternalFrame3);
+        jScrollPane5.setViewportView(jInternalFrame3);
+
+        jTabbedPane1.addTab("Inmueble", jScrollPane5);
 
         jInternalFrame2.setVisible(true);
 
@@ -350,26 +354,39 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Reseñar", jInternalFrame2);
+
+        volverButton.setText("Volver");
+        volverButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jTabbedPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(volverButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,7 +396,9 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(volverButton)
                 .addContainerGap())
         );
 
@@ -387,8 +406,23 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reservasListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_reservasListValueChanged
-        
+        this.fechaEntradaField.setText(reservas.get(reservasList.getSelectedIndex()).getFechaEntrada().toString());
+        this.fechaSalidaField.setText(reservas.get(reservasList.getSelectedIndex()).getFechaSalida().toString());
+        this.importeField.setText(String.valueOf(reservas.get(reservasList.getSelectedIndex()).getImporte()));
+        this.tituloField.setText(reservas.get(reservasList.getSelectedIndex()).getInmueble().getTitulo());
+        this.direccionField.setText(reservas.get(reservasList.getSelectedIndex()).getInmueble().getDireccion().toString());
+        this.tipoInmuebleField.setText(reservas.get(reservasList.getSelectedIndex()).getInmueble().getTipo()==Inmueble.tipoPropiedad.CASA?"Casa":"Apartamento");
+        this.precioField.setText(String.valueOf(reservas.get(reservasList.getSelectedIndex()).getInmueble().getPrecioPorNoche()));
+        this.calificacionField.setText(String.valueOf(reservas.get(reservasList.getSelectedIndex()).getInmueble().getCalificacion()));
+        Inmueble i = reservas.get(reservasList.getSelectedIndex()).getInmueble();
+        this.datosArea.setText("Baños: "+i.getBaños()+"\nHuéspedes: "+i.getHuespedesMaximos()+"\nHabitaciones: "+i.getHabitaciones()+"Camas: "+i.getCamas());
+        this.serviciosArea.setText(i.getServicios());
+        this.fotoLabel.setIcon(i.getFotografia());
     }//GEN-LAST:event_reservasListValueChanged
+
+    private void volverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_volverButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -470,6 +504,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField precioField;
     private javax.swing.JList<String> reservasList;
@@ -477,5 +512,6 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
     private javax.swing.JTextField tipoInmuebleField;
     private javax.swing.JTextField tituloField;
     private javax.swing.JButton verReseñasButton;
+    private javax.swing.JButton volverButton;
     // End of variables declaration//GEN-END:variables
 }
