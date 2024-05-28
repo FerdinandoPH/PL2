@@ -606,33 +606,6 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             Reserva.añadirReserva(LocalDate.now(), fechaEntrada, fechaSalida, inmueble, usuario);
             javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             try{
-                String now = LocalDate.now().toString();
-                File factura = new File("Facturas\\"+this.inmueble.getTitulo()+'_'+this.inmueble.getDueño().getCorreo()+'_'+fechaEntrada.toString()+'_'+fechaSalida.toString()+".txt");
-                factura.createNewFile();
-                PrintWriter writer = new PrintWriter("Facturas\\"+this.inmueble.getTitulo()+'_'+this.inmueble.getDueño().getCorreo()+'_'+fechaEntrada.toString()+'_'+fechaSalida.toString()+".txt");
-                writer.println("Datos de la Reserva");
-                writer.println("Fecha de la reserva: "+now.toString());
-                writer.println("Importe: "+String.valueOf(ChronoUnit.DAYS.between(fechaEntrada, fechaSalida)*inmueble.getPrecioPorNoche()*(usuario.isVip()?0.9:1))+" €");
-                writer.println("Fecha de entrada: "+fechaEntrada.toString());
-                writer.println("Fecha de salida: "+fechaSalida.toString());
-                writer.println("\nDatos del Inmueble");
-                writer.println("Título: "+inmueble.getTitulo());
-                writer.println("Dueño: "+inmueble.getDueño());
-                writer.println("Tipo de propiedad: "+inmueble.getTipo().toString());
-                writer.println("Precio por noche: "+String.valueOf(inmueble.getPrecioPorNoche()));
-                writer.println("Calificación: "+String.valueOf(inmueble.getCalificacion()));
-                writer.println("Dirección: "+inmueble.getDireccion().toString());
-                writer.println("Baños: "+inmueble.getBaños());
-                writer.println("Huéspedes máximos: "+String.valueOf(inmueble.getHuespedesMaximos()));
-                writer.println("Habitaciones: "+String.valueOf(inmueble.getHabitaciones()));
-                writer.println("Camas: "+String.valueOf(inmueble.getCamas()));
-                writer.println("\nDatos del cliente");
-                writer.println("Correo: "+usuario.getCorreo());
-                writer.println("Nombre: "+usuario.getNombre());
-                writer.println("Teléfono: "+usuario.getTelefono());
-                writer.println("DNI: "+usuario.getDni());
-                writer.println("\n¡Gracias por reservar con JavaBnB!");
-                writer.close();
                 updateFechasOcupadas();
             }
             catch (Exception e){
