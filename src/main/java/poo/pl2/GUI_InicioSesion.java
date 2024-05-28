@@ -116,10 +116,9 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicioSesionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionButtonActionPerformed
-        LoginManager loginManager = new LoginManager();
         System.out.println("La clave "+new String(claveField.getPassword())+" tiene un hashcode de "+new String(claveField.getPassword()).hashCode());
         try{
-            Usuario usu=loginManager.iniciarSesion(correoField.getText(), new String(claveField.getPassword()).hashCode());
+            Usuario usu=Usuario.iniciarSesion(correoField.getText(), new String(claveField.getPassword()).hashCode());
             if (usu instanceof Cliente)
                 JOptionPane.showMessageDialog(this, "Bienvenido, "+((Cliente) usu).getNombre(), "Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
             else

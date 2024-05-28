@@ -6,8 +6,6 @@ package poo.pl2;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -460,7 +458,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     private void cerrarSesionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionButtonActionPerformed
         GUI_inicioSesion inicioSesion = new GUI_inicioSesion();
         inicioSesion.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        this.dispose();        
     }//GEN-LAST:event_cerrarSesionButtonActionPerformed
 
     private void modificarDatosPersonalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDatosPersonalesButtonActionPerformed
@@ -522,21 +520,28 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         }
         this.inmueblesList.setListData(listaFinal);
     }//GEN-LAST:event_actualizarButtonActionPerformed
-
-    private void elegirFechaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirFechaEntradaButtonActionPerformed
-        ArrayList<LocalDate> fechasReservadas=new ArrayList<>();
+    private ArrayList<LocalDate> getFechasNoDisponibles(){
+        ArrayList<LocalDate> fechasNoDisponibles=new ArrayList<>();
         for (Reserva r: Reserva.getReservas()){
             if (r.getInmueble().equals(inmueble)){
-                fechasReservadas.add(r.getFechaEntrada());
-                fechasReservadas.add(r.getFechaSalida());
+                fechasNoDisponibles.add(r.getFechaEntrada());
+                fechasNoDisponibles.add(r.getFechaSalida());
+            }
+            else if (r.getParticular().equals(usuario)){
+                fechasNoDisponibles.add(r.getFechaEntrada());
+                fechasNoDisponibles.add(r.getFechaSalida());
             }
         }
-        Collections.sort(fechasReservadas, new Comparator<LocalDate>(){
+        Collections.sort(fechasNoDisponibles, new Comparator<LocalDate>(){
             public int compare(LocalDate f1, LocalDate f2){
                 return f1.compareTo(f2);
             }
         });
-        GUI_dialogPickDate pickDate = new GUI_dialogPickDate(this, true, fechasReservadas);
+        return fechasNoDisponibles;
+    }
+    private void elegirFechaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirFechaEntradaButtonActionPerformed
+
+        GUI_dialogPickDate pickDate = new GUI_dialogPickDate(this, true, getFechasNoDisponibles());
         GUI_mainParticular mp = this;
         pickDate.addWindowListener(new WindowAdapter() {
             @Override
@@ -563,19 +568,8 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     }//GEN-LAST:event_elegirFechaEntradaButtonActionPerformed
 
     private void elegirFechaSalidaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirFechaSalidaButtonActionPerformed
-        ArrayList<LocalDate> fechasReservadas=new ArrayList<>();
-        for (Reserva r: Reserva.getReservas()){
-            if (r.getInmueble().equals(inmueble)){
-                fechasReservadas.add(r.getFechaEntrada());
-                fechasReservadas.add(r.getFechaSalida());
-            }
-        }
-        Collections.sort(fechasReservadas, new Comparator<LocalDate>(){
-            public int compare(LocalDate f1, LocalDate f2){
-                return f1.compareTo(f2);
-            }
-        });
-        GUI_dialogPickDate pickDate = new GUI_dialogPickDate(this, true, fechasReservadas);
+        
+        GUI_dialogPickDate pickDate = new GUI_dialogPickDate(this, true, getFechasNoDisponibles());
         GUI_mainParticular mp = this;
         pickDate.addWindowListener(new WindowAdapter() {
             @Override

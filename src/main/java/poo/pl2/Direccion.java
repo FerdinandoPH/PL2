@@ -29,6 +29,16 @@ public class Direccion implements java.io.Serializable{
     public void setNumero(String numero) {
         this.numero = numero;
     }
+        /**
+     * Constructor para la clase Direccion.
+     * Inicializa una nueva dirección con los detalles proporcionados.
+     *
+     * @param calle La calle de la dirección.
+     * @param numero El número de la dirección.
+     * @param ciudad La ciudad de la dirección.
+     * @param codigoPostal El código postal de la dirección.
+     * @throws IllegalArgumentException si alguno de los parámetros está vacío.
+     */
     public Direccion(String calle, String numero, String ciudad, String codigoPostal) {
         if (calle.isEmpty() || ciudad.isEmpty() || codigoPostal.isEmpty()|| numero.isEmpty())
             throw new IllegalArgumentException("Datos de dirección no válidos");
@@ -37,15 +47,16 @@ public class Direccion implements java.io.Serializable{
         this.codigoPostal = codigoPostal;
         this.numero = numero;
     }
-
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return "C/ " + calle + ", nº " + numero + ", " + ciudad + ", C.P. " + codigoPostal;
     }
+    /**
+     * Dos direcciones son iguales si tienen la misma calle, número, ciudad y código postal.
+     *
+     * @param obj El objeto a comparar con esta dirección.
+     * @return true si este objeto es igual al objeto especificado; false en caso contrario.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

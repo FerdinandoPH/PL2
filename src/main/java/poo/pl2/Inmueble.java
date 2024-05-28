@@ -11,7 +11,7 @@ import java.util.Collections;
 /**
  * @author perez
  * @version 1.0
- * @created 07-may.-2024 17:29:06
+ * 
  */
 public class Inmueble implements java.io.Serializable{
     private static int escala=200;
@@ -110,7 +110,7 @@ public class Inmueble implements java.io.Serializable{
         public ArrayList<Reseña> getReseñas() {
             Collections.sort(reseñas, new Comparator<Reseña>(){
                 public int compare(Reseña r1, Reseña r2){
-                    return r1.getFechaReseña().compareTo(r2.getFechaReseña());
+                    return r1.getFechaReseña().compareTo(r2.getFechaReseña()); //Devuelve las reseñas por orden de fecha de creación
                 }
             });
             return reseñas;
@@ -133,8 +133,26 @@ public class Inmueble implements java.io.Serializable{
             dueño.actualizarSuperAnfitrion();
         }
     //endregion
+    /**
+ * Constructor para la clase Inmueble.
+ * Inicializa un nuevo inmueble con los detalles proporcionados.
+ *
+ * @param direccion La dirección del inmueble.
+ * @param titulo El título del inmueble.
+ * @param dueño El dueño del inmueble.
+ * @param baños El número de baños del inmueble.
+ * @param camas El número de camas del inmueble.
+ * @param rutaImagenInmueble La ruta de la imagen del inmueble.
+ * @param habitaciones El número de habitaciones del inmueble.
+ * @param huespedesMaximos El número máximo de huéspedes del inmueble.
+ * @param precioPorNoche El precio por noche del inmueble.
+ * @param servicios Los servicios del inmueble.
+ * @param tipo El tipo de propiedad del inmueble.
+ * @param id El ID del inmueble dentro de los inmuebles del anfitrión.
+ * @throws IllegalArgumentException si los datos introducidos no son válidos (valores negativos o vacíos), si no se ha podido cargar la imagen o si ya existe un inmueble con la misma dirección.
+ */
     public Inmueble(Direccion direccion, String titulo, Anfitrion dueño, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
-            double precioPorNoche, String servicios, tipoPropiedad tipo, int id, int ignorarDireccion) {
+            double precioPorNoche, String servicios, tipoPropiedad tipo, int id) {
         if (baños<1 || camas<1 || habitaciones<1 || huespedesMaximos<1 || precioPorNoche<1 || titulo.isEmpty()|| precioPorNoche<0 ||rutaImagenInmueble.isEmpty()){
             throw new IllegalArgumentException("Los datos introducidos no son válidos");
         }
@@ -156,30 +174,19 @@ public class Inmueble implements java.io.Serializable{
         this.tipo = tipo;
         this.titulo = titulo;
         this.dueño = dueño;
-        if (ignorarDireccion<1){
-            for (Inmueble i: Inmueble.getInmuebles()){
-                if (i.getDireccion().equals(direccion) && i.getId()!=ignorarDireccion){
-                    throw new IllegalArgumentException("Ya existe un inmueble con esa dirección");
-                }
-            }
-        }
         this.direccion = direccion;
         this.id = id;
     }
-    public Inmueble(Direccion direccion, String titulo, Anfitrion dueño, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
-            double precioPorNoche, String servicios, tipoPropiedad tipo, int id) {
-        this(direccion, titulo, dueño, baños, camas, rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, id, -1);
-    }
-    @Override
-    public String toString() {
-        return "Inmueble [direccion=" + direccion.toString() + ", titulo=" + titulo + ", dueño=" + dueño.getCorreo() + ", baños=" + baños
-                + ", calificacion=" + calificacion + ", camas=" + camas + ", habitaciones=" + habitaciones + ", huespedesMaximos=" + huespedesMaximos + ", precioPorNoche="
-                + precioPorNoche + ", servicios=" + servicios + ", tipo=" + tipo + ", vecesReservado=" + vecesReservado
-                + ", reseñas=" + reseñas.toString() + "]";
-    }
+    /**
+     * Obtiene una lista de todos los inmuebles en el sistema.
+     * Este método recorre todos los usuarios, y si el usuario es un anfitrión, añade todos sus inmuebles a la lista.
+     * La lista de inmuebles se ordena primero por el correo del dueño y luego por el ID del inmueble.
+     *
+     * @return Una lista de todos los inmuebles en el sistema.
+     */
     public static ArrayList<Inmueble> getInmuebles(){
         ArrayList<Inmueble> inmuebles = new ArrayList<Inmueble>();
-        for (Usuario u: ListManager.usuarios){
+        for (Usuario u: ListManager.getUsuarios()){
             if (u instanceof Anfitrion){
                 Anfitrion a = (Anfitrion) u;
                 inmuebles.addAll(a.getInmuebles());
@@ -194,10 +201,23 @@ public class Inmueble implements java.io.Serializable{
         );
         return inmuebles;
     }
+    /**
+     * Añade una reseña a este inmueble y actualiza la calificación del inmueble, que a su vez actualiza la califcación media del anfitrión y determina si es superanfitrión o no.
+     *
+     * @param reseña La reseña a añadir.
+     */
     public void añadirReseña(Reseña reseña){
         reseñas.add(reseña);
         actualizarCalificacion();
     }
+    @Override
+    public String toString() {
+        return "Inmueble [direccion=" + direccion.toString() + ", titulo=" + titulo + ", dueño=" + dueño.getCorreo() + ", baños=" + baños
+                + ", calificacion=" + calificacion + ", camas=" + camas + ", habitaciones=" + habitaciones + ", huespedesMaximos=" + huespedesMaximos + ", precioPorNoche="
+                + precioPorNoche + ", servicios=" + servicios + ", tipo=" + tipo + ", vecesReservado=" + vecesReservado
+                + ", reseñas=" + reseñas.toString() + "]";
+    }
+
 
     
 }//end Inmueble

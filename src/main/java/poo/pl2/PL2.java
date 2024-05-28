@@ -13,12 +13,24 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+/**
+ * La clase PL2 es la clase principal del programa.
+ * Se encarga de la gestión de la persistencia del ListManager y de iniciar la GUI (comienza en el inicio de sesión).
+ * Intenta cargar el ListManager de un archivo de guardado, si no puede, crea un nuevo ListManager con los administradores por defecto.
+ * 
+ * @author perez
+ * @version 1.0
+ * @since 07-may.-2024
+ */
 public class PL2 {
 
     private static ListManager listManager;
     /** 
-     * @param args
+     * El método principal del programa.
+     * Intenta cargar los datos de una sesión anterior, crea un nuevo ListManager si no puede cargar los datos,
+     * guarda los datos actuales al cerrar, e inicia la interfaz gráfica de usuario.
+     *
+     * @param args 
      */
     public static void main(String[] args) {
         try{
@@ -35,21 +47,19 @@ public class PL2 {
                 throw new IOException("No se ha encontrado el archivo de guardado");
             }
         }catch (IOException | ClassNotFoundException e){
-            System.out.println(e.getMessage());
+            System.out.println("El guardado es incompatible o no se ha encontrado, creando un nuevo ListManager");
             listManager = new ListManager();
-            ListManager.usuarios.add(new Administrador("a@a.com","Admin1234"));
-            ListManager.usuarios.add(new Administrador("admin@javabnb.com","admin"));
+            ListManager.getUsuarios().add(new Administrador("a@a.com","Admin1234"));
+            ListManager.getUsuarios().add(new Administrador("admin@javabnb.com","admin"));
         }
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 try {
                     Path path = Paths.get(System.getProperty("user.dir"), "\\guardado.dat");
                     if (!Files.exists(path.getParent())){
-                        System.out.println("Creando el directorio "+path.getParent().toString());
                         Files.createDirectories(path.getParent());
                     }
                     if (!Files.exists(path)){
-                        System.out.println("Creando el archivo "+path.toString());
                         Files.createFile(path);
                     }
                     System.out.println("Guardando datos en "+path.toString());

@@ -126,9 +126,8 @@ public class GUI_dialogAñadirAdmin extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarButtonActionPerformed
-        LoginManager loginManager = new LoginManager();
         try{
-            loginManager.registrar(correoField.getText(), new String(claveField.getPassword()), new String(claveField.getPassword()));
+            Usuario.registrar(correoField.getText(), new String(claveField.getPassword()), new String(claveField.getPassword()));
             JOptionPane.showMessageDialog(this, "Administrador añadido correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }catch (IllegalArgumentException e){

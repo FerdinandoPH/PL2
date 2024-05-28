@@ -188,11 +188,10 @@ public class GUI_dialogDatosParticular extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
-        LoginManager loginManager = new LoginManager();
-        String errores=loginManager.validarInformacion(nombreField.getText(), numTarjetaField.getText(), (int)mesSpinner.getValue(), (int)añoSpinner.getValue(), vipField.getText());
+        String errores=Usuario.validarInformacion(nombreField.getText(), numTarjetaField.getText(), (int)mesSpinner.getValue(), (int)añoSpinner.getValue(), vipField.getText());
         if (errores.isEmpty()){
             try{
-                loginManager.registrar(datosPrevios[0], datosPrevios[1], datosPrevios[2], datosPrevios[3], datosPrevios[4], datosPrevios[5], vipField.getText().isEmpty()?false:true, new Tarjeta(LocalDate.of((int)añoSpinner.getValue(), (int)mesSpinner.getValue(), 1), nombreField.getText(), Long.parseLong(numTarjetaField.getText())));
+                Usuario.registrar(datosPrevios[0], datosPrevios[1], datosPrevios[2], datosPrevios[3], datosPrevios[4], datosPrevios[5], vipField.getText().isEmpty()?false:true, new Tarjeta(LocalDate.of((int)añoSpinner.getValue(), (int)mesSpinner.getValue(), 1), nombreField.getText(), Long.parseLong(numTarjetaField.getText())));
                 JOptionPane.showMessageDialog(this, "Registro completado con éxito", "Registro", JOptionPane.INFORMATION_MESSAGE);
                 this.registroExitoso=true;
                 this.dispose();

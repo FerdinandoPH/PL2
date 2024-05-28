@@ -22,16 +22,16 @@ import com.toedter.calendar.IDateEvaluator;
 public class GUI_dialogPickDate extends javax.swing.JDialog {
     private LocalDate fecha;
     private boolean fechaSeleccionada=false;
-    private ArrayList<LocalDate> fechasOcupadas;
+    private ArrayList<LocalDate> fechasNoDisponibles;
     public boolean isFechaSeleccionada() {
         return fechaSeleccionada;
     }
     /**
      * Creates new form GUI_dialogPickDate
      */
-    public GUI_dialogPickDate(java.awt.Frame parent, boolean modal, ArrayList<LocalDate> fechasOcupadas) {
+    public GUI_dialogPickDate(java.awt.Frame parent, boolean modal, ArrayList<LocalDate> fechasNoDisponibles) {
         super(parent, modal);
-        this.fechasOcupadas=fechasOcupadas;
+        this.fechasNoDisponibles=fechasNoDisponibles;
         initComponents();
         initSpinnerListeners();
         pintarFechas();
@@ -192,17 +192,17 @@ public class GUI_dialogPickDate extends javax.swing.JDialog {
             return;
         }
         if (calendar.getYearChooser().getYear()==LocalDate.now().getYear() && calendar.getMonthChooser().getMonth()==LocalDate.now().getMonthValue()-1){
-            for (int i=1;i<=ChronoUnit.DAYS.between(LocalDate.now().withDayOfMonth(1),LocalDate.now());i++){
+            for (int i=1;i<=ChronoUnit.DAYS.between(LocalDate.now().withDayOfMonth(1),LocalDate.now())+1;i++){
                 resaltadorDias.add(createDate(i));
             }
         }
         int indice=0;
-        while (indice<fechasOcupadas.size()){
-            if (fechasOcupadas.get(indice).isBefore(LocalDate.now()) || fechasOcupadas.get(indice).getMonthValue()!=calendar.getMonthChooser().getMonth()+1 || fechasOcupadas.get(indice).getYear()!=calendar.getYearChooser().getYear()){
+        while (indice<fechasNoDisponibles.size()){
+            if (fechasNoDisponibles.get(indice).isBefore(LocalDate.now()) || fechasNoDisponibles.get(indice).getMonthValue()!=calendar.getMonthChooser().getMonth()+1 || fechasNoDisponibles.get(indice).getYear()!=calendar.getYearChooser().getYear()){
                 indice+=2;
             }
             else{
-                for (int i=fechasOcupadas.get(indice).getDayOfMonth();i<fechasOcupadas.get(indice+1).getDayOfMonth();i++){
+                for (int i=fechasNoDisponibles.get(indice).getDayOfMonth();i<fechasNoDisponibles.get(indice+1).getDayOfMonth();i++){
                     resaltadorDias.add(createDate(i));
                 }
                 indice+=2;

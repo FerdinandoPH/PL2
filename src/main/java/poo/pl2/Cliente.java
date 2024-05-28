@@ -4,7 +4,7 @@ package poo.pl2;
 /**
  * @author perez
  * @version 1.0
- * @created 07-may.-2024 17:29:06
+ * 
  */
 public class Cliente extends Usuario {
 
@@ -35,16 +35,21 @@ public class Cliente extends Usuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
+    /**
+     * Constructor para la clase Cliente.
+     * Inicializa un nuevo cliente con los detalles proporcionados.
+     *
+     * @param correo El correo del cliente.
+     * @param claveString La clave del cliente.
+     * @param dni El DNI del cliente.
+     * @param nombre El nombre del cliente.
+     * @param telefono El teléfono del cliente.
+     */
     public Cliente(String correo, String claveString, String dni, String nombre, String telefono){
         super(correo, claveString);
         this.dni = dni;
         this.nombre = nombre;
         this.telefono = telefono;
-
-    }
-
-    public void modificarDatosPersonales(){
 
     }
 

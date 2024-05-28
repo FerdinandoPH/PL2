@@ -1,21 +1,14 @@
 package poo.pl2;
-
 public class Administrador extends Usuario {
 
+    /**
+     * Constructor para la clase Administrador.
+     *
+     * @param correo El correo del administrador.
+     * @param claveString La contraseña del administrador.
+     */
     public Administrador(String correo, String claveString) {
         super(correo, claveString);
-    }
-
-    public void gestionarInmuebles() {
-
-    }
-
-    public void gestionarReservas() {
-
-    }
-
-    public void gestionarUsuarios() {
-
     }
 
     @Override

@@ -474,7 +474,8 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
     }//GEN-LAST:event_reservaPanelStateChanged
 
     private void verReseñasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReseñasButtonActionPerformed
-        GUI_dialogVerReseñas dialog = new GUI_dialogVerReseñas(this, true, reservas.get(reservasList.getSelectedIndex()).getInmueble());
+        GUI_dialogVerReseñas dialogoReservas = new GUI_dialogVerReseñas(this, true, reservas.get(reservasList.getSelectedIndex()).getInmueble());
+        dialogoReservas.setVisible(true);
     }//GEN-LAST:event_verReseñasButtonActionPerformed
     private void setEnableRecursivo(Component container, boolean enable) {
         container.setEnabled(enable);

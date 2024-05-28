@@ -165,12 +165,11 @@ public class GUI_dialogRegistro extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tipoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoComboBoxActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_tipoComboBoxActionPerformed
 
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
-        LoginManager loginManager = new LoginManager();
-        String errores=loginManager.validarInformacion(null,correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText());
+        String errores=Usuario.validarInformacion(null,correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(), nombreField.getText(), telefonoField.getText());
         if (errores.length()>0){
             javax.swing.JOptionPane.showMessageDialog(this, errores, "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
@@ -188,7 +187,7 @@ public class GUI_dialogRegistro extends javax.swing.JDialog {
                 dialogoDatosParticular.setVisible(true);
             }
             else{
-                loginManager.registrar(correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(),nombreField.getText(), telefonoField.getText());
+                Usuario.registrar(correoField.getText(), new String(claveField.getPassword()), new String(clave2Field.getPassword()), dniField.getText(),nombreField.getText(), telefonoField.getText());
                 JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
             }

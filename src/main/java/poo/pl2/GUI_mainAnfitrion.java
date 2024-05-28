@@ -31,7 +31,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private boolean fotoCambiada=false;
     private boolean cambiandoInmueble=false;
     private String rutaImagenInmueble="";
-    private ArrayList<Reserva> reservas = new ArrayList();
+    private ArrayList<Reserva> reservas = new ArrayList<>();
     /**
      * Creates new form mainAnfitrion
      */
@@ -543,7 +543,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private void cerrarSesionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionButtonActionPerformed
         GUI_inicioSesion inicioSesion = new GUI_inicioSesion();
         inicioSesion.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        this.dispose();        
     }//GEN-LAST:event_cerrarSesionButtonActionPerformed
 
     private void modificarDatosPersonalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDatosPersonalesButtonActionPerformed
@@ -571,7 +571,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         actualizarInmuebleMostrado();
         reservas.clear();
         for (Reserva r:Reserva.getReservas())
-            if (r.getInmueble().equals(usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()).getId()))
+            if (r.getInmueble().equals(usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex())))
                 reservas.add(r);
         String[] listaFinal = new String[reservas.size()];
         for (int i=0; i<reservas.size(); i++)
@@ -648,7 +648,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarCambiosButtonActionPerformed
 
     private void habitacionesFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habitacionesFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_habitacionesFieldActionPerformed
 
     private void reservasListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_reservasListValueChanged

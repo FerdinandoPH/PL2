@@ -11,7 +11,7 @@ import java.util.Comparator;
 /**
  * @author perez
  * @version 1.0
- * @created 07-may.-2024 17:29:06
+ * 
  */
 public class Reserva implements java.io.Serializable{
     private LocalDate fechaReserva;
@@ -27,85 +27,45 @@ public class Reserva implements java.io.Serializable{
         public LocalDate getFechaReserva() {
             return fechaReserva;
         }
-
-
-
         public void setFechaReserva(LocalDate fechaReserva) {
             this.fechaReserva = fechaReserva;
         }
-
-
-
         public LocalDate getFechaEntrada() {
             return fechaEntrada;
         }
-
-
-
         public void setFechaEntrada(LocalDate fechaEntrada) {
             this.fechaEntrada = fechaEntrada;
         }
-
-
-
         public LocalDate getFechaSalida() {
             return fechaSalida;
         }
-
-
-
         public void setFechaSalida(LocalDate fechaSalida) {
             this.fechaSalida = fechaSalida;
         }
-
-
-
         public double getImporte() {
             return importe;
         }
-
-
-
         public void setImporte(double importe) {
             this.importe = importe;
         }
-
-
-
         public Inmueble getInmueble() {
             return inmueble;
         }
-
-
-
         public void setInmueble(Inmueble inmueble) {
             this.inmueble = inmueble;
         }
-
-
-
         public Particular getParticular() {
             return particular;
         }
-
-
-
         public void setParticular(Particular particular) {
             this.particular = particular;
         }
-
-
-
         public int getId() {
             return id;
         }
-
-
-
         public void setId(int id) {
             this.id = id;
         }
-
         public boolean isYaReseñado() {
             return yaReseñado;
         }
@@ -114,17 +74,33 @@ public class Reserva implements java.io.Serializable{
         }
     //endregion
 
-
+    /**
+     * Constructor para la clase Reserva.
+     * Inicializa una nueva reserva con los detalles proporcionados.
+     * El importe se calcula en base a la duración de la estancia, el precio por noche del inmueble y si el particular es VIP.
+     *
+     * @param fechaReserva La fecha en que se hizo la reserva.
+     * @param fechaEntrada La fecha de inicio de la reserva.
+     * @param fechaSalida La fecha de salida de la reserva. Ese día ya es reservable por otro cliente.
+     * @param inmueble El inmueble reservado.
+     * @param particular El particular que hace la reserva.
+     * @param id El ID interno de la reserva.
+     */
     public Reserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida,
             Inmueble inmueble, Particular particular, int id) {
         this.fechaReserva = fechaReserva;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
-        this.importe = ChronoUnit.DAYS.between(fechaEntrada, fechaSalida)*inmueble.getPrecioPorNoche();
+        this.importe = ChronoUnit.DAYS.between(fechaEntrada, fechaSalida)*inmueble.getPrecioPorNoche()*(particular.isVip()?0.9:1);
         this.inmueble = inmueble;
         this.particular = particular;
         this.id = id;
     }
+    /**
+     * Obtiene una lista de todas las reservas, que se ordenan por la fecha de realización de la reserva.
+     *
+     * @return Una lista de todas las reservas.
+     */
     public static ArrayList<Reserva> getReservas(){
         ArrayList<Reserva> reservas=ListManager.getReservas();
         Collections.sort(reservas, new Comparator<Reserva>(){
@@ -134,7 +110,20 @@ public class Reserva implements java.io.Serializable{
         });
         return reservas;
     }
-    public static int añadirReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
+    /**
+     * Añade una nueva reserva al ListManager.
+     * Valida los datos de la reserva antes de añadirla usando el método validarReserva.
+     * Imprime una factura una vez que la reserva ha sido añadida.
+     * Incrementa el contador de veces que el inmueble ha sido reservado.
+     *
+     * @param fechaReserva La fecha en que se hace la reserva.
+     * @param fechaEntrada La fecha de entrada al inmueble.
+     * @param fechaSalida La fecha de salida del inmueble.
+     * @param inmueble El inmueble a reservar.
+     * @param particular El particular que hace la reserva.
+     * @throws IllegalArgumentException Si la reserva no es válida.
+     */
+    public static void añadirReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
             Particular particular){
         if (!validarReserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular).isEmpty())
                 throw new IllegalArgumentException(validarReserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular));
@@ -142,19 +131,16 @@ public class Reserva implements java.io.Serializable{
         ListManager.getReservas().add(nuevaReserva);
         nuevaReserva.imprimirFactura();
         inmueble.setVecesReservado(inmueble.getVecesReservado()+1);
-        return ListManager.getReservas().size()-1;
     }
+    /**
+     * Cancela una reserva, borrándola del ListManager.
+     * Solo se puede cancelar una reserva si no ha pasado la fecha de salida.
+     * Decrementa el contador de veces que el inmueble ha sido reservado.
+     *
+     * @param id El ID de la reserva a borrar.
+     * @throws IllegalArgumentException Si la reserva ya ha finalizado.
+     */
     public static void borrarReserva (int id){
-        // ArrayList<Reserva> reservasOrdenadas=Reserva.getReservas();
-        // Collections.sort(reservasOrdenadas, new Comparator<Reserva>(){
-        //     public int compare(Reserva r1, Reserva r2){
-        //         return Integer.valueOf(r1.id).compareTo(r2.id);
-        //     }
-        // });
-        // for (Reserva r:reservasOrdenadas){
-        //     if (r.getId()>id)
-        //         r.setId(r.getId()-1);
-        // }
         for (Reserva r: ListManager.getReservas()){
             if (r.getId()==id){
                 if (r.getFechaSalida().isBefore(LocalDate.now()))
@@ -165,6 +151,24 @@ public class Reserva implements java.io.Serializable{
             }
         }
     }
+    /**
+     * Valida una reserva.
+     * Comprueba varias condiciones para asegurarse de que la reserva es válida:
+     * 1. La fecha de entrada no puede ser posterior a la fecha de salida.
+     * 2. La fecha de reserva no puede ser posterior a la fecha de entrada o salida.
+     * 3. No se puede hacer una reserva para una fecha anterior al día siguiente.
+     * 4. No se pueden hacer reservas a más de un año de antelación.
+     * 5. La duración de la reserva no puede ser mayor a dos meses.
+     * 6. El particular no puede tener otra reserva en las mismas fechas.
+     * 7. El inmueble no puede estar reservado en las mismas fechas.
+     *
+     * @param fechaReserva La fecha en que se hace la reserva.
+     * @param fechaEntrada La fecha de entrada al inmueble.
+     * @param fechaSalida La fecha de salida del inmueble.
+     * @param inmueble El inmueble a reservar.
+     * @param particular El particular que hace la reserva.
+     * @return Una cadena de texto con los errores de validación. Si la cadena está vacía, la reserva es válida.
+     */
     public static String validarReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
     Particular particular){
         String errores="";
@@ -197,16 +201,21 @@ public class Reserva implements java.io.Serializable{
         return errores;
     }
 
-
+    /**
+     * Imprime una factura para la reserva.
+     * La factura se guarda en un archivo de texto.
+     * El nombre del archivo sigue el siguiente formato: "Facturas/(Título del inmueble)_(correo del inmueble)_(fecha de entrada)_(fecha de salida).txt"
+     */
     public void imprimirFactura(){
         try{
                 String now = LocalDate.now().toString();
                 File factura = new File("Facturas\\"+this.inmueble.getTitulo()+'_'+this.inmueble.getDueño().getCorreo()+'_'+fechaEntrada.toString()+'_'+fechaSalida.toString()+".txt");
+                factura.mkdirs();
                 factura.createNewFile();
                 PrintWriter writer = new PrintWriter("Facturas\\"+this.inmueble.getTitulo()+'_'+this.inmueble.getDueño().getCorreo()+'_'+fechaEntrada.toString()+'_'+fechaSalida.toString()+".txt");
                 writer.println("Datos de la Reserva");
                 writer.println("Fecha de la reserva: "+now.toString());
-                writer.println("Importe: "+String.valueOf(ChronoUnit.DAYS.between(fechaEntrada, fechaSalida)*inmueble.getPrecioPorNoche()*(particular.isVip()?0.9:1))+" €");
+                writer.println("Importe: "+String.valueOf(importe)+" €");
                 writer.println("Fecha de entrada: "+fechaEntrada.toString());
                 writer.println("Fecha de salida: "+fechaSalida.toString());
                 writer.println("\nDatos del Inmueble");

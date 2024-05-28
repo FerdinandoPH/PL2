@@ -286,15 +286,14 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void correoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_correoFieldActionPerformed
 
     private void cambiarContraseñaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContraseñaButtonActionPerformed
         String nuevaContraseña = JOptionPane.showInputDialog(this, "Introduce la nueva contraseña", "Cambiar contraseña", JOptionPane.QUESTION_MESSAGE);
         String nuevaContraseña2 = JOptionPane.showInputDialog(this, "Introduce la nueva contraseña de nuevo", "Cambiar contraseña", JOptionPane.QUESTION_MESSAGE);
         try{
-            LoginManager loginManager = new LoginManager();
-            loginManager.cambiarContraseña(this.cliente.getCorreo(), nuevaContraseña, nuevaContraseña2);
+            Usuario.cambiarContraseña(this.cliente.getCorreo(), nuevaContraseña, nuevaContraseña2);
             JOptionPane.showMessageDialog(this, "Contraseña cambiada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         }
         catch (IllegalArgumentException e){
@@ -309,17 +308,16 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
             //return;
         //}
         try{
-            LoginManager loginManager = new LoginManager();
             System.out.println("Se va a editar a "+this.cliente.toString());
             switch(this.cliente.getClass().getSimpleName()){
                 case "Particular":
-                loginManager.editarUsuario(this.cliente.getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.añoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
+                Usuario.editarUsuario(this.cliente.getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.añoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
                 break;
                 case "Anfitrion":
-                loginManager.editarUsuario(this.cliente.getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText());
+                Usuario.editarUsuario(this.cliente.getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText());
                 break;
                 case "Administrador":
-                loginManager.editarUsuario(this.cliente.getCorreo(), this.correoField.getText());
+                Usuario.editarUsuario(this.cliente.getCorreo(), this.correoField.getText());
                 break;
             }
             JOptionPane.showMessageDialog(this, "Cambios realizados correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -344,7 +342,7 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
     private void boolComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boolComboBoxActionPerformed
         if (this.cliente instanceof Particular && !((Particular)this.cliente).isVip() && boolComboBox.getSelectedIndex()==0){
             String codigoVip=JOptionPane.showInputDialog(this, "Introduce el código VIP", "Código VIP", JOptionPane.QUESTION_MESSAGE);
-            if (codigoVip!=null && codigoVip.equals(LoginManager.claveVip)){
+            if (codigoVip!=null && codigoVip.equals(Usuario.getClaveVip())){
                 JOptionPane.showMessageDialog(this, "Código VIP correcto", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 indiceFijoBCB=0;
                 cambioRealizado();
@@ -362,8 +360,7 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
         boolean confirmacion = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres borrar tu cuenta?\n", "Borrar cuenta", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
         if (confirmacion){
             try{
-                LoginManager loginManager = new LoginManager();
-                loginManager.borrarUsuario(this.cliente.getCorreo());
+                Usuario.borrarUsuario(this.cliente.getCorreo());
                 JOptionPane.showMessageDialog(this, "Cuenta borrada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 this.forzarCierreSesion=true;
                 this.dispose();
