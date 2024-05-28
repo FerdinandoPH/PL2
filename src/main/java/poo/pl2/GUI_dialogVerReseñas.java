@@ -16,13 +16,8 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
      * Creates new form GUI_dialogVerReseñas
      */
     private Inmueble inmueble;
-    private ArrayList<Reseña> reseñas = new ArrayList();
+    private ArrayList<Reseña> reseñas = new ArrayList<>();
     
-    public GUI_dialogVerReseñas(java.awt.Dialog parent, boolean modal, Inmueble inmueble) {
-        super(parent, modal);
-        initComponents();
-        this.inmueble = inmueble;
-    }
     public GUI_dialogVerReseñas(java.awt.Frame parent, boolean modal, Inmueble inmueble) {
         super(parent, modal);
         this.inmueble = inmueble;
