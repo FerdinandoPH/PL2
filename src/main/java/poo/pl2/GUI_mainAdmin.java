@@ -138,7 +138,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         imagenLabel = new javax.swing.JLabel();
         elegirFotoButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        verReseñasButton = new javax.swing.JButton();
         editarInmuebleButton = new javax.swing.JButton();
         cancelarCambiosInmuebleButton = new javax.swing.JButton();
         tituloLabel = new javax.swing.JLabel();
@@ -402,7 +402,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     .addComponent(añoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(extenderButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(usuarioFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modificarButton)
                     .addComponent(cancelarButton))
@@ -492,7 +492,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addGroup(reservaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inmuebleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(particularField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         datosPanel.addTab("Reserva", reservaFrame);
@@ -556,10 +556,10 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Ver reseñas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        verReseñasButton.setText("Ver reseñas");
+        verReseñasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                verReseñasButtonActionPerformed(evt);
             }
         });
 
@@ -661,7 +661,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                                 .addGap(153, 153, 153)
                                 .addGroup(inmuebleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(elegirFotoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(verReseñasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(inmuebleFrameLayout.createSequentialGroup()
                                 .addGap(87, 87, 87)
                                 .addComponent(editarInmuebleButton)
@@ -717,7 +717,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(serviciosField, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addComponent(serviciosField, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -725,7 +725,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(elegirFotoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(verReseñasButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(inmuebleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editarInmuebleButton)
@@ -817,8 +817,8 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                         .addComponent(añadirAdminButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(borrarButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(datosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(datosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cerrarSesionButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1209,12 +1209,17 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_elegirFotoButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void verReseñasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReseñasButtonActionPerformed
+        if (elementosList.getSelectedIndex()==-1 || posicionesSeparador.contains(elementosList.getSelectedIndex()))
+            return;
+        GUI_dialogVerReseñas verReseñas = new GUI_dialogVerReseñas(this, true, Inmueble.getInmuebles().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()));
+        verReseñas.setVisible(true);
+    }//GEN-LAST:event_verReseñasButtonActionPerformed
 
     private void editarInmuebleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarInmuebleButtonActionPerformed
         try{
+            if (elementosList.getSelectedIndex()==-1 || posicionesSeparador.contains(elementosList.getSelectedIndex()))
+                return;
             //System.out.println(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
             Inmueble inmuebleSeleccionado=Inmueble.getInmuebles().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
             inmuebleSeleccionado.getDueño().editarInmueble(inmuebleSeleccionado.getId(), new Direccion(calleField.getText(), numeroField.getText(), ciudadField.getText(), codigoPostalField.getText()), tituloField.getText(), Integer.parseInt(bañosField.getText()), Integer.parseInt(camasField.getText()), rutaImagenInmueble, Integer.parseInt(habitacionesField.getText()), Integer.parseInt(huespedesField.getText()), Double.parseDouble(precioField.getText()), serviciosField.getText(), Inmueble.tipoPropiedad.valueOf(tipoComboBox.getSelectedItem().toString().toUpperCase()));
@@ -1537,7 +1542,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField importeField;
     private javax.swing.JTextField inmuebleField;
     private javax.swing.JInternalFrame inmuebleFrame;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1590,5 +1594,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField tituloField;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JInternalFrame usuarioFrame;
+    private javax.swing.JButton verReseñasButton;
     // End of variables declaration//GEN-END:variables
 }

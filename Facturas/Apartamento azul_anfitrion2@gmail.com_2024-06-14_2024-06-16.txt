@@ -1,0 +1,25 @@
+Datos de la Reserva
+Fecha de la reserva: 2024-05-28
+Importe: 162.0 €
+Fecha de entrada: 2024-06-14
+Fecha de salida: 2024-06-16
+
+Datos del Inmueble
+Título: Apartamento azul
+Dueño: Anfitrion: [correo=anfitrion2@gmail.com, clave (hash)=1216985755, dni=12345678A, nombre=Anfitrión2, telefono=123456789, esSuperAnfitiron=false, fechaRegistro=2024-05-28]
+Tipo de propiedad: APARTAMENTO
+Precio por noche: 90.0
+Calificación: 0.0
+Dirección: C/ Complutense, nº 15, Madrid, C.P. 12345
+Baños: 1
+Huéspedes máximos: 1
+Habitaciones: 1
+Camas: 1
+
+Datos del cliente
+Correo: particular2@gmail.com
+Nombre: Particular2
+Teléfono: 123456789
+DNI: 12345678A
+
+¡Gracias por reservar con JavaBnB!

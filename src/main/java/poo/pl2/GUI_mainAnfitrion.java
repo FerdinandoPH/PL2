@@ -40,6 +40,13 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         initComponents();
         actualizarInmuebleMostrado();
         prepararListenersCambio();
+        for (Reserva r:Reserva.getReservas())
+            if (r.getInmueble().equals(usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex())))
+                reservas.add(r);
+        String[] listaFinal = new String[reservas.size()];
+        for (int i=0; i<reservas.size(); i++)
+            listaFinal[i] = reservas.get(i).getFechaEntrada().toString()+" - "+reservas.get(i).getFechaSalida().toString();
+        this.reservasList.setListData(listaFinal);
     }
 
     /**
@@ -130,6 +137,12 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         inmueblesComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inmueblesComboBoxActionPerformed(evt);
+            }
+        });
+
+        infoPanel.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                infoPanelStateChanged(evt);
             }
         });
 
@@ -659,6 +672,13 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         this.importeField.setText(String.valueOf(r.getImporte()));
         this.clienteField.setText(r.getParticular().getCorreo());
     }//GEN-LAST:event_reservasListValueChanged
+
+    private void infoPanelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_infoPanelStateChanged
+        if (this.infoPanel.getSelectedIndex()==1)
+            this.borrarInmuebleButton.setEnabled(false);
+        else
+            this.borrarInmuebleButton.setEnabled(true);
+    }//GEN-LAST:event_infoPanelStateChanged
     private void actualizarInmuebleMostrado(){
         if(inmueblesComboBox.getSelectedIndex()==-1){
             setEnableRecursivo(infoPanel, false);

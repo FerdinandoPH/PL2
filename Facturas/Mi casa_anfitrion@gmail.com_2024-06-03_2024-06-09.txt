@@ -1,0 +1,25 @@
+Datos de la Reserva
+Fecha de la reserva: 2024-05-28
+Importe: 540.0 €
+Fecha de entrada: 2024-06-03
+Fecha de salida: 2024-06-09
+
+Datos del Inmueble
+Título: Mi casa
+Dueño: Anfitrion: [correo=anfitrion@gmail.com, clave (hash)=1216985755, dni=12345678A, nombre=Anfitrión, telefono=123456789, esSuperAnfitiron=false, fechaRegistro=2024-05-28]
+Tipo de propiedad: CASA
+Precio por noche: 100.0
+Calificación: 0.0
+Dirección: C/ Ávila, nº 1, Alcalá de Henares, C.P. 12345
+Baños: 2
+Huéspedes máximos: 2
+Habitaciones: 1
+Camas: 2
+
+Datos del cliente
+Correo: particular2@gmail.com
+Nombre: Particular2
+Teléfono: 123456789
+DNI: 12345678A
+
+¡Gracias por reservar con JavaBnB!
