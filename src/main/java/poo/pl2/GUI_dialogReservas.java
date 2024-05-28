@@ -4,6 +4,7 @@
  */
 package poo.pl2;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 /**
  *
@@ -21,7 +22,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         initComponents();
         this.usuario = usuario;
         for (int i=0; i<Reserva.getReservas().size(); i++)
-            if (Reserva.getReservas().get(i).getParticular().equals(usuario))
+            if (Reserva.getReservas().get(i).getParticular().equals(usuario)&&(Reserva.getReservas().get(i).getFechaSalida().isBefore(LocalDate.now())||Reserva.getReservas().get(i).getFechaSalida().isEqual(LocalDate.now())))
                 reservas.add(Reserva.getReservas().get(i));
         String[] listaFinal = new String[reservas.size()];
         for (int i=0; i<reservas.size(); i++)

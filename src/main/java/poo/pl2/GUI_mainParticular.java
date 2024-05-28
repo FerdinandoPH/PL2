@@ -6,6 +6,7 @@ package poo.pl2;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -528,7 +529,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
                     mp.fechaEntradaField.setText(fechaEntrada.toString());
                     try{
                         if(!mp.fechaSalidaField.getText().isEmpty())
-                        mp.precioReservaField.setText(String.valueOf((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()));
+                        mp.precioReservaField.setText(String.valueOf((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()*(mp.usuario.isVip()?0.9:1)));
                     }
                     catch (Exception ex){
                         ex.printStackTrace();
@@ -565,6 +566,14 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         try{
             Reserva.añadirReserva(LocalDate.now(), fechaEntrada, fechaSalida, inmueble, usuario);
             javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            try{
+                
+                PrintWriter writer = new PrintWriter("..\\Facturas\\"+this.inmueble.getTitulo()+'\\'+this.inmueble.getDueño().getCorreo()+'\\'+fechaEntrada.toString()+'-'+fechaSalida.toString()+".txt");
+                
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
         catch (IllegalArgumentException iae){
             javax.swing.JOptionPane.showMessageDialog(this, iae.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
