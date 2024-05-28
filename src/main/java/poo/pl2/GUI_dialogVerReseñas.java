@@ -4,7 +4,6 @@
  */
 package poo.pl2;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -18,12 +17,16 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
      */
     private Inmueble inmueble;
     
+    public GUI_dialogVerReseñas(java.awt.Dialog parent, boolean modal, Inmueble inmueble) {
+        super(parent, modal);
+        initComponents();
+        this.inmueble = inmueble;
+    }
     public GUI_dialogVerReseñas(java.awt.Frame parent, boolean modal, Inmueble inmueble) {
         super(parent, modal);
         initComponents();
         this.inmueble = inmueble;
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

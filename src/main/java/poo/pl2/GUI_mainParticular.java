@@ -6,10 +6,11 @@ package poo.pl2;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class GUI_mainParticular extends javax.swing.JFrame {
     Particular usuario = null;
     Inmueble inmueble = null;
-    ArrayList<Inmueble> lista = new ArrayList();
+    ArrayList<Inmueble> lista = new ArrayList<>();
     LocalDate fechaEntrada;
     LocalDate fechaSalida;
     /**
@@ -27,6 +28,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     public GUI_mainParticular(Particular usuario) {
         this.usuario=usuario;
         initComponents();
+        actualizarButtonActionPerformed(null);
     }
 
     /**
@@ -47,7 +49,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         tipoComboBox = new javax.swing.JComboBox<>();
         verReservasButton = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        infoPanel = new javax.swing.JTabbedPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jLabel8 = new javax.swing.JLabel();
@@ -272,7 +274,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
 
         jScrollPane5.setViewportView(jInternalFrame1);
 
-        jTabbedPane1.addTab("Datos", jScrollPane5);
+        infoPanel.addTab("Datos", jScrollPane5);
 
         jInternalFrame2.setVisible(true);
 
@@ -376,7 +378,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
 
         jScrollPane6.setViewportView(jInternalFrame2);
 
-        jTabbedPane1.addTab("Reservas", jScrollPane6);
+        infoPanel.addTab("Reservas", jScrollPane6);
 
         actualizarButton.setText("Actualizar");
         actualizarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -409,7 +411,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(actualizarButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -439,7 +441,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(verReservasButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -519,7 +521,19 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizarButtonActionPerformed
 
     private void elegirFechaEntradaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirFechaEntradaButtonActionPerformed
-        GUI_dialogPickDate pickDate = new GUI_dialogPickDate(this, true);
+        ArrayList<LocalDate> fechasReservadas=new ArrayList<>();
+        for (Reserva r: Reserva.getReservas()){
+            if (r.getInmueble().equals(inmueble)){
+                fechasReservadas.add(r.getFechaEntrada());
+                fechasReservadas.add(r.getFechaSalida());
+            }
+        }
+        Collections.sort(fechasReservadas, new Comparator<LocalDate>(){
+            public int compare(LocalDate f1, LocalDate f2){
+                return f1.compareTo(f2);
+            }
+        });
+        GUI_dialogPickDate pickDate = new GUI_dialogPickDate(this, true, fechasReservadas);
         GUI_mainParticular mp = this;
         pickDate.addWindowListener(new WindowAdapter() {
             @Override
@@ -541,7 +555,19 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     }//GEN-LAST:event_elegirFechaEntradaButtonActionPerformed
 
     private void elegirFechaSalidaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirFechaSalidaButtonActionPerformed
-        GUI_dialogPickDate pickDate = new GUI_dialogPickDate(this, true);
+        ArrayList<LocalDate> fechasReservadas=new ArrayList<>();
+        for (Reserva r: Reserva.getReservas()){
+            if (r.getInmueble().equals(inmueble)){
+                fechasReservadas.add(r.getFechaEntrada());
+                fechasReservadas.add(r.getFechaSalida());
+            }
+        }
+        Collections.sort(fechasReservadas, new Comparator<LocalDate>(){
+            public int compare(LocalDate f1, LocalDate f2){
+                return f1.compareTo(f2);
+            }
+        });
+        GUI_dialogPickDate pickDate = new GUI_dialogPickDate(this, true, fechasReservadas);
         GUI_mainParticular mp = this;
         pickDate.addWindowListener(new WindowAdapter() {
             @Override
@@ -568,7 +594,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             try{
                 
-                PrintWriter writer = new PrintWriter("..\\Facturas\\"+this.inmueble.getTitulo()+'\\'+this.inmueble.getDueño().getCorreo()+'\\'+fechaEntrada.toString()+'-'+fechaSalida.toString()+".txt");
+                //PrintWriter writer = new PrintWriter("..\\Facturas\\"+this.inmueble.getTitulo()+'\\'+this.inmueble.getDueño().getCorreo()+'\\'+fechaEntrada.toString()+'-'+fechaSalida.toString()+".txt");
                 
             }
             catch (Exception e){
@@ -663,6 +689,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     private javax.swing.JTextArea fechasOcupArea;
     private javax.swing.JComboBox<String> filtroComboBox;
     private javax.swing.JLabel fotoLabel;
+    private javax.swing.JTabbedPane infoPanel;
     private javax.swing.JList<String> inmueblesList;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
@@ -688,7 +715,6 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton modificarDatosPersonalesButton;
     private javax.swing.JTextField precioField;
     private javax.swing.JTextField precioReservaField;
