@@ -49,6 +49,8 @@ public class Reseña implements java.io.Serializable{
         this.comentario = comentario;
         this.calificacion = Math.max(1, Math.min(5, calificacion));
         this.reserva = reserva;
+        if (this.reserva.isYaReseñado())
+            throw new IllegalArgumentException("No se puede reseñar una reserva que ya ha sido reseñada");
         this.reserva.setYaReseñado(true);
         if (LocalDate.now().isBefore(reserva.getFechaSalida()))
             throw new IllegalArgumentException("No se puede reseñar una reserva que no ha finalizado");

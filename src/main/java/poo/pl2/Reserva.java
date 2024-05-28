@@ -1,4 +1,7 @@
 package poo.pl2;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -131,12 +134,15 @@ public class Reserva implements java.io.Serializable{
         });
         return reservas;
     }
-    public static void añadirReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
+    public static int añadirReserva(LocalDate fechaReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Inmueble inmueble,
             Particular particular){
         if (!validarReserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular).isEmpty())
                 throw new IllegalArgumentException(validarReserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular));
-        ListManager.getReservas().add(new Reserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular, ListManager.getReservas().size()));
+        Reserva nuevaReserva=new Reserva(fechaReserva, fechaEntrada, fechaSalida, inmueble, particular, ListManager.getReservas().size());
+        ListManager.getReservas().add(nuevaReserva);
+        nuevaReserva.imprimirFactura();
         inmueble.setVecesReservado(inmueble.getVecesReservado()+1);
+        return ListManager.getReservas().size()-1;
     }
     public static void borrarReserva (int id){
         // ArrayList<Reserva> reservasOrdenadas=Reserva.getReservas();
@@ -193,7 +199,37 @@ public class Reserva implements java.io.Serializable{
 
 
     public void imprimirFactura(){
-
+        try{
+                String now = LocalDate.now().toString();
+                File factura = new File("Facturas\\"+this.inmueble.getTitulo()+'_'+this.inmueble.getDueño().getCorreo()+'_'+fechaEntrada.toString()+'_'+fechaSalida.toString()+".txt");
+                factura.createNewFile();
+                PrintWriter writer = new PrintWriter("Facturas\\"+this.inmueble.getTitulo()+'_'+this.inmueble.getDueño().getCorreo()+'_'+fechaEntrada.toString()+'_'+fechaSalida.toString()+".txt");
+                writer.println("Datos de la Reserva");
+                writer.println("Fecha de la reserva: "+now.toString());
+                writer.println("Importe: "+String.valueOf(ChronoUnit.DAYS.between(fechaEntrada, fechaSalida)*inmueble.getPrecioPorNoche()*(particular.isVip()?0.9:1))+" €");
+                writer.println("Fecha de entrada: "+fechaEntrada.toString());
+                writer.println("Fecha de salida: "+fechaSalida.toString());
+                writer.println("\nDatos del Inmueble");
+                writer.println("Título: "+inmueble.getTitulo());
+                writer.println("Dueño: "+inmueble.getDueño());
+                writer.println("Tipo de propiedad: "+inmueble.getTipo().toString());
+                writer.println("Precio por noche: "+String.valueOf(inmueble.getPrecioPorNoche()));
+                writer.println("Calificación: "+String.valueOf(inmueble.getCalificacion()));
+                writer.println("Dirección: "+inmueble.getDireccion().toString());
+                writer.println("Baños: "+inmueble.getBaños());
+                writer.println("Huéspedes máximos: "+String.valueOf(inmueble.getHuespedesMaximos()));
+                writer.println("Habitaciones: "+String.valueOf(inmueble.getHabitaciones()));
+                writer.println("Camas: "+String.valueOf(inmueble.getCamas()));
+                writer.println("\nDatos del cliente");
+                writer.println("Correo: "+particular.getCorreo());
+                writer.println("Nombre: "+particular.getNombre());
+                writer.println("Teléfono: "+particular.getTelefono());
+                writer.println("DNI: "+particular.getDni());
+                writer.println("\n¡Gracias por reservar con JavaBnB!");
+                writer.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
 
