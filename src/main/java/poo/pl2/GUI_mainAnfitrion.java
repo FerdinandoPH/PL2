@@ -140,6 +140,12 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             }
         });
 
+        infoPanel.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                infoPanelStateChanged(evt);
+            }
+        });
+
         datosFrame.setVisible(true);
 
         jLabel8.setText("Título");
@@ -666,6 +672,13 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         this.importeField.setText(String.valueOf(r.getImporte()));
         this.clienteField.setText(r.getParticular().getCorreo());
     }//GEN-LAST:event_reservasListValueChanged
+
+    private void infoPanelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_infoPanelStateChanged
+        if (this.infoPanel.getSelectedIndex()==1)
+            this.borrarInmuebleButton.setEnabled(false);
+        else
+            this.borrarInmuebleButton.setEnabled(true);
+    }//GEN-LAST:event_infoPanelStateChanged
     private void actualizarInmuebleMostrado(){
         if(inmueblesComboBox.getSelectedIndex()==-1){
             setEnableRecursivo(infoPanel, false);
