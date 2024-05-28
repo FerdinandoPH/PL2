@@ -40,6 +40,13 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         initComponents();
         actualizarInmuebleMostrado();
         prepararListenersCambio();
+        for (Reserva r:Reserva.getReservas())
+            if (r.getInmueble().equals(usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex())))
+                reservas.add(r);
+        String[] listaFinal = new String[reservas.size()];
+        for (int i=0; i<reservas.size(); i++)
+            listaFinal[i] = reservas.get(i).getFechaEntrada().toString()+" - "+reservas.get(i).getFechaSalida().toString();
+        this.reservasList.setListData(listaFinal);
     }
 
     /**
@@ -571,7 +578,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         actualizarInmuebleMostrado();
         reservas.clear();
         for (Reserva r:Reserva.getReservas())
-            if (r.getInmueble().equals(usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()).getId()))
+            if (r.getInmueble().equals(usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex())))
                 reservas.add(r);
         String[] listaFinal = new String[reservas.size()];
         for (int i=0; i<reservas.size(); i++)
