@@ -5,8 +5,6 @@ import java.time.LocalDate;
 public class Reseña implements java.io.Serializable{
     private String comentario;
     private int calificacion;
-    private Particular particular;
-    private Inmueble inmueble;
     private Reserva reserva;
     private LocalDate fechaReseña;
     
@@ -27,19 +25,19 @@ public class Reseña implements java.io.Serializable{
     }
 
     public Particular getParticular() {
-        return particular;
+        return reserva.getParticular();
     }
 
     public void setParticular(Particular particular) {
-        this.particular = particular;
+        this.reserva.setParticular(particular);
     }
 
     public Inmueble getInmueble() {
-        return inmueble;
+        return reserva.getInmueble();
     }
 
     public void setInmueble(Inmueble inmueble) {
-        this.inmueble = inmueble;
+        this.reserva.setInmueble(inmueble);
     }
     public LocalDate getFechaReseña() {
         return fechaReseña;
@@ -47,11 +45,9 @@ public class Reseña implements java.io.Serializable{
     public void setFechaReseña(LocalDate fechaReseña) {
         this.fechaReseña = fechaReseña;
     }
-    public Reseña(Particular particular, Inmueble inmueble, Reserva reserva, int calificacion, String comentario) {
+    public Reseña(Reserva reserva, int calificacion, String comentario) {
         this.comentario = comentario;
         this.calificacion = Math.max(1, Math.min(5, calificacion));
-        this.particular = particular;
-        this.inmueble = inmueble;
         this.reserva = reserva;
         this.reserva.setYaReseñado(true);
         if (LocalDate.now().isBefore(reserva.getFechaSalida()))

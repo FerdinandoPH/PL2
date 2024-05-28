@@ -93,8 +93,8 @@
                       <Component id="borrarButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="datosPanel" min="-2" pref="446" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="datosPanel" pref="456" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="cerrarSesionButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -319,7 +319,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="extenderButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="modificarButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cancelarButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -568,7 +568,7 @@
                           <Component id="inmuebleField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="particularField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="269" max="32767" attributes="0"/>
+                      <EmptySpace pref="279" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -753,7 +753,7 @@
                                           <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="elegirFotoButton" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="verReseñasButton" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -823,7 +823,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="serviciosField" pref="66" max="32767" attributes="0"/>
+                          <Component id="serviciosField" pref="90" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -831,7 +831,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="elegirFotoButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="verReseñasButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="editarInmuebleButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -991,12 +991,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="elegirFotoButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="verRese&#xf1;asButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver rese&#xf1;as"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verRese&#xf1;asButtonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="editarInmuebleButton">
