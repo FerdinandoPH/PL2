@@ -166,8 +166,10 @@ public class Reserva implements java.io.Serializable{
             errores+="La fecha de entrada no puede ser posterior a la fecha de salida\n";
             return errores;
         }
-        if(fechaReserva.isAfter(fechaEntrada) || fechaReserva.isAfter(fechaSalida))
+        if(fechaReserva.isAfter(fechaEntrada) || fechaReserva.isAfter(fechaSalida)){
             errores+="La fecha de reserva no puede ser posterior a la fecha de entrada o salida\n";
+            return errores;
+        }
         if (fechaEntrada.isBefore(LocalDate.now().plusDays(1)) || fechaSalida.isBefore(LocalDate.now().plusDays(1)))
             errores+="No se puede reservar antes de mañana\n";
         if (ChronoUnit.YEARS.between(fechaReserva, fechaEntrada)>0 || ChronoUnit.YEARS.between(fechaReserva, fechaSalida)>0)

@@ -44,7 +44,7 @@ public class Direccion implements java.io.Serializable{
      */
     @Override
     public String toString() {
-        return "C/ " + calle + " " + numero + " " + ciudad + " " + codigoPostal;
+        return "C/ " + calle + ", nº " + numero + ", " + ciudad + ", C.P. " + codigoPostal;
     }
     @Override
     public boolean equals(Object obj) {
