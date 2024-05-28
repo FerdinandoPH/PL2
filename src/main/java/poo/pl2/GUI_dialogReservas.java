@@ -22,7 +22,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         initComponents();
         this.usuario = usuario;
         for (int i=0; i<Reserva.getReservas().size(); i++)
-            if (Reserva.getReservas().get(i).getParticular().equals(usuario)&&(Reserva.getReservas().get(i).getFechaSalida().isBefore(LocalDate.now())||Reserva.getReservas().get(i).getFechaSalida().isEqual(LocalDate.now())))
+            if (Reserva.getReservas().get(i).getParticular().equals(usuario))
                 reservas.add(Reserva.getReservas().get(i));
         String[] listaFinal = new String[reservas.size()];
         for (int i=0; i<reservas.size(); i++)
@@ -193,6 +193,11 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         fotoLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         verReseñasButton.setText("Ver reseñas");
+        verReseñasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verReseñasButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
         jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
@@ -424,6 +429,11 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
     private void volverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_volverButtonActionPerformed
+
+    private void verReseñasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReseñasButtonActionPerformed
+        GUI_dialogVerReseñas verReseñas = new GUI_dialogVerReseñas(this, true, reservas.get(reservasList.getSelectedIndex()).getInmueble());
+        verReseñas.setVisible(true);
+    }//GEN-LAST:event_verReseñasButtonActionPerformed
 
     /**
      * @param args the command line arguments

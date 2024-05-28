@@ -415,6 +415,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver rese&#xf1;as"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verRese&#xf1;asButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

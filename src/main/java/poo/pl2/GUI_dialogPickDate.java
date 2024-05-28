@@ -16,6 +16,7 @@ public class GUI_dialogPickDate extends javax.swing.JDialog {
     private LocalDate fecha;
     private boolean fechaSeleccionada=false;
     public java.awt.Frame parent;
+    
     public boolean isFechaSeleccionada() {
         return fechaSeleccionada;
     }

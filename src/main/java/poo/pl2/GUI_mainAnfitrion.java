@@ -31,6 +31,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private boolean fotoCambiada=false;
     private boolean cambiandoInmueble=false;
     private String rutaImagenInmueble="";
+    private ArrayList<Reserva> reservas = new ArrayList();
     /**
      * Creates new form mainAnfitrion
      */
@@ -65,7 +66,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         tipoComboBox = new javax.swing.JComboBox<>();
         elegirFotoButton = new javax.swing.JButton();
         editarButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        verReseñasButton = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         codigoPostalField = new javax.swing.JTextField();
         serviciosField = new javax.swing.JTextField();
@@ -101,6 +102,8 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         fechaSalidaField = new javax.swing.JTextField();
         importeField = new javax.swing.JTextField();
         clienteField = new javax.swing.JTextField();
+        fechaReservaField = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
         crearInmuebleButton = new javax.swing.JButton();
         borrarInmuebleButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -161,10 +164,10 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Ver reseñas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        verReseñasButton.setText("Ver reseñas");
+        verReseñasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                verReseñasButtonActionPerformed(evt);
             }
         });
 
@@ -300,7 +303,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                                 .addGap(153, 153, 153)
                                 .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(elegirFotoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(verReseñasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(datosFrameLayout.createSequentialGroup()
                                 .addGap(92, 92, 92)
                                 .addComponent(editarButton)
@@ -356,7 +359,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(serviciosField, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addComponent(serviciosField, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -364,7 +367,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(elegirFotoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(verReseñasButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editarButton)
@@ -379,6 +382,11 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         reservasFrame.setVisible(true);
 
         reservasList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        reservasList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                reservasListValueChanged(evt);
+            }
+        });
         jScrollPane5.setViewportView(reservasList);
 
         jLabel1.setText("Fecha entrada");
@@ -397,6 +405,11 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
 
         clienteField.setEditable(false);
 
+        fechaReservaField.setEditable(false);
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Fecha de realización");
+
         javax.swing.GroupLayout reservasFrameLayout = new javax.swing.GroupLayout(reservasFrame.getContentPane());
         reservasFrame.getContentPane().setLayout(reservasFrameLayout);
         reservasFrameLayout.setHorizontalGroup(
@@ -409,14 +422,18 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                         .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fechaEntradaField)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(48, 48, 48)
+                        .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaReservaField)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(45, 45, 45)
                         .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fechaSalidaField)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))
-                    .addGroup(reservasFrameLayout.createSequentialGroup()
-                        .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(importeField))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reservasFrameLayout.createSequentialGroup()
+                        .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(importeField, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(218, 218, 218)
                         .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -431,11 +448,13 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fechaEntradaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaSalidaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fechaSalidaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaReservaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -444,7 +463,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 .addGroup(reservasFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(importeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clienteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         infoPanel.addTab("Reservas", reservasFrame);
@@ -478,21 +497,20 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(inmueblesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(139, 139, 139)
-                                        .addComponent(cerrarSesionButton))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(107, 107, 107)
-                                        .addComponent(modificarDatosPersonalesButton)))
+                                .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(borrarInmuebleButton)
                                     .addComponent(crearInmuebleButton)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(182, 182, 182)
-                        .addComponent(jLabel5)))
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(modificarDatosPersonalesButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(226, 226, 226)
+                        .addComponent(cerrarSesionButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -516,7 +534,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                         .addComponent(crearInmuebleButton)
                         .addGap(18, 18, 18)
                         .addComponent(borrarInmuebleButton)
-                        .addContainerGap(391, Short.MAX_VALUE))))
+                        .addContainerGap(398, Short.MAX_VALUE))))
         );
 
         pack();
@@ -551,6 +569,14 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private void inmueblesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inmueblesComboBoxActionPerformed
         cambiandoInmueble=true;
         actualizarInmuebleMostrado();
+        reservas.clear();
+        for (Reserva r:Reserva.getReservas())
+            if (r.getInmueble().equals(usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()).getId()))
+                reservas.add(r);
+        String[] listaFinal = new String[reservas.size()];
+        for (int i=0; i<reservas.size(); i++)
+            listaFinal[i] = reservas.get(i).getFechaEntrada().toString()+" - "+reservas.get(i).getFechaSalida().toString();
+        this.reservasList.setListData(listaFinal);
     }//GEN-LAST:event_inmueblesComboBoxActionPerformed
 
     private void borrarInmuebleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarInmuebleButtonActionPerformed
@@ -610,9 +636,10 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_elegirFotoButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void verReseñasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReseñasButtonActionPerformed
+        GUI_dialogVerReseñas verReseñas = new GUI_dialogVerReseñas(this, true, usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()));
+        verReseñas.setVisible(true);
+    }//GEN-LAST:event_verReseñasButtonActionPerformed
 
     private void cancelarCambiosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCambiosButtonActionPerformed
         actualizarInmuebleMostrado();
@@ -623,6 +650,15 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private void habitacionesFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habitacionesFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_habitacionesFieldActionPerformed
+
+    private void reservasListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_reservasListValueChanged
+        Reserva r = reservas.get(reservasList.getSelectedIndex());
+        this.fechaEntradaField.setText(r.getFechaEntrada().toString());
+        this.fechaSalidaField.setText(r.getFechaSalida().toString());
+        this.fechaReservaField.setText(r.getFechaReserva().toString());
+        this.importeField.setText(String.valueOf(r.getImporte()));
+        this.clienteField.setText(r.getParticular().getCorreo());
+    }//GEN-LAST:event_reservasListValueChanged
     private void actualizarInmuebleMostrado(){
         if(inmueblesComboBox.getSelectedIndex()==-1){
             setEnableRecursivo(infoPanel, false);
@@ -889,6 +925,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private javax.swing.JButton editarButton;
     private javax.swing.JButton elegirFotoButton;
     private javax.swing.JTextField fechaEntradaField;
+    private javax.swing.JTextField fechaReservaField;
     private javax.swing.JTextField fechaSalidaField;
     private javax.swing.JFormattedTextField habitacionesField;
     private javax.swing.JFormattedTextField huespedesField;
@@ -896,7 +933,6 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private javax.swing.JTextField importeField;
     private javax.swing.JTabbedPane infoPanel;
     private javax.swing.JComboBox<String> inmueblesComboBox;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -912,6 +948,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -929,5 +966,6 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private javax.swing.JTextField serviciosField;
     private javax.swing.JComboBox<String> tipoComboBox;
     private javax.swing.JTextField tituloField;
+    private javax.swing.JButton verReseñasButton;
     // End of variables declaration//GEN-END:variables
 }

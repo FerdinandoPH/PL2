@@ -17,11 +17,46 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
      * Creates new form GUI_dialogVerReseñas
      */
     private Inmueble inmueble;
+    private ArrayList<Reseña> reseñas = new ArrayList();
     
     public GUI_dialogVerReseñas(java.awt.Frame parent, boolean modal, Inmueble inmueble) {
         super(parent, modal);
-        initComponents();
         this.inmueble = inmueble;
+        initComponents();
+        updateReseñas();
+    }
+    
+    public GUI_dialogVerReseñas(java.awt.Dialog parent, boolean modal, Inmueble inmueble) {
+        super(parent, modal);
+        this.inmueble = inmueble;
+        initComponents();
+        updateReseñas();
+    }
+    
+    private void updateReseñas(){
+        reseñas.clear();
+        String[] listaFinal = new String[inmueble.getReseñas().size()];
+        String str;
+        for (int i=0; i<inmueble.getReseñas().size(); i++){
+            str = "";
+            switch (inmueble.getReseñas().get(i).getCalificacion()){
+                case 5:
+                    str += "*";
+                case 4:
+                    str += "*";
+                case 3:
+                    str += "*";
+                case 2:
+                    str += "*";
+                case 1:
+                    str += "*";
+                default:
+                    str += " "+inmueble.getReseñas().get(i).getParticular().getCorreo();
+                    break;
+            }
+            listaFinal[i] = str;
+            this.reseñasList.setListData(listaFinal);
+        }
     }
 
     /**
@@ -74,8 +109,11 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
 
         jLabel3.setText("Reseña realizada el");
 
+        fechaReseñaField.setEditable(false);
+
         jLabel4.setText("Comentario");
 
+        comentarioArea.setEditable(false);
         comentarioArea.setColumns(20);
         comentarioArea.setRows(5);
         jScrollPane1.setViewportView(comentarioArea);
@@ -93,7 +131,7 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
                             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(calificacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(calificacionField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -132,22 +170,20 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(salirButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(152, 152, 152)
-                                    .addComponent(jLabel1))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(21, 21, 21)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 20, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(152, 152, 152)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 165, Short.MAX_VALUE)
+                .addComponent(salirButton)
+                .addGap(161, 161, 161))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,9 +193,9 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(salirButton)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -170,17 +206,10 @@ public class GUI_dialogVerReseñas extends javax.swing.JDialog {
     }//GEN-LAST:event_salirButtonActionPerformed
 
     private void reseñasListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_reseñasListValueChanged
-        if (reseñasList.getSelectedIndex() != -1){
-            Reseña r = inmueble.getReseñas().get(reseñasList.getSelectedIndex());
-            calificacionField.setText(String.valueOf(r.getCalificacion()));
-            fechaReseñaField.setText(r.getFechaReseña().toString());
-            comentarioArea.setText(r.getComentario());
-        }
-        else{
-            calificacionField.setText("");
-            fechaReseñaField.setText("");
-            comentarioArea.setText("");
-        }
+        Reseña r = inmueble.getReseñas().get(reseñasList.getSelectedIndex());
+        calificacionField.setText(String.valueOf(r.getCalificacion()));
+        fechaReseñaField.setText(r.getFechaReseña().toString());
+        comentarioArea.setText(r.getComentario());
     }//GEN-LAST:event_reseñasListValueChanged
 
     /**

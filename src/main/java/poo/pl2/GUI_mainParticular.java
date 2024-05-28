@@ -6,6 +6,7 @@ package poo.pl2;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -309,6 +310,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             }
         });
 
+        fechasOcupArea.setEditable(false);
         fechasOcupArea.setColumns(20);
         fechasOcupArea.setRows(5);
         jScrollPane4.setViewportView(fechasOcupArea);
@@ -529,7 +531,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
                     mp.fechaEntradaField.setText(fechaEntrada.toString());
                     try{
                         if(!mp.fechaSalidaField.getText().isEmpty())
-                        mp.precioReservaField.setText(String.valueOf((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()*(mp.usuario.isVip()?0.9:1)));
+                            mp.precioReservaField.setText(String.valueOf((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()*(mp.usuario.isVip()?0.9:1)));
                     }
                     catch (Exception ex){
                         ex.printStackTrace();
@@ -538,6 +540,11 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             }
         });
         pickDate.setVisible(true);
+        if ((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()*(mp.usuario.isVip()?0.9:1)<0){
+            this.precioReservaField.setText("");
+            javax.swing.JOptionPane.showMessageDialog(this, "Invalid date", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            elegirFechaEntradaButtonActionPerformed(evt);
+        }
     }//GEN-LAST:event_elegirFechaEntradaButtonActionPerformed
 
     private void elegirFechaSalidaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirFechaSalidaButtonActionPerformed
@@ -551,7 +558,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
                     mp.fechaSalidaField.setText(fechaSalida.toString());
                     try{
                         if(!mp.fechaEntradaField.getText().isEmpty())
-                        mp.precioReservaField.setText(String.valueOf(ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)*mp.inmueble.getPrecioPorNoche()));
+                            mp.precioReservaField.setText(String.valueOf(ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)*mp.inmueble.getPrecioPorNoche()*(mp.usuario.isVip()?0.9:1)));
                     }
                     catch (Exception ex){
                         ex.printStackTrace();
@@ -560,6 +567,11 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             }
         });
         pickDate.setVisible(true);
+         if ((ChronoUnit.DAYS.between(mp.fechaEntrada, mp.fechaSalida)+1)*mp.inmueble.getPrecioPorNoche()*(mp.usuario.isVip()?0.9:1)<0){
+            this.precioReservaField.setText("");
+            javax.swing.JOptionPane.showMessageDialog(this, "Invalid date", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            elegirFechaSalidaButtonActionPerformed(evt);
+        }
     }//GEN-LAST:event_elegirFechaSalidaButtonActionPerformed
 
     private void reservaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservaButtonActionPerformed
@@ -567,9 +579,34 @@ public class GUI_mainParticular extends javax.swing.JFrame {
             Reserva.añadirReserva(LocalDate.now(), fechaEntrada, fechaSalida, inmueble, usuario);
             javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             try{
-                
-                PrintWriter writer = new PrintWriter("..\\Facturas\\"+this.inmueble.getTitulo()+'\\'+this.inmueble.getDueño().getCorreo()+'\\'+fechaEntrada.toString()+'-'+fechaSalida.toString()+".txt");
-                
+                String now = LocalDate.now().toString();
+                File factura = new File("Facturas\\"+this.inmueble.getTitulo()+'_'+this.inmueble.getDueño().getCorreo()+'_'+fechaEntrada.toString()+'_'+fechaSalida.toString()+".txt");
+                factura.createNewFile();
+                PrintWriter writer = new PrintWriter("Facturas\\"+this.inmueble.getTitulo()+'_'+this.inmueble.getDueño().getCorreo()+'_'+fechaEntrada.toString()+'_'+fechaSalida.toString()+".txt");
+                writer.println("Datos de la Reserva");
+                writer.println("Fecha de la reserva: "+now.toString());
+                writer.println("Importe: "+String.valueOf(ChronoUnit.DAYS.between(fechaEntrada, fechaSalida)*inmueble.getPrecioPorNoche()*(usuario.isVip()?0.9:1))+" €");
+                writer.println("Fecha de entrada: "+fechaEntrada.toString());
+                writer.println("Fecha de salida: "+fechaSalida.toString());
+                writer.println("\nDatos del Inmueble");
+                writer.println("Título: "+inmueble.getTitulo());
+                writer.println("Dueño: "+inmueble.getDueño());
+                writer.println("Tipo de propiedad: "+inmueble.getTipo().toString());
+                writer.println("Precio por noche: "+String.valueOf(inmueble.getPrecioPorNoche()));
+                writer.println("Calificación: "+String.valueOf(inmueble.getCalificacion()));
+                writer.println("Dirección: "+inmueble.getDireccion().toString());
+                writer.println("Baños: "+inmueble.getBaños());
+                writer.println("Huéspedes máximos: "+String.valueOf(inmueble.getHuespedesMaximos()));
+                writer.println("Habitaciones: "+String.valueOf(inmueble.getHabitaciones()));
+                writer.println("Camas: "+String.valueOf(inmueble.getCamas()));
+                writer.println("\nDatos del cliente");
+                writer.println("Correo: "+usuario.getCorreo());
+                writer.println("Nombre: "+usuario.getNombre());
+                writer.println("Teléfono: "+usuario.getTelefono());
+                writer.println("DNI: "+usuario.getDni());
+                writer.println("\n¡Gracias por reservar con JavaBnB!");
+                writer.close();
+                updateFechasOcupadas();
             }
             catch (Exception e){
                 e.printStackTrace();
