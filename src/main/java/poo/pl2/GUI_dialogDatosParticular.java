@@ -50,7 +50,7 @@ public class GUI_dialogDatosParticular extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         mesSpinner = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
-        añoSpinner = new javax.swing.JSpinner();
+        annoSpinner = new javax.swing.JSpinner();
         jLabel7 = new javax.swing.JLabel();
         vipField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -64,7 +64,7 @@ public class GUI_dialogDatosParticular extends javax.swing.JDialog {
 
         jLabel1.setText("Nombre*");
 
-        jLabel2.setText("Número de la tarjeta*");
+        jLabel2.setText("Numero de la tarjeta*");
 
         confirmarButton.setText("Confirmar");
         confirmarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -84,11 +84,11 @@ public class GUI_dialogDatosParticular extends javax.swing.JDialog {
 
         mesSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
 
-        jLabel6.setText("Año*");
+        jLabel6.setText("Anno*");
 
-        añoSpinner.setModel(new javax.swing.SpinnerNumberModel(2030, null, null, 1));
+        annoSpinner.setModel(new javax.swing.SpinnerNumberModel(2030, null, null, 1));
 
-        jLabel7.setText("Si eres VIP, introduce tu código");
+        jLabel7.setText("Si eres VIP, introduce tu codigo");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 26)); // NOI18N
         jLabel8.setText("Datos para particulares");
@@ -138,7 +138,7 @@ public class GUI_dialogDatosParticular extends javax.swing.JDialog {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(añoSpinner, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(annoSpinner, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(mesSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -169,7 +169,7 @@ public class GUI_dialogDatosParticular extends javax.swing.JDialog {
                     .addComponent(jLabel2))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(añoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(annoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numTarjetaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,11 +188,11 @@ public class GUI_dialogDatosParticular extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
-        String errores=Usuario.validarInformacion(nombreField.getText(), numTarjetaField.getText(), (int)mesSpinner.getValue(), (int)añoSpinner.getValue(), vipField.getText());
+        String errores=Usuario.validarInformacion(nombreField.getText(), numTarjetaField.getText(), (int)mesSpinner.getValue(), (int)annoSpinner.getValue(), vipField.getText());
         if (errores.isEmpty()){
             try{
-                Usuario.registrar(datosPrevios[0], datosPrevios[1], datosPrevios[2], datosPrevios[3], datosPrevios[4], datosPrevios[5], vipField.getText().isEmpty()?false:true, new Tarjeta(LocalDate.of((int)añoSpinner.getValue(), (int)mesSpinner.getValue(), 1), nombreField.getText(), Long.parseLong(numTarjetaField.getText())));
-                JOptionPane.showMessageDialog(this, "Registro completado con éxito", "Registro", JOptionPane.INFORMATION_MESSAGE);
+                Usuario.registrar(datosPrevios[0], datosPrevios[1], datosPrevios[2], datosPrevios[3], datosPrevios[4], datosPrevios[5], vipField.getText().isEmpty()?false:true, new Tarjeta(LocalDate.of((int)annoSpinner.getValue(), (int)mesSpinner.getValue(), 1), nombreField.getText(), Long.parseLong(numTarjetaField.getText())));
+                JOptionPane.showMessageDialog(this, "Registro completado con exito", "Registro", JOptionPane.INFORMATION_MESSAGE);
                 this.registroExitoso=true;
                 this.dispose();
             }catch(IllegalArgumentException e){
@@ -257,7 +257,7 @@ public class GUI_dialogDatosParticular extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner añoSpinner;
+    private javax.swing.JSpinner annoSpinner;
     private javax.swing.JButton cancelarButton;
     private javax.swing.JButton confirmarButton;
     private javax.swing.JLabel jLabel1;

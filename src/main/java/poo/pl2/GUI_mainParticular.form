@@ -255,18 +255,18 @@
                                           <Component id="jLabel15" min="-2" pref="64" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jScrollPane3" alignment="0" min="-2" pref="208" max="-2" attributes="0"/>
-                                      <Component id="dueñoLabel" min="-2" pref="187" max="-2" attributes="0"/>
+                                      <Component id="duennoLabel" min="-2" pref="187" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="nombreDueñoField" min="-2" pref="156" max="-2" attributes="0"/>
+                                          <Component id="nombreDuennoField" min="-2" pref="156" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Component id="verReseñasButton" min="-2" max="-2" attributes="0"/>
+                                          <Component id="verResennasButton" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
@@ -277,7 +277,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel18" min="-2" pref="44" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="correoDueñoField" min="-2" pref="156" max="-2" attributes="0"/>
+                                  <Component id="correoDuennoField" min="-2" pref="156" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="214" max="32767" attributes="0"/>
@@ -328,12 +328,12 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="verReseñasButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="verResennasButton" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="dueñoLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="duennoLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="nombreDueñoField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nombreDuennoField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -341,7 +341,7 @@
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="correoDueñoField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="correoDuennoField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>

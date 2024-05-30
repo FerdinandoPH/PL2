@@ -45,8 +45,8 @@ public class Anfitrion extends Cliente {
         this.fechaRegistro = fechaRegistro;
     }
     /**
-     * Actualiza el estado de super anfitrión del anfitrión.
-     * Un anfitrión se convierte en super anfitrión si la calificación promedio de sus inmuebles es mayor que 4.
+     * Actualiza el estado de super anfitrion del anfitrion.
+     * Un anfitrion se convierte en super anfitrion si la calificacion promedio de sus inmuebles es mayor que 4.
      */
     public void actualizarSuperAnfitrion(){
         superAnfitrion= inmuebles.stream().mapToDouble(Inmueble::getCalificacion).average().orElse(0)>4?true:false;
@@ -54,13 +54,13 @@ public class Anfitrion extends Cliente {
     
     /**
      * Constructor para la clase Anfitrion.
-     * Inicializa un nuevo anfitrión con los detalles proporcionados. Aparte de los parámetros, este empieza sin ser super anfitrión, y con la fecha de registro actual
+     * Inicializa un nuevo anfitrion con los detalles proporcionados. Aparte de los parametros, este empieza sin ser super anfitrion, y con la fecha de registro actual
      *
-     * @param correo El correo del anfitrión.
-     * @param claveString La clave del anfitrión.
-     * @param dni El DNI del anfitrión.
-     * @param nombre El nombre del anfitrión.
-     * @param telefono El teléfono del anfitrión.
+     * @param correo El correo del anfitrion.
+     * @param claveString La clave del anfitrion.
+     * @param dni El DNI del anfitrion.
+     * @param nombre El nombre del anfitrion.
+     * @param telefono El telefono del anfitrion.
      */
     public Anfitrion(String correo, String claveString, String dni, String nombre, String telefono){
         super(correo, claveString, dni, nombre, telefono);
@@ -69,29 +69,29 @@ public class Anfitrion extends Cliente {
     }
 
     /**
-     * Método para añadir un nuevo inmueble a nombre del anfitrión.
+     * Metodo para annadir un nuevo inmueble a nombre del anfitrion.
      * 
-     * @param direccion La dirección del inmueble.
-     * @param titulo El título del inmueble.
-     * @param baños El número de baños del inmueble.
-     * @param camas El número de camas del inmueble.
+     * @param direccion La direccion del inmueble.
+     * @param titulo El titulo del inmueble.
+     * @param bannos El numero de bannos del inmueble.
+     * @param camas El numero de camas del inmueble.
      * @param rutaImagenInmueble La ruta de la imagen del inmueble, para crear el ImageIcon.
-     * @param habitaciones El número de habitaciones del inmueble.
-     * @param huespedesMaximos El número máximo de huéspedes del inmueble.
+     * @param habitaciones El numero de habitaciones del inmueble.
+     * @param huespedesMaximos El numero maximo de huespedes del inmueble.
      * @param precioPorNoche El precio por noche del inmueble.
      * @param servicios Los servicios del inmueble.
      * @param tipo El tipo de propiedad del inmueble.
      */
-    public void añadirInmueble(Direccion direccion, String titulo, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos, double precioPorNoche, String servicios, tipoPropiedad tipo){
+    public void annadirInmueble(Direccion direccion, String titulo, int bannos, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos, double precioPorNoche, String servicios, tipoPropiedad tipo){
         for (Inmueble i: inmuebles){
             if (i.getTitulo().equals(titulo))
-                throw new IllegalArgumentException("Ya tienes un inmueble con ese título");
+                throw new IllegalArgumentException("Ya tienes un inmueble con ese titulo");
         }
-        Inmueble inmueble = new Inmueble(direccion, titulo, this, baños, camas, rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, inmuebles.size());
+        Inmueble inmueble = new Inmueble(direccion, titulo, this, bannos, camas, rutaImagenInmueble, habitaciones, huespedesMaximos, precioPorNoche, servicios, tipo, inmuebles.size());
         inmuebles.add(inmueble);
     }
     /**
-     * Método para borrar un inmueble del anfitrión.
+     * Metodo para borrar un inmueble del anfitrion.
      * 
      * @param id El ID del inmueble a borrar.
      */
@@ -99,36 +99,36 @@ public class Anfitrion extends Cliente {
         inmuebles.remove(id);
     }
     /**
-     * Método para editar un inmueble del anfitrión.
+     * Metodo para editar un inmueble del anfitrion.
      * 
      * @param id El ID del inmueble a editar.
-     * @param direccion La nueva dirección del inmueble.
-     * @param titulo El nuevo título del inmueble.
-     * @param baños El nuevo número de baños del inmueble.
-     * @param camas El nuevo número de camas del inmueble.
+     * @param direccion La nueva direccion del inmueble.
+     * @param titulo El nuevo titulo del inmueble.
+     * @param bannos El nuevo numero de bannos del inmueble.
+     * @param camas El nuevo numero de camas del inmueble.
      * @param rutaImagenInmueble La nueva ruta de la imagen del inmueble.
-     * @param habitaciones El nuevo número de habitaciones del inmueble.
-     * @param huespedesMaximos El nuevo número máximo de huéspedes del inmueble.
+     * @param habitaciones El nuevo numero de habitaciones del inmueble.
+     * @param huespedesMaximos El nuevo numero maximo de huespedes del inmueble.
      * @param precioPorNoche El nuevo precio por noche del inmueble.
      * @param servicios Los nuevos servicios del inmueble.
      * @param tipo El nuevo tipo de propiedad del inmueble.
      */
-    public void editarInmueble(int id, Direccion direccion, String titulo, int baños, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
+    public void editarInmueble(int id, Direccion direccion, String titulo, int bannos, int camas, String rutaImagenInmueble, int habitaciones, int huespedesMaximos,
             double precioPorNoche, String servicios, tipoPropiedad tipo){
         Inmueble inmuebleAEditar=inmuebles.stream().filter(i->i.getId()==id).findFirst().orElse(null);
         if (inmuebleAEditar==null)
             throw new IllegalArgumentException("No existe un inmueble con ese id");
         for (Inmueble i: Inmueble.getInmuebles()){
             if (i.getDireccion().equals(direccion)&&i.getId()!=id)
-                throw new IllegalArgumentException("Ya existe un inmueble con esa dirección");
+                throw new IllegalArgumentException("Ya existe un inmueble con esa direccion");
         }
         inmuebleAEditar.setDireccion(direccion);
         for (Inmueble i: inmuebles){
             if (i.getTitulo().equals(titulo)&&i.getId()!=id)
-                throw new IllegalArgumentException("Ya tienes un inmueble con ese título");
+                throw new IllegalArgumentException("Ya tienes un inmueble con ese titulo");
         }
         inmuebleAEditar.setTitulo(titulo);
-        inmuebleAEditar.setBaños(baños);
+        inmuebleAEditar.setBannos(bannos);
         inmuebleAEditar.setCamas(camas);
         if (!rutaImagenInmueble.equals("")) {
             try{

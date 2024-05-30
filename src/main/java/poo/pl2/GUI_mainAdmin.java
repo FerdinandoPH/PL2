@@ -46,7 +46,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         this.usuario=usuario;
         initComponents();
         prepararListenersCambio();
-        actualizarPestañas();
+        actualizarPestannas();
     }
 
     /**
@@ -75,7 +75,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         telefonoField = new javax.swing.JTextField();
         boolLabel = new javax.swing.JLabel();
         nombreField = new javax.swing.JTextField();
-        cambiarContraseñaButton = new javax.swing.JButton();
+        cambiarContrasennaButton = new javax.swing.JButton();
         boolComboBox = new javax.swing.JComboBox<>();
         fechaRegistroLabel = new javax.swing.JLabel();
         nombreTitularTarjetaLabel = new javax.swing.JLabel();
@@ -86,8 +86,8 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         caducidadLabel = new javax.swing.JLabel();
         mesCaducidadLabel = new javax.swing.JLabel();
         mesSpinner = new javax.swing.JSpinner();
-        añoCaducidadLabel = new javax.swing.JLabel();
-        añoSpinner = new javax.swing.JSpinner();
+        annoCaducidadLabel = new javax.swing.JLabel();
+        annoSpinner = new javax.swing.JSpinner();
         extenderButton = new javax.swing.JButton();
         modificarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
@@ -123,7 +123,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         camasField = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        bañosField = new javax.swing.JFormattedTextField();
+        bannosField = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         ciudadField = new javax.swing.JTextField();
@@ -138,12 +138,12 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         imagenLabel = new javax.swing.JLabel();
         elegirFotoButton = new javax.swing.JButton();
-        verReseñasButton = new javax.swing.JButton();
+        verResennasButton = new javax.swing.JButton();
         editarInmuebleButton = new javax.swing.JButton();
         cancelarCambiosInmuebleButton = new javax.swing.JButton();
         tituloLabel = new javax.swing.JLabel();
         labelDebug = new javax.swing.JLabel();
-        añadirAdminButton = new javax.swing.JButton();
+        annadirAdminButton = new javax.swing.JButton();
         borrarButton = new javax.swing.JButton();
         cerrarSesionButton = new javax.swing.JButton();
 
@@ -179,7 +179,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
-                // Cambia el color de fondo de los elementos en los índices impares
+                // Cambia el color de fondo de los elementos en los indices impares
                 if (posicionesSeparador.contains(index)) {
                     c.setBackground(new Color(225,225,225));
                 } else {
@@ -230,18 +230,18 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         dniLabel.setText("DNI");
 
-        telefonoLabel.setText("Teléfono");
+        telefonoLabel.setText("Telefono");
 
-        boolLabel.setText("¿Es Súper Propietario?");
+        boolLabel.setText("¿Es Super Propietario?");
 
-        cambiarContraseñaButton.setText("Cambiar contraseña");
-        cambiarContraseñaButton.addActionListener(new java.awt.event.ActionListener() {
+        cambiarContrasennaButton.setText("Cambiar contrasenna");
+        cambiarContrasennaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cambiarContraseñaButtonActionPerformed(evt);
+                cambiarContrasennaButtonActionPerformed(evt);
             }
         });
 
-        boolComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sí", "No" }));
+        boolComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
         boolComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boolComboBoxActionPerformed(evt);
@@ -254,7 +254,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         fechaRegistroField.setEditable(false);
 
-        numeroTarjetaLabel.setText("Número de la Tarjeta");
+        numeroTarjetaLabel.setText("Numero de la Tarjeta");
 
         caducidadLabel.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         caducidadLabel.setText("Caducidad");
@@ -263,9 +263,9 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         mesSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
 
-        añoCaducidadLabel.setText("Año");
+        annoCaducidadLabel.setText("Anno");
 
-        añoSpinner.setModel(new javax.swing.SpinnerNumberModel(2024, 2024, null, 1));
+        annoSpinner.setModel(new javax.swing.SpinnerNumberModel(2024, 2024, null, 1));
 
         extenderButton.setText("Ver/Editar Reservas");
         extenderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -323,7 +323,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                                     .addGroup(usuarioFrameLayout.createSequentialGroup()
                                         .addComponent(tipoUsuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cambiarContraseñaButton))
+                                        .addComponent(cambiarContrasennaButton))
                                     .addComponent(fechaRegistroLabel)
                                     .addGroup(usuarioFrameLayout.createSequentialGroup()
                                         .addGroup(usuarioFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -334,11 +334,11 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                                             .addGroup(usuarioFrameLayout.createSequentialGroup()
                                                 .addComponent(mesCaducidadLabel)
                                                 .addGap(27, 27, 27)
-                                                .addComponent(añoCaducidadLabel))
+                                                .addComponent(annoCaducidadLabel))
                                             .addGroup(usuarioFrameLayout.createSequentialGroup()
                                                 .addComponent(mesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(añoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(annoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addComponent(extenderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 57, Short.MAX_VALUE)))
                         .addContainerGap())
@@ -366,7 +366,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                         .addGroup(usuarioFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(correoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tipoUsuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cambiarContraseñaButton))
+                            .addComponent(cambiarContrasennaButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(usuarioFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nombreLabel)
@@ -393,13 +393,13 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                         .addGroup(usuarioFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(numeroTarjetaLabel)
                             .addComponent(mesCaducidadLabel)
-                            .addComponent(añoCaducidadLabel))))
+                            .addComponent(annoCaducidadLabel))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(usuarioFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreTitularTarjetaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numeroTarjetaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(añoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(annoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(extenderButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
@@ -500,13 +500,13 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         inmuebleFrame.setTitle("Datos de inmueble");
         inmuebleFrame.setVisible(true);
 
-        jLabel8.setText("Título");
+        jLabel8.setText("Titulo");
 
         jLabel9.setText("Tipo");
 
         tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CASA", "APARTAMENTO" }));
 
-        jLabel15.setText("Calificación");
+        jLabel15.setText("Calificacion");
 
         calificacionField.setEditable(false);
 
@@ -517,7 +517,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel23.setText("Datos");
 
-        jLabel24.setText("Huéspedes máximos");
+        jLabel24.setText("Huespedes maximos");
 
         jLabel25.setText("Habitaciones");
 
@@ -529,18 +529,18 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         jLabel6.setText("Camas");
 
-        jLabel7.setText("Baños");
+        jLabel7.setText("Bannos");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel10.setText("Dirección");
+        jLabel10.setText("Direccion");
 
         jLabel11.setText("Ciudad");
 
         jLabel12.setText("Calle");
 
-        jLabel13.setText("Número");
+        jLabel13.setText("Numero");
 
-        jLabel26.setText("Código postal");
+        jLabel26.setText("Codigo postal");
 
         jLabel27.setText("Servicios");
 
@@ -556,10 +556,10 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             }
         });
 
-        verReseñasButton.setText("Ver reseñas");
-        verReseñasButton.addActionListener(new java.awt.event.ActionListener() {
+        verResennasButton.setText("Ver resennas");
+        verResennasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verReseñasButtonActionPerformed(evt);
+                verResennasButtonActionPerformed(evt);
             }
         });
 
@@ -622,7 +622,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                                             .addGroup(inmuebleFrameLayout.createSequentialGroup()
                                                 .addComponent(camasField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(27, 27, 27)
-                                                .addComponent(bañosField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(bannosField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(inmuebleFrameLayout.createSequentialGroup()
                                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -661,7 +661,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                                 .addGap(153, 153, 153)
                                 .addGroup(inmuebleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(elegirFotoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(verReseñasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(verResennasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(inmuebleFrameLayout.createSequentialGroup()
                                 .addGap(87, 87, 87)
                                 .addComponent(editarInmuebleButton)
@@ -699,7 +699,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     .addComponent(huespedesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(habitacionesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(camasField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bañosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bannosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -725,7 +725,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(elegirFotoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(verReseñasButton)
+                .addComponent(verResennasButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(inmuebleFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editarInmuebleButton)
@@ -739,15 +739,15 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
 
         tituloLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         tituloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tituloLabel.setText("Panel de Administración");
+        tituloLabel.setText("Panel de Administracion");
 
         labelDebug.setText(this.usuario.toString());
 
-        añadirAdminButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/añadirAdmin.png"))); // NOI18N
-        añadirAdminButton.setToolTipText("Añadir Administrador");
-        añadirAdminButton.addActionListener(new java.awt.event.ActionListener() {
+        annadirAdminButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/annadirAdmin.png"))); // NOI18N
+        annadirAdminButton.setToolTipText("Annadir Administrador");
+        annadirAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                añadirAdminButtonActionPerformed(evt);
+                annadirAdminButtonActionPerformed(evt);
             }
         });
 
@@ -759,7 +759,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             }
         });
 
-        cerrarSesionButton.setText("Cerrar Sesión");
+        cerrarSesionButton.setText("Cerrar Sesion");
         cerrarSesionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarSesionButtonActionPerformed(evt);
@@ -780,7 +780,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(añadirAdminButton)
+                            .addComponent(annadirAdminButton)
                             .addComponent(borrarButton)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -814,7 +814,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(añadirAdminButton)
+                        .addComponent(annadirAdminButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(borrarButton)))
                 .addGap(18, 18, 18)
@@ -858,13 +858,13 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 ArrayList<String> titulosLista=new ArrayList<String>();
                 String anfitrionPrevio="";
                 for (Inmueble e: Inmueble.getInmuebles()){
-                    if (!e.getDueño().getCorreo().equals(anfitrionPrevio)){
-                        titulosLista.add(e.getDueño().getCorreo());
+                    if (!e.getDuenno().getCorreo().equals(anfitrionPrevio)){
+                        titulosLista.add(e.getDuenno().getCorreo());
                         posicionesSeparador.add(i);
                         i++;
                     }
                     titulosLista.add(e.getTitulo());
-                    anfitrionPrevio=e.getDueño().getCorreo();
+                    anfitrionPrevio=e.getDuenno().getCorreo();
                     i++;
                 }
                 elementosList.setModel(new javax.swing.AbstractListModel<String>() {
@@ -878,8 +878,8 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 reservasOrdenadas=new ArrayList<Reserva>(Reserva.getReservas());
                 Collections.sort(reservasOrdenadas, new Comparator<Reserva>(){
                     public int compare(Reserva r1, Reserva r2){
-                        if (!r1.getInmueble().getDueño().getCorreo().equals(r2.getInmueble().getDueño().getCorreo())){
-                            return r1.getInmueble().getDueño().getCorreo().compareTo(r2.getInmueble().getDueño().getCorreo());
+                        if (!r1.getInmueble().getDuenno().getCorreo().equals(r2.getInmueble().getDuenno().getCorreo())){
+                            return r1.getInmueble().getDuenno().getCorreo().compareTo(r2.getInmueble().getDuenno().getCorreo());
                         }
                         else if(!r1.getInmueble().getTitulo().equals(r2.getInmueble().getTitulo())){
                             return r1.getInmueble().getTitulo().compareTo(r2.getInmueble().getTitulo());
@@ -893,7 +893,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 ArrayList<String> reservasLista=new ArrayList<String>();
                 for (Reserva r: reservasOrdenadas){
                     if (!r.getInmueble().getTitulo().equals(inmueblePrevio)){
-                        reservasLista.add(r.getInmueble().getDueño().getCorreo()+": "+r.getInmueble().getTitulo());
+                        reservasLista.add(r.getInmueble().getDuenno().getCorreo()+": "+r.getInmueble().getTitulo());
                         posicionesSeparador.add(i);
                         i++;
                     }
@@ -913,17 +913,17 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_correoFieldActionPerformed
 
-    private void cambiarContraseñaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContraseñaButtonActionPerformed
-        String nuevaContraseña = JOptionPane.showInputDialog(this, "Introduce la nueva contraseña", "Cambiar contraseña", JOptionPane.QUESTION_MESSAGE);
-        String nuevaContraseña2 = JOptionPane.showInputDialog(this, "Introduce la nueva contraseña de nuevo", "Cambiar contraseña", JOptionPane.QUESTION_MESSAGE);
+    private void cambiarContrasennaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContrasennaButtonActionPerformed
+        String nuevaContrasenna = JOptionPane.showInputDialog(this, "Introduce la nueva contrasenna", "Cambiar contrasenna", JOptionPane.QUESTION_MESSAGE);
+        String nuevaContrasenna2 = JOptionPane.showInputDialog(this, "Introduce la nueva contrasenna de nuevo", "Cambiar contrasenna", JOptionPane.QUESTION_MESSAGE);
         try{
-            Usuario.cambiarContraseña(ListManager.getUsuarios().get(this.elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), nuevaContraseña, nuevaContraseña2);
-            JOptionPane.showMessageDialog(this, "Contraseña cambiada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            Usuario.cambiarContrasenna(ListManager.getUsuarios().get(this.elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), nuevaContrasenna, nuevaContrasenna2);
+            JOptionPane.showMessageDialog(this, "Contrasenna cambiada correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
         }
         catch (IllegalArgumentException e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_cambiarContraseñaButtonActionPerformed
+    }//GEN-LAST:event_cambiarContrasennaButtonActionPerformed
 
     private void extenderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extenderButtonActionPerformed
         
@@ -937,7 +937,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         try{
             switch(ListManager.getUsuarios().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getClass().getSimpleName()){
                 case "Particular":
-                    Usuario.editarUsuario(ListManager.getUsuarios().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i -> i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.añoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
+                    Usuario.editarUsuario(ListManager.getUsuarios().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i -> i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.annoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
                     break;
                 case "Anfitrion":
                     Usuario.editarUsuario(ListManager.getUsuarios().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText());
@@ -946,7 +946,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     Usuario.editarUsuario(ListManager.getUsuarios().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getCorreo(), this.correoField.getText());
                     break;
             }
-            JOptionPane.showMessageDialog(this, "Usuario modificado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Usuario modificado correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
             refrescarLista();
         }
         catch (IllegalArgumentException e){
@@ -980,7 +980,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     this.telefonoField.setText(clienteSeleccionado.getTelefono());
                     if (usuarioSeleccionado instanceof Anfitrion){
                         Anfitrion anfitrionSeleccionado = (Anfitrion) usuarioSeleccionado;
-                        this.boolLabel.setText("¿Es Súper Anfitrión?");
+                        this.boolLabel.setText("¿Es Super Anfitrion?");
                         this.boolComboBox.setSelectedIndex(anfitrionSeleccionado.isSuperAnfitrion()?0:1);
                         this.fechaRegistroLabel.setVisible(true);
                         this.fechaRegistroField.setVisible(true);
@@ -992,8 +992,8 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                         this.caducidadLabel.setVisible(false);
                         this.mesCaducidadLabel.setVisible(false);
                         this.mesSpinner.setVisible(false);
-                        this.añoCaducidadLabel.setVisible(false);
-                        this.añoSpinner.setVisible(false);
+                        this.annoCaducidadLabel.setVisible(false);
+                        this.annoSpinner.setVisible(false);
                         this.extenderButton.setText("Ver Inmuebles");
                     }else{
                         Particular particularSeleccionado = (Particular) usuarioSeleccionado;
@@ -1008,12 +1008,12 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                         this.caducidadLabel.setVisible(true);
                         this.mesCaducidadLabel.setVisible(true);
                         this.mesSpinner.setVisible(true);
-                        this.añoCaducidadLabel.setVisible(true);
-                        this.añoSpinner.setVisible(true);
+                        this.annoCaducidadLabel.setVisible(true);
+                        this.annoSpinner.setVisible(true);
                         this.numeroTarjetaField.setText(Long.toString(particularSeleccionado.getTarjeta().getNumero()));
                         this.nombreTitularTarjetaField.setText(particularSeleccionado.getTarjeta().getNombreTitular());
                         this.mesSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getMonthValue());
-                        this.añoSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getYear());
+                        this.annoSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getYear());
                         this.extenderButton.setText("Ver Reservas");
                     }
                     indiceFijoBCB=this.boolComboBox.getSelectedIndex();
@@ -1035,8 +1035,8 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     this.caducidadLabel.setVisible(false);
                     this.mesCaducidadLabel.setVisible(false);
                     this.mesSpinner.setVisible(false);
-                    this.añoCaducidadLabel.setVisible(false);
-                    this.añoSpinner.setVisible(false);
+                    this.annoCaducidadLabel.setVisible(false);
+                    this.annoSpinner.setVisible(false);
                     this.extenderButton.setVisible(false);
                 }
                 seleccionAnterior=elementosList.getSelectedIndex();
@@ -1062,7 +1062,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 this.salidaField.setText(reservaSeleccionada.getFechaSalida().toString());
                 this.fechaReservaField.setText(reservaSeleccionada.getFechaReserva().toString());
                 this.importeField.setText(Double.toString(reservaSeleccionada.getImporte()));
-                this.inmuebleField.setText(reservaSeleccionada.getInmueble().getDueño().getCorreo()+":"+reservaSeleccionada.getInmueble().getTitulo());
+                this.inmuebleField.setText(reservaSeleccionada.getInmueble().getDuenno().getCorreo()+":"+reservaSeleccionada.getInmueble().getTitulo());
                 this.particularField.setText(reservaSeleccionada.getParticular().getCorreo());
                 seleccionAnterior=elementosList.getSelectedIndex();
             }
@@ -1078,16 +1078,16 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cerrarSesionButtonActionPerformed
 
-    private void añadirAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirAdminButtonActionPerformed
-        GUI_dialogAñadirAdmin dialogoAñadirAdmin = new GUI_dialogAñadirAdmin(this, true);
-        dialogoAñadirAdmin.setVisible(true);
-        dialogoAñadirAdmin.addWindowListener(new WindowAdapter() {
+    private void annadirAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annadirAdminButtonActionPerformed
+        GUI_dialogAnnadirAdmin dialogoAnnadirAdmin = new GUI_dialogAnnadirAdmin(this, true);
+        dialogoAnnadirAdmin.setVisible(true);
+        dialogoAnnadirAdmin.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 refrescarLista();
             }
         });
-    }//GEN-LAST:event_añadirAdminButtonActionPerformed
+    }//GEN-LAST:event_annadirAdminButtonActionPerformed
 
     private void borrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarUsuarioButtonActionPerformed
         switch(listaComboBox.getSelectedIndex()){
@@ -1099,7 +1099,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 try{
                     boolean continuarBorradoPropio=false;
                     Usuario usuarioABorrar=ListManager.getUsuarios().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
-                    boolean comenzarBorrado=JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres borrar a "+usuarioABorrar.getCorreo()+"?", "Borrar usuario", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION;
+                    boolean comenzarBorrado=JOptionPane.showConfirmDialog(this, "¿Estas seguro de que quieres borrar a "+usuarioABorrar.getCorreo()+"?", "Borrar usuario", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION;
                     if (!comenzarBorrado)
                         return;
                     if (usuarioABorrar instanceof Administrador){
@@ -1108,12 +1108,12 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                             return;
                     }
                     if (usuarioABorrar.equals(usuario)){
-                        continuarBorradoPropio=JOptionPane.showConfirmDialog(this, "El usuario seleccionado es el usuario actual. ¿Seguro que quieres seguir?\nSe cerrará la sesión", "Borrar usuario", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
+                        continuarBorradoPropio=JOptionPane.showConfirmDialog(this, "El usuario seleccionado es el usuario actual. ¿Seguro que quieres seguir?\nSe cerrara la sesion", "Borrar usuario", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
                         if (!continuarBorradoPropio)
                             return;
                     }
                     Usuario.borrarUsuario(usuarioABorrar.getCorreo());
-                    JOptionPane.showMessageDialog(this, "Usuario borrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Usuario borrado correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
                     refrescarLista();
                     if (continuarBorradoPropio){
                         cerrarSesionButtonActionPerformed(evt);
@@ -1130,7 +1130,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 }
                 try{
                     Reserva.borrarReserva(reservasOrdenadas.get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()).getId());
-                    JOptionPane.showMessageDialog(this, "Reserva borrada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Reserva borrada correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
                     elementosList.setSelectedIndex(-1);
                     refrescarLista();
                 }
@@ -1145,8 +1145,8 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 }
                 try{
                     Inmueble inmuebleSeleccionado=Inmueble.getInmuebles().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
-                    inmuebleSeleccionado.getDueño().borrarInmueble(inmuebleSeleccionado.getId());
-                    JOptionPane.showMessageDialog(this, "Inmueble borrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    inmuebleSeleccionado.getDuenno().borrarInmueble(inmuebleSeleccionado.getId());
+                    JOptionPane.showMessageDialog(this, "Inmueble borrado correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
                     elementosList.setSelectedIndex(-1);
                     refrescarLista();
                 }
@@ -1164,12 +1164,12 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_boolComboBoxActionPerformed
 
     private void datosPanelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_datosPanelStateChanged
-        actualizarPestañas();
+        actualizarPestannas();
     }//GEN-LAST:event_datosPanelStateChanged
 
     private void listaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaComboBoxActionPerformed
         refrescarLista();
-        actualizarPestañas();
+        actualizarPestannas();
         
     }//GEN-LAST:event_listaComboBoxActionPerformed
 
@@ -1188,7 +1188,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             File archivoSeleccionado = new File(carpeta + file);
             Path rutaOrigen = Paths.get(archivoSeleccionado.getAbsolutePath());
             if (!(archivoSeleccionado.getAbsolutePath().endsWith(".jpg") || archivoSeleccionado.getAbsolutePath().endsWith(".jpeg") ||archivoSeleccionado.getAbsolutePath().endsWith(".png") || archivoSeleccionado.getAbsolutePath().endsWith(".gif") || archivoSeleccionado.getAbsolutePath().endsWith(".bmp"))){
-                JOptionPane.showMessageDialog(this, "El archivo seleccionado no tiene un formato de imagen reconocido (válidos: png, jpg, bmp, gif)", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El archivo seleccionado no tiene un formato de imagen reconocido (validos: png, jpg, bmp, gif)", "Error", JOptionPane.ERROR_MESSAGE);
                 rutaImagenInmueble="";
                 return;
             }
@@ -1209,12 +1209,12 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_elegirFotoButtonActionPerformed
 
-    private void verReseñasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReseñasButtonActionPerformed
+    private void verResennasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verResennasButtonActionPerformed
         if (elementosList.getSelectedIndex()==-1 || posicionesSeparador.contains(elementosList.getSelectedIndex()))
             return;
-        GUI_dialogVerReseñas verReseñas = new GUI_dialogVerReseñas(this, true, Inmueble.getInmuebles().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()));
-        verReseñas.setVisible(true);
-    }//GEN-LAST:event_verReseñasButtonActionPerformed
+        GUI_dialogVerResennas verResennas = new GUI_dialogVerResennas(this, true, Inmueble.getInmuebles().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count()));
+        verResennas.setVisible(true);
+    }//GEN-LAST:event_verResennasButtonActionPerformed
 
     private void editarInmuebleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarInmuebleButtonActionPerformed
         try{
@@ -1222,8 +1222,8 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 return;
             //System.out.println(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
             Inmueble inmuebleSeleccionado=Inmueble.getInmuebles().get(elementosList.getSelectedIndex()-(int)posicionesSeparador.stream().filter(i->i<elementosList.getSelectedIndex()).count());
-            inmuebleSeleccionado.getDueño().editarInmueble(inmuebleSeleccionado.getId(), new Direccion(calleField.getText(), numeroField.getText(), ciudadField.getText(), codigoPostalField.getText()), tituloField.getText(), Integer.parseInt(bañosField.getText()), Integer.parseInt(camasField.getText()), rutaImagenInmueble, Integer.parseInt(habitacionesField.getText()), Integer.parseInt(huespedesField.getText()), Double.parseDouble(precioField.getText()), serviciosField.getText(), Inmueble.tipoPropiedad.valueOf(tipoComboBox.getSelectedItem().toString().toUpperCase()));
-            JOptionPane.showMessageDialog(this, "Inmueble editado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            inmuebleSeleccionado.getDuenno().editarInmueble(inmuebleSeleccionado.getId(), new Direccion(calleField.getText(), numeroField.getText(), ciudadField.getText(), codigoPostalField.getText()), tituloField.getText(), Integer.parseInt(bannosField.getText()), Integer.parseInt(camasField.getText()), rutaImagenInmueble, Integer.parseInt(habitacionesField.getText()), Integer.parseInt(huespedesField.getText()), Double.parseDouble(precioField.getText()), serviciosField.getText(), Inmueble.tipoPropiedad.valueOf(tipoComboBox.getSelectedItem().toString().toUpperCase()));
+            JOptionPane.showMessageDialog(this, "Inmueble editado correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
             actualizarInmuebleMostrado();
             fotoCambiada=false;
             rutaImagenInmueble="";
@@ -1247,7 +1247,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                 huespedesField.getText().equals(String.valueOf(inmueble.getHuespedesMaximos()))&&
                 habitacionesField.getText().equals(String.valueOf(inmueble.getHabitaciones()))&&
                 camasField.getText().equals(String.valueOf(inmueble.getCamas()))&&
-                bañosField.getText().equals(String.valueOf(inmueble.getBaños()))&&
+                bannosField.getText().equals(String.valueOf(inmueble.getBannos()))&&
                 ciudadField.getText().equals(inmueble.getDireccion().getCiudad())&&
                 calleField.getText().equals(inmueble.getDireccion().getCalle())&&
                 numeroField.getText().equals(inmueble.getDireccion().getNumero())&&
@@ -1276,7 +1276,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
         huespedesField.setText(String.valueOf(inmueble.getHuespedesMaximos()));
         habitacionesField.setText(String.valueOf(inmueble.getHabitaciones()));
         camasField.setText(String.valueOf(inmueble.getCamas()));
-        bañosField.setText(String.valueOf(inmueble.getBaños()));
+        bannosField.setText(String.valueOf(inmueble.getBannos()));
         ciudadField.setText(inmueble.getDireccion().getCiudad());
         calleField.setText(inmueble.getDireccion().getCalle());
         numeroField.setText(inmueble.getDireccion().getNumero());
@@ -1302,7 +1302,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             // No es un contenedor, no hay nada que hacer
         }
     }
-    private void actualizarPestañas(){
+    private void actualizarPestannas(){
         datosPanel.setSelectedIndex(listaComboBox.getSelectedIndex());
         int ix=listaComboBox.getSelectedIndex();
         if (ix!=2){
@@ -1314,10 +1314,10 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
             actualizarInmuebleMostrado();
         }
         if (ix!=0){
-            añadirAdminButton.setVisible(false);
+            annadirAdminButton.setVisible(false);
         }
         else{
-            añadirAdminButton.setVisible(true);
+            annadirAdminButton.setVisible(true);
         }
         elementosList.setSelectedIndex(-1);
     }
@@ -1383,7 +1383,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
                     cambioInmuebleRealizado();
                 }
             });
-            bañosField.getDocument().addDocumentListener(new DocumentListener() {
+            bannosField.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     cambioInmuebleRealizado();
@@ -1506,10 +1506,10 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton añadirAdminButton;
-    private javax.swing.JLabel añoCaducidadLabel;
-    private javax.swing.JSpinner añoSpinner;
-    private javax.swing.JFormattedTextField bañosField;
+    private javax.swing.JButton annadirAdminButton;
+    private javax.swing.JLabel annoCaducidadLabel;
+    private javax.swing.JSpinner annoSpinner;
+    private javax.swing.JFormattedTextField bannosField;
     private javax.swing.JComboBox<String> boolComboBox;
     private javax.swing.JLabel boolLabel;
     private javax.swing.JButton borrarButton;
@@ -1517,7 +1517,7 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField calificacionField;
     private javax.swing.JTextField calleField;
     private javax.swing.JFormattedTextField camasField;
-    private javax.swing.JButton cambiarContraseñaButton;
+    private javax.swing.JButton cambiarContrasennaButton;
     private javax.swing.JButton cancelarButton;
     private javax.swing.JButton cancelarCambiosInmuebleButton;
     private javax.swing.JButton cerrarSesionButton;
@@ -1594,6 +1594,6 @@ public class GUI_mainAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField tituloField;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JInternalFrame usuarioFrame;
-    private javax.swing.JButton verReseñasButton;
+    private javax.swing.JButton verResennasButton;
     // End of variables declaration//GEN-END:variables
 }

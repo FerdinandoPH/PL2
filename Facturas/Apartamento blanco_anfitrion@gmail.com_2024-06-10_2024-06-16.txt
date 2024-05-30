@@ -5,21 +5,21 @@ Fecha de entrada: 2024-06-10
 Fecha de salida: 2024-06-16
 
 Datos del Inmueble
-Título: Apartamento blanco
-Dueño: Anfitrion: [correo=anfitrion@gmail.com, clave (hash)=1216985755, dni=12345678A, nombre=Anfitrión, telefono=123456789, esSuperAnfitiron=false, fechaRegistro=2024-05-28]
+Titulo: Apartamento blanco
+Duenno: Anfitrion: [correo=anfitrion@gmail.com, clave (hash)=1216985755, dni=12345678A, nombre=Anfitrion, telefono=123456789, esSuperAnfitiron=false, fechaRegistro=2024-05-28]
 Tipo de propiedad: APARTAMENTO
 Precio por noche: 110.0
-Calificación: 0.0
-Dirección: C/ Paseo de la Castellana, nº 4, Madrid, C.P. 12345
-Baños: 1
-Huéspedes máximos: 2
+Calificacion: 0.0
+Direccion: C/ Paseo de la Castellana, nº 4, Madrid, C.P. 12345
+Bannos: 1
+Huespedes maximos: 2
 Habitaciones: 1
 Camas: 1
 
 Datos del cliente
 Correo: particular@gmail.com
 Nombre: Particular
-Teléfono: 123456789
+Telefono: 123456789
 DNI: 12345678A
 
 ¡Gracias por reservar con JavaBnB!

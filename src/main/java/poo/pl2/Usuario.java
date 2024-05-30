@@ -34,7 +34,7 @@ public class Usuario implements java.io.Serializable {
      * La clave se almacena como un hash para mayor seguridad.
      *
      * @param correo El correo del usuario. Dos usuarios no pueden tener el mismo correo.
-     * @param claveString La clave del usuario en formato de texto sin cifrar. Para el inicio de sesión, se utiliza la función hash
+     * @param claveString La clave del usuario en formato de texto sin cifrar. Para el inicio de sesion, se utiliza la funcion hash
  */
     public Usuario(String correo, String claveString){
         this.correo = correo;
@@ -46,52 +46,52 @@ public class Usuario implements java.io.Serializable {
         return "correo=" + correo+", clave (hash)=" + clave;
     }
     
-    //Funciones de registro, edición e inicio de sesión
+    //Funciones de registro, edicion e inicio de sesion
     /**
      * Borra un usuario de la lista de usuarios gestionada por ListManager.
      * Busca el usuario por correo y lo elimina de la lista.
-     * Lanza una excepción si se intenta borrar el único administrador.
+     * Lanza una excepcion si se intenta borrar el unico administrador.
      *
      * @param correo El correo del usuario a borrar.
-     * @throws IllegalArgumentException Si se intenta borrar el único administrador.
+     * @throws IllegalArgumentException Si se intenta borrar el unico administrador.
      */
     public static void borrarUsuario(String correo){
         for (int i=0; i<ListManager.getUsuarios().size(); i++)
             if (ListManager.getUsuarios().get(i).getCorreo().equals(correo)){
                 if (ListManager.getUsuarios().get(i) instanceof Administrador && ListManager.getUsuarios().stream().filter(u->u instanceof Administrador).count()==1)
-                    throw new IllegalArgumentException("No se puede borrar el único administrador\n Crea otro administrador antes de borrar este");{
+                    throw new IllegalArgumentException("No se puede borrar el unico administrador\n Crea otro administrador antes de borrar este");{
                 }
                 ListManager.getUsuarios().remove(i);
                 break;
             }
     }
     /**
-     * Cambia la contraseña de un usuario.
-     * Como la contraseña se almacena como un hash, no puede recuperarse, es necesario cambiarla.
-     * Busca el usuario por correo y cambia su contraseña.
-     * Valida la nueva contraseña antes de cambiarla.
+     * Cambia la contrasenna de un usuario.
+     * Como la contrasenna se almacena como un hash, no puede recuperarse, es necesario cambiarla.
+     * Busca el usuario por correo y cambia su contrasenna.
+     * Valida la nueva contrasenna antes de cambiarla.
      *
      * @param correo El correo del usuario.
-     * @param nuevaContraseña La nueva contraseña del usuario.
-     * @param nuevaContraseña2 La confirmación de la nueva contraseña.
-     * @throws IllegalArgumentException Si la nueva contraseña no es válida, es decir si no tiene al menos 8 caracteres o si las contraseñas no coinciden.
+     * @param nuevaContrasenna La nueva contrasenna del usuario.
+     * @param nuevaContrasenna2 La confirmacion de la nueva contrasenna.
+     * @throws IllegalArgumentException Si la nueva contrasenna no es valida, es decir si no tiene al menos 8 caracteres o si las contrasennas no coinciden.
      */
-    public static void cambiarContraseña(String correo, String nuevaContraseña, String nuevaContraseña2){
-        String errores=validarInformacion(nuevaContraseña,nuevaContraseña2);
+    public static void cambiarContrasenna(String correo, String nuevaContrasenna, String nuevaContrasenna2){
+        String errores=validarInformacion(nuevaContrasenna,nuevaContrasenna2);
         if (errores.length()>0)
             throw new IllegalArgumentException(errores);
         for (int i=0; i<ListManager.getUsuarios().size(); i++)
             if (ListManager.getUsuarios().get(i).getCorreo().equals(correo)){
-                ListManager.getUsuarios().get(i).setClave(nuevaContraseña);
+                ListManager.getUsuarios().get(i).setClave(nuevaContrasenna);
                 break;
             }
     }
     /**
-     * Comprueba si un correo ya está en uso, ya que los usuarios se identifican de forma única por su correo.
+     * Comprueba si un correo ya esta en uso, ya que los usuarios se identifican de forma unica por su correo.
      * Busca el correo en la lista de usuarios.
      *
      * @param correo El correo a comprobar.
-     * @return Verdadero si el correo ya está en uso, falso en caso contrario.
+     * @return Verdadero si el correo ya esta en uso, falso en caso contrario.
      */
     public static boolean correoRepetido(String correo){
         for (int i=0; i<ListManager.getUsuarios().size(); i++)
@@ -100,18 +100,18 @@ public class Usuario implements java.io.Serializable {
         return false;
     }
     /**
-     * Edita la información de un usuario particular.
-     * Valida la nueva información antes de hacer los cambios.
-     * Lanza una excepción si la nueva información no es válida.
+     * Edita la informacion de un usuario particular.
+     * Valida la nueva informacion antes de hacer los cambios.
+     * Lanza una excepcion si la nueva informacion no es valida.
      *
      * @param correoOriginal El correo original del particular.
      * @param correo El nuevo correo del particular.
      * @param dni El nuevo DNI del particular.
      * @param nombre El nuevo nombre del particular.
-     * @param telefono El nuevo teléfono del particular.
+     * @param telefono El nuevo telefono del particular.
      * @param esVip Si el particular es VIP.
      * @param tarjeta La nueva tarjeta del particular.
-     * @throws IllegalArgumentException Si la nueva información no es válida (ver {@link #validarInformacion(String, String, String, String, String, String, String)}).
+     * @throws IllegalArgumentException Si la nueva informacion no es valida (ver {@link #validarInformacion(String, String, String, String, String, String, String)}).
      */
     public static void editarUsuario(String correoOriginal,String correo, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta){ //Para particulares
         String errores=validarInformacion(correoOriginal,correo, "AAAA1234", "AAAA1234", dni, nombre, telefono)+validarInformacion(tarjeta.getNombreTitular(), Long.toString(tarjeta.getNumero()),tarjeta.getFechaCaducidad().getMonthValue(), tarjeta.getFechaCaducidad().getYear(), new String());
@@ -129,16 +129,16 @@ public class Usuario implements java.io.Serializable {
             }
     }
     /**
-     * Edita la información de un usuario anfitrión.
-     * Valida la nueva información antes de hacer los cambios.
-     * Lanza una excepción si la nueva información no es válida.
+     * Edita la informacion de un usuario anfitrion.
+     * Valida la nueva informacion antes de hacer los cambios.
+     * Lanza una excepcion si la nueva informacion no es valida.
      *
-     * @param correoOriginal El correo original del anfitrión.
-     * @param correo El nuevo correo del anfitrión.
-     * @param dni El nuevo DNI del anfitrión.
-     * @param nombre El nuevo nombre del anfitrión.
-     * @param telefono El nuevo teléfono del anfitrión.
-     * @throws IllegalArgumentException Si la nueva información no es válida (ver {@link #validarInformacion(String, String, String, String, String, String, String)}).
+     * @param correoOriginal El correo original del anfitrion.
+     * @param correo El nuevo correo del anfitrion.
+     * @param dni El nuevo DNI del anfitrion.
+     * @param nombre El nuevo nombre del anfitrion.
+     * @param telefono El nuevo telefono del anfitrion.
+     * @throws IllegalArgumentException Si la nueva informacion no es valida (ver {@link #validarInformacion(String, String, String, String, String, String, String)}).
      */
     public static void editarUsuario(String correoOriginal,String correo, String dni, String nombre, String telefono){ //Para anfitriones
         String errores=validarInformacion(correoOriginal,correo, "AAAA1234", "AAAA1234", dni, nombre, telefono);
@@ -156,11 +156,11 @@ public class Usuario implements java.io.Serializable {
     /**
      * Edita el correo de un usuario administrador.
      * Valida el nuevo correo antes de hacer los cambios.
-     * Lanza una excepción si el nuevo correo no es válido.
+     * Lanza una excepcion si el nuevo correo no es valido.
      *
      * @param correoOriginal El correo original del administrador.
      * @param correo El nuevo correo del administrador.
-     * @throws IllegalArgumentException Si el nuevo correo no es válido (ver {@link #validarInformacion(String)}).
+     * @throws IllegalArgumentException Si el nuevo correo no es valido (ver {@link #validarInformacion(String)}).
      */
     public static void editarUsuario (String correoOriginal,String correo){
         String errores=validarInformacion(correo);
@@ -173,13 +173,13 @@ public class Usuario implements java.io.Serializable {
             }
     }
     /**
-     * Inicia sesión para un usuario.
+     * Inicia sesion para un usuario.
      * Busca el usuario por correo y clave en la lista de usuarios.
-     * Lanza una excepción si el usuario no se encuentra o si la clave es incorrecta.
+     * Lanza una excepcion si el usuario no se encuentra o si la clave es incorrecta.
      *
      * @param correo El correo del usuario.
      * @param clave El hash de la clave del usuario.
-     * @return El usuario que ha iniciado sesión.
+     * @return El usuario que ha iniciado sesion.
      * @throws IllegalArgumentException Si el usuario no se encuentra o si la clave es incorrecta.
      */
     public static Usuario iniciarSesion(String correo, int clave) throws IllegalArgumentException{
@@ -189,20 +189,20 @@ public class Usuario implements java.io.Serializable {
             }
                 
         }
-        throw new IllegalArgumentException("Usuario no encontrado o contraseña incorrecta");
+        throw new IllegalArgumentException("Usuario no encontrado o contrasenna incorrecta");
     }
     /**
-     * Registra un nuevo usuario anfitrión.
-     * Valida la información del usuario antes de hacer el registro.
-     * Lanza una excepción si la información del usuario no es válida.
+     * Registra un nuevo usuario anfitrion.
+     * Valida la informacion del usuario antes de hacer el registro.
+     * Lanza una excepcion si la informacion del usuario no es valida.
      *
-     * @param correo El correo del anfitrión.
-     * @param clave La clave del anfitrión.
-     * @param clave2 La confirmación de la clave del anfitrión.
-     * @param dni El DNI del anfitrión.
-     * @param nombre El nombre del anfitrión.
-     * @param telefono El teléfono del anfitrión.
-     * @throws IllegalArgumentException Si la información del anfitrión no es válida (ver {@link #validarInformacion(String, String, String, String, String, String, String)}
+     * @param correo El correo del anfitrion.
+     * @param clave La clave del anfitrion.
+     * @param clave2 La confirmacion de la clave del anfitrion.
+     * @param dni El DNI del anfitrion.
+     * @param nombre El nombre del anfitrion.
+     * @param telefono El telefono del anfitrion.
+     * @throws IllegalArgumentException Si la informacion del anfitrion no es valida (ver {@link #validarInformacion(String, String, String, String, String, String, String)}
      */
     public static void registrar(String correo, String clave, String clave2, String dni, String nombre, String telefono) throws IllegalArgumentException{
         if (Usuario.validarInformacion(null,correo, clave, clave2, dni, nombre, telefono).length()>0)
@@ -212,18 +212,18 @@ public class Usuario implements java.io.Serializable {
     }
     /**
      * Registra un nuevo usuario particular.
-     * Valida la información del usuario y de la tarjeta antes de hacer el registro.
-     * Lanza una excepción si la información del usuario o de la tarjeta no es válida.
+     * Valida la informacion del usuario y de la tarjeta antes de hacer el registro.
+     * Lanza una excepcion si la informacion del usuario o de la tarjeta no es valida.
      *
      * @param correo El correo del particular.
      * @param clave La clave del particular.
-     * @param clave2 La confirmación de la clave del particular.
+     * @param clave2 La confirmacion de la clave del particular.
      * @param dni El DNI del particular.
      * @param nombre El nombre del particular.
-     * @param telefono El teléfono del particular.
+     * @param telefono El telefono del particular.
      * @param esVip Si el particular es VIP.
      * @param tarjeta La tarjeta del particular.
-     * @throws IllegalArgumentException Si la información del particular o de la tarjeta no es válida (ver {@link #validarInformacion(String, String, String, String, String, String, String)} y {@link Tarjeta#validarInformacion(String, String, int, int)}
+     * @throws IllegalArgumentException Si la informacion del particular o de la tarjeta no es valida (ver {@link #validarInformacion(String, String, String, String, String, String, String)} y {@link Tarjeta#validarInformacion(String, String, int, int)}
      */
     public static void registrar(String correo, String clave, String clave2, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta) throws IllegalArgumentException{
         String errores=validarInformacion(null,correo, clave, clave2, dni, nombre, telefono)+ validarInformacion(tarjeta.getNombreTitular(), Long.toString(tarjeta.getNumero()),tarjeta.getFechaCaducidad().getMonthValue(), tarjeta.getFechaCaducidad().getYear(), new String());
@@ -234,13 +234,13 @@ public class Usuario implements java.io.Serializable {
     }
     /**
      * Registra un nuevo usuario administrador.
-     * Valida la información del usuario antes de hacer el registro.
-     * Lanza una excepción si la información del usuario no es válida.
+     * Valida la informacion del usuario antes de hacer el registro.
+     * Lanza una excepcion si la informacion del usuario no es valida.
      *
      * @param correo El correo del administrador.
      * @param clave La clave del administrador.
-     * @param clave2 La confirmación de la clave del administrador.
-     * @throws IllegalArgumentException Si la información del administrador no es válida.
+     * @param clave2 La confirmacion de la clave del administrador.
+     * @throws IllegalArgumentException Si la informacion del administrador no es valida.
      */
     public static void registrar (String correo, String clave, String clave2){
         String errores=validarInformacion(clave, clave2)+validarInformacion(correo);
@@ -252,7 +252,7 @@ public class Usuario implements java.io.Serializable {
     /**
      * Reordena la lista de usuarios de ListManager.
      * Los administradores se colocan primero, seguidos por los anfitriones y luego los usuarios particulares.
-     * Dentro de cada grupo, los usuarios se ordenan alfabéticamente por correo.
+     * Dentro de cada grupo, los usuarios se ordenan alfabeticamente por correo.
      */
     public static void reordenarUsuarios(){
         Collections.sort(ListManager.getUsuarios(), new Comparator<Usuario>() {
@@ -277,18 +277,18 @@ public class Usuario implements java.io.Serializable {
         });
     }
     /**
-     * Valida la información de un usuario.
-     * Comprueba si los campos no están vacíos, si el correo no está repetido y cumple con el formato, si las claves coinciden y tienen al menos 8 caracteres,
-     * si el teléfono solo contiene números o un + al principio, y si el DNI es válido.
+     * Valida la informacion de un usuario.
+     * Comprueba si los campos no estan vacios, si el correo no esta repetido y cumple con el formato, si las claves coinciden y tienen al menos 8 caracteres,
+     * si el telefono solo contiene numeros o un + al principio, y si el DNI es valido.
      *
      * @param correoOriginal El correo original del usuario.
      * @param correo El nuevo correo del usuario.
      * @param clave La clave del usuario.
-     * @param clave2 La confirmación de la clave del usuario.
+     * @param clave2 La confirmacion de la clave del usuario.
      * @param dni El DNI del usuario.
      * @param nombre El nombre del usuario.
-     * @param telefono El teléfono del usuario.
-     * @return Una cadena con los errores si la información no es válida, o una cadena vacía si lo es.
+     * @param telefono El telefono del usuario.
+     * @return Una cadena con los errores si la informacion no es valida, o una cadena vacia si lo es.
      */
     public static String validarInformacion(String correoOriginal,String correo, String clave, String clave2,String dni, String nombre, String telefono){
         String errores="";
@@ -297,62 +297,62 @@ public class Usuario implements java.io.Serializable {
         if (correoRepetido(correo) && !correo.equals(correoOriginal))
             errores+="Correo ya registrado\n";
         if (!clave.equals(clave2))
-            errores+="Las contraseñas no coinciden\n";
+            errores+="Las contrasennas no coinciden\n";
         else if (clave.length()<8)
-            errores+="La contraseña debe tener al menos 8 caracteres\n";
+            errores+="La contrasenna debe tener al menos 8 caracteres\n";
         if (!telefono.matches("\\+?[0-9]*"))
-            errores+="El teléfono solo puede contener números o un + al principio\n";
+            errores+="El telefono solo puede contener numeros o un + al principio\n";
         if (!dni.matches("[0-9]{8}[A-Za-z]"))//|| "TRWAGMYFPDXBNJZSQVHLCKE".charAt(Integer.parseInt(dniField.getText().substring(0, 8))%23)!=dniField.getText().charAt(8))
-            errores+="DNI inválido\n";
+            errores+="DNI invalido\n";
         if (!correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"))
-            errores+="Correo inválido\n";
+            errores+="Correo invalido\n";
         return errores;
     }
     /**
-     * Valida la información de los datos exclusivos de un usuario particular (tarjeta y código VIP).
-     * Comprueba si la información de la tarjeta es válida y si el código VIP es correcto.
+     * Valida la informacion de los datos exclusivos de un usuario particular (tarjeta y codigo VIP).
+     * Comprueba si la informacion de la tarjeta es valida y si el codigo VIP es correcto.
      *
      * @param nombreTarjeta El nombre en la tarjeta.
-     * @param numeroTarjeta El número de la tarjeta.
-     * @param mes El mes de expiración de la tarjeta.
-     * @param año El año de expiración de la tarjeta.
-     * @param vip El código VIP.
-     * @return Una cadena con los errores si la información no es válida, o una cadena vacía si lo es.
+     * @param numeroTarjeta El numero de la tarjeta.
+     * @param mes El mes de expiracion de la tarjeta.
+     * @param anno El anno de expiracion de la tarjeta.
+     * @param vip El codigo VIP.
+     * @return Una cadena con los errores si la informacion no es valida, o una cadena vacia si lo es.
      */
-    public static String validarInformacion(String nombreTarjeta, String numeroTarjeta, int mes, int año, String vip){
+    public static String validarInformacion(String nombreTarjeta, String numeroTarjeta, int mes, int anno, String vip){
         String errores="";
-        errores+=Tarjeta.validarInformacion(nombreTarjeta, numeroTarjeta, mes, año);
+        errores+=Tarjeta.validarInformacion(nombreTarjeta, numeroTarjeta, mes, anno);
         if (!vip.isEmpty() && !vip.equals(claveVip))
-            errores+="Código VIP inválido. Si no eres VIP, no pongas nada\n";
+            errores+="Codigo VIP invalido. Si no eres VIP, no pongas nada\n";
         return errores;
     }
     /**
-     * Comprueba si el correo es válido, es decir, si no está repetido y si cumple con el formato de correo electrónico.
+     * Comprueba si el correo es valido, es decir, si no esta repetido y si cumple con el formato de correo electronico.
      *
      * @param correo El correo del usuario.
-     * @return Una cadena vacía si la información es válida, o una cadena con los errores si no lo es.
+     * @return Una cadena vacia si la informacion es valida, o una cadena con los errores si no lo es.
      */
     public static String validarInformacion (String correo){
         String errores="";
         if (correoRepetido(correo))
             errores+="Correo ya registrado\n";
         if (!correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"))
-            errores+="Correo inválido\n";
+            errores+="Correo invalido\n";
         return errores;
     }
     /**
-     * Comprueba si la clave y su confirmación son iguales, y si la clave tiene al menos 8 caracteres.
+     * Comprueba si la clave y su confirmacion son iguales, y si la clave tiene al menos 8 caracteres.
      *
      * @param clave La clave del usuario.
-     * @param clave2 La confirmación de la clave del usuario.
-     * @return Una cadena vacía si la información es válida, o una cadena con los errores si no lo es.
+     * @param clave2 La confirmacion de la clave del usuario.
+     * @return Una cadena vacia si la informacion es valida, o una cadena con los errores si no lo es.
      */
     public static String validarInformacion (String clave, String clave2){
         String errores="";
         if (!clave.equals(clave2))
-            errores+="Las contraseñas no coinciden\n";
+            errores+="Las contrasennas no coinciden\n";
         else if (clave.length()<8)
-            errores+="La contraseña debe tener al menos 8 caracteres\n";
+            errores+="La contrasenna debe tener al menos 8 caracteres\n";
         return errores;
     }
 

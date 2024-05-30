@@ -73,7 +73,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         tipoComboBox = new javax.swing.JComboBox<>();
         elegirFotoButton = new javax.swing.JButton();
         editarButton = new javax.swing.JButton();
-        verReseñasButton = new javax.swing.JButton();
+        verResennasButton = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         codigoPostalField = new javax.swing.JTextField();
         serviciosField = new javax.swing.JTextField();
@@ -96,7 +96,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         huespedesField = new javax.swing.JFormattedTextField();
         habitacionesField = new javax.swing.JFormattedTextField();
         camasField = new javax.swing.JFormattedTextField();
-        bañosField = new javax.swing.JFormattedTextField();
+        bannosField = new javax.swing.JFormattedTextField();
         jLabel17 = new javax.swing.JLabel();
         reservasFrame = new javax.swing.JInternalFrame();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -118,7 +118,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaBnB");
 
-        cerrarSesionButton.setText("Cerrar Sesión");
+        cerrarSesionButton.setText("Cerrar Sesion");
         cerrarSesionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarSesionButtonActionPerformed(evt);
@@ -148,11 +148,11 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
 
         datosFrame.setVisible(true);
 
-        jLabel8.setText("Título");
+        jLabel8.setText("Titulo");
 
         jLabel9.setText("Tipo");
 
-        jLabel15.setText("Calificación");
+        jLabel15.setText("Calificacion");
 
         calificacionField.setEditable(false);
 
@@ -177,33 +177,33 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             }
         });
 
-        verReseñasButton.setText("Ver reseñas");
-        verReseñasButton.addActionListener(new java.awt.event.ActionListener() {
+        verResennasButton.setText("Ver resennas");
+        verResennasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verReseñasButtonActionPerformed(evt);
+                verResennasButtonActionPerformed(evt);
             }
         });
 
-        jLabel18.setText("Código postal");
+        jLabel18.setText("Codigo postal");
 
         jLabel19.setText("Servicios");
 
-        jLabel13.setText("Número");
+        jLabel13.setText("Numero");
 
         jLabel12.setText("Calle");
 
         jLabel11.setText("Ciudad");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel10.setText("Dirección");
+        jLabel10.setText("Direccion");
 
-        jLabel7.setText("Baños");
+        jLabel7.setText("Bannos");
 
         jLabel6.setText("Camas");
 
         jLabel20.setText("Habitaciones");
 
-        jLabel21.setText("Huéspedes máximos");
+        jLabel21.setText("Huespedes maximos");
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel22.setText("Datos");
@@ -274,7 +274,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                                                     .addGroup(datosFrameLayout.createSequentialGroup()
                                                         .addComponent(camasField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(bañosField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(bannosField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addGroup(datosFrameLayout.createSequentialGroup()
                                                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -316,7 +316,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                                 .addGap(153, 153, 153)
                                 .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(elegirFotoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(verReseñasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(verResennasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(datosFrameLayout.createSequentialGroup()
                                 .addGap(92, 92, 92)
                                 .addComponent(editarButton)
@@ -354,7 +354,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                     .addComponent(huespedesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(habitacionesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(camasField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bañosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bannosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -380,7 +380,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(elegirFotoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(verReseñasButton)
+                .addComponent(verResennasButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(datosFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editarButton)
@@ -421,7 +421,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         fechaReservaField.setEditable(false);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("Fecha de realización");
+        jLabel23.setText("Fecha de realizacion");
 
         javax.swing.GroupLayout reservasFrameLayout = new javax.swing.GroupLayout(reservasFrame.getContentPane());
         reservasFrame.getContentPane().setLayout(reservasFrameLayout);
@@ -481,8 +481,8 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
 
         infoPanel.addTab("Reservas", reservasFrame);
 
-        crearInmuebleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/añadirInmueble.png"))); // NOI18N
-        crearInmuebleButton.setToolTipText("Añadir Inmueble");
+        crearInmuebleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/pl2/Recursos/annadirInmueble.png"))); // NOI18N
+        crearInmuebleButton.setToolTipText("Annadir Inmueble");
         crearInmuebleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearInmuebleButtonActionPerformed(evt);
@@ -593,7 +593,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     }//GEN-LAST:event_inmueblesComboBoxActionPerformed
 
     private void borrarInmuebleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarInmuebleButtonActionPerformed
-        boolean confirmacion=JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres borrar este inmueble?", "Confirmación", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION;
+        boolean confirmacion=JOptionPane.showConfirmDialog(this, "¿Estas seguro de que quieres borrar este inmueble?", "Confirmacion", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION;
         if(confirmacion){
             this.usuario.borrarInmueble(this.usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()).getId());
             actualizarInmuebles();
@@ -603,8 +603,8 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
 
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         try{
-            this.usuario.editarInmueble(this.usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()).getId(), new Direccion(calleField.getText(), numeroField.getText(), ciudadField.getText(), codigoPostalField.getText()), tituloField.getText(), Integer.parseInt(bañosField.getText()), Integer.parseInt(camasField.getText()), rutaImagenInmueble, Integer.parseInt(habitacionesField.getText()), Integer.parseInt(huespedesField.getText()), Double.parseDouble(precioField.getText()), serviciosField.getText(), Inmueble.tipoPropiedad.valueOf(tipoComboBox.getSelectedItem().toString().toUpperCase()));
-            JOptionPane.showMessageDialog(this, "Inmueble editado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            this.usuario.editarInmueble(this.usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()).getId(), new Direccion(calleField.getText(), numeroField.getText(), ciudadField.getText(), codigoPostalField.getText()), tituloField.getText(), Integer.parseInt(bannosField.getText()), Integer.parseInt(camasField.getText()), rutaImagenInmueble, Integer.parseInt(habitacionesField.getText()), Integer.parseInt(huespedesField.getText()), Double.parseDouble(precioField.getText()), serviciosField.getText(), Inmueble.tipoPropiedad.valueOf(tipoComboBox.getSelectedItem().toString().toUpperCase()));
+            JOptionPane.showMessageDialog(this, "Inmueble editado correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
             actualizarInmuebleMostrado();
             fotoCambiada=false;
             rutaImagenInmueble="";
@@ -628,7 +628,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
             System.out.println(archivoSeleccionado.getAbsolutePath());
             Path rutaOrigen = Paths.get(archivoSeleccionado.getAbsolutePath());
             if (!(archivoSeleccionado.getAbsolutePath().endsWith(".jpg") || archivoSeleccionado.getAbsolutePath().endsWith(".jpeg") ||archivoSeleccionado.getAbsolutePath().endsWith(".png") || archivoSeleccionado.getAbsolutePath().endsWith(".gif") || archivoSeleccionado.getAbsolutePath().endsWith(".bmp"))){
-                JOptionPane.showMessageDialog(this, "El archivo seleccionado no tiene un formato de imagen reconocido (válidos: png, jpg, bmp, gif)", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El archivo seleccionado no tiene un formato de imagen reconocido (validos: png, jpg, bmp, gif)", "Error", JOptionPane.ERROR_MESSAGE);
                 rutaImagenInmueble="";
                 return;
             }
@@ -649,10 +649,10 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_elegirFotoButtonActionPerformed
 
-    private void verReseñasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReseñasButtonActionPerformed
-        GUI_dialogVerReseñas verReseñas = new GUI_dialogVerReseñas(this, true, usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()));
-        verReseñas.setVisible(true);
-    }//GEN-LAST:event_verReseñasButtonActionPerformed
+    private void verResennasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verResennasButtonActionPerformed
+        GUI_dialogVerResennas verResennas = new GUI_dialogVerResennas(this, true, usuario.getInmuebles().get(inmueblesComboBox.getSelectedIndex()));
+        verResennas.setVisible(true);
+    }//GEN-LAST:event_verResennasButtonActionPerformed
 
     private void cancelarCambiosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCambiosButtonActionPerformed
         actualizarInmuebleMostrado();
@@ -694,7 +694,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
         huespedesField.setText(String.valueOf(inmueble.getHuespedesMaximos()));
         habitacionesField.setText(String.valueOf(inmueble.getHabitaciones()));
         camasField.setText(String.valueOf(inmueble.getCamas()));
-        bañosField.setText(String.valueOf(inmueble.getBaños()));
+        bannosField.setText(String.valueOf(inmueble.getBannos()));
         ciudadField.setText(inmueble.getDireccion().getCiudad());
         calleField.setText(inmueble.getDireccion().getCalle());
         numeroField.setText(inmueble.getDireccion().getNumero());
@@ -732,7 +732,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 huespedesField.getText().equals(String.valueOf(inmueble.getHuespedesMaximos()))&&
                 habitacionesField.getText().equals(String.valueOf(inmueble.getHabitaciones()))&&
                 camasField.getText().equals(String.valueOf(inmueble.getCamas()))&&
-                bañosField.getText().equals(String.valueOf(inmueble.getBaños()))&&
+                bannosField.getText().equals(String.valueOf(inmueble.getBannos()))&&
                 ciudadField.getText().equals(inmueble.getDireccion().getCiudad())&&
                 calleField.getText().equals(inmueble.getDireccion().getCalle())&&
                 numeroField.getText().equals(inmueble.getDireccion().getNumero())&&
@@ -807,7 +807,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
                 cambioRealizado();
             }
         });
-        bañosField.getDocument().addDocumentListener(new DocumentListener() {
+        bannosField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void changedUpdate(DocumentEvent e) {
                 cambioRealizado();
@@ -930,7 +930,7 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField bañosField;
+    private javax.swing.JFormattedTextField bannosField;
     private javax.swing.JButton borrarInmuebleButton;
     private javax.swing.JTextField calificacionField;
     private javax.swing.JTextField calleField;
@@ -986,6 +986,6 @@ public class GUI_mainAnfitrion extends javax.swing.JFrame {
     private javax.swing.JTextField serviciosField;
     private javax.swing.JComboBox<String> tipoComboBox;
     private javax.swing.JTextField tituloField;
-    private javax.swing.JButton verReseñasButton;
+    private javax.swing.JButton verResennasButton;
     // End of variables declaration//GEN-END:variables
 }

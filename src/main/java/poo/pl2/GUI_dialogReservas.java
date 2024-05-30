@@ -16,7 +16,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
     ArrayList<Reserva> reservas = new ArrayList<>();
     Particular usuario;
     /**
-     * Creates new form GUI_dialogReseñas
+     * Creates new form GUI_dialogResennas
      */
     public GUI_dialogReservas(java.awt.Frame parent, boolean modal, Particular usuario) {
         super(parent, modal);
@@ -71,10 +71,10 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         jLabel12 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         fotoLabel = new javax.swing.JLabel();
-        verReseñasButton = new javax.swing.JButton();
-        dueñoLabel = new javax.swing.JLabel();
-        dueñoField = new javax.swing.JTextField();
-        reseñaFrame = new javax.swing.JInternalFrame();
+        verResennasButton = new javax.swing.JButton();
+        duennoLabel = new javax.swing.JLabel();
+        duennoField = new javax.swing.JTextField();
+        resennaFrame = new javax.swing.JInternalFrame();
         jLabel2 = new javax.swing.JLabel();
         calificacion1RadioButton = new javax.swing.JRadioButton();
         calificacion2RadioButton = new javax.swing.JRadioButton();
@@ -163,9 +163,9 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
 
         jInternalFrame3.setVisible(true);
 
-        jLabel8.setText("Título");
+        jLabel8.setText("Titulo");
 
-        jLabel11.setText("Dirección");
+        jLabel11.setText("Direccion");
 
         jLabel9.setText("Tipo");
 
@@ -181,7 +181,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
 
         precioField.setEditable(false);
 
-        jLabel15.setText("Calificación");
+        jLabel15.setText("Calificacion");
 
         calificacionField.setEditable(false);
 
@@ -201,20 +201,20 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
 
         fotoLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        verReseñasButton.setText("Ver reseñas del inmueble");
-        verReseñasButton.addActionListener(new java.awt.event.ActionListener() {
+        verResennasButton.setText("Ver resennas del inmueble");
+        verResennasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verReseñasButtonActionPerformed(evt);
+                verResennasButtonActionPerformed(evt);
             }
         });
 
-        dueñoLabel.setText("Dueño");
-        dueñoLabel.setToolTipText("<html>\n<body style=\"text-align:center\">\n<p>Un dueño es superanfitrión si la media<br/>de las calificaciones de sus inmuebles<br/> es superior a 4\n</body>\n</html>");
+        duennoLabel.setText("Duenno");
+        duennoLabel.setToolTipText("<html>\n<body style=\"text-align:center\">\n<p>Un duenno es superanfitrion si la media<br/>de las calificaciones de sus inmuebles<br/> es superior a 4\n</body>\n</html>");
 
-        dueñoField.setEditable(false);
-        dueñoField.addActionListener(new java.awt.event.ActionListener() {
+        duennoField.setEditable(false);
+        duennoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verReseñasButtonActionPerformed(evt);
+                verResennasButtonActionPerformed(evt);
             }
         });
 
@@ -255,11 +255,11 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame3Layout.createSequentialGroup()
                         .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jInternalFrame3Layout.createSequentialGroup()
-                                .addComponent(dueñoLabel)
+                                .addComponent(duennoLabel)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(dueñoField))
+                            .addComponent(duennoField))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(verReseñasButton)))
+                        .addComponent(verResennasButton)))
                 .addContainerGap())
         );
         jInternalFrame3Layout.setVerticalGroup(
@@ -292,11 +292,11 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2))
                 .addGap(5, 5, 5)
-                .addComponent(dueñoLabel)
+                .addComponent(duennoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dueñoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(verReseñasButton))
+                    .addComponent(duennoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(verResennasButton))
                 .addGap(8, 8, 8)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -308,10 +308,10 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
 
         reservaPanel.addTab("Inmueble", jScrollPane5);
 
-        reseñaFrame.setVisible(true);
+        resennaFrame.setVisible(true);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Calificación");
+        jLabel2.setText("Calificacion");
 
         calificacionButtonGroup.add(calificacion1RadioButton);
         calificacion1RadioButton.setText("1");
@@ -342,27 +342,27 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         jScrollPane4.setViewportView(comentarioArea);
 
         noPuedesLabel.setForeground(new java.awt.Color(255, 51, 51));
-        noPuedesLabel.setText("<html><body style=\"text-align:center;\"><p>No puedes reseñar el inmueble hasta<br/>completar tu estancia</body></html>");
+        noPuedesLabel.setText("<html><body style=\"text-align:center;\"><p>No puedes resennar el inmueble hasta<br/>completar tu estancia</body></html>");
 
-        javax.swing.GroupLayout reseñaFrameLayout = new javax.swing.GroupLayout(reseñaFrame.getContentPane());
-        reseñaFrame.getContentPane().setLayout(reseñaFrameLayout);
-        reseñaFrameLayout.setHorizontalGroup(
-            reseñaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(reseñaFrameLayout.createSequentialGroup()
-                .addGroup(reseñaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(reseñaFrameLayout.createSequentialGroup()
-                        .addGroup(reseñaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(reseñaFrameLayout.createSequentialGroup()
+        javax.swing.GroupLayout resennaFrameLayout = new javax.swing.GroupLayout(resennaFrame.getContentPane());
+        resennaFrame.getContentPane().setLayout(resennaFrameLayout);
+        resennaFrameLayout.setHorizontalGroup(
+            resennaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(resennaFrameLayout.createSequentialGroup()
+                .addGroup(resennaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(resennaFrameLayout.createSequentialGroup()
+                        .addGroup(resennaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(resennaFrameLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel6))
-                            .addGroup(reseñaFrameLayout.createSequentialGroup()
+                            .addGroup(resennaFrameLayout.createSequentialGroup()
                                 .addGap(126, 126, 126)
                                 .addComponent(aceptarButton))
-                            .addGroup(reseñaFrameLayout.createSequentialGroup()
+                            .addGroup(resennaFrameLayout.createSequentialGroup()
                                 .addGap(67, 67, 67)
-                                .addGroup(reseñaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(resennaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(reseñaFrameLayout.createSequentialGroup()
+                                    .addGroup(resennaFrameLayout.createSequentialGroup()
                                         .addComponent(calificacion1RadioButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(calificacion2RadioButton)
@@ -372,24 +372,24 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                                         .addComponent(calificacion4RadioButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(calificacion5RadioButton))))
-                            .addGroup(reseñaFrameLayout.createSequentialGroup()
+                            .addGroup(resennaFrameLayout.createSequentialGroup()
                                 .addGap(67, 67, 67)
                                 .addComponent(noPuedesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 57, Short.MAX_VALUE))
-                    .addGroup(reseñaFrameLayout.createSequentialGroup()
+                    .addGroup(resennaFrameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane4)))
                 .addContainerGap())
         );
-        reseñaFrameLayout.setVerticalGroup(
-            reseñaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(reseñaFrameLayout.createSequentialGroup()
+        resennaFrameLayout.setVerticalGroup(
+            resennaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(resennaFrameLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(noPuedesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(reseñaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(resennaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(calificacion1RadioButton)
                     .addComponent(calificacion2RadioButton)
                     .addComponent(calificacion3RadioButton)
@@ -404,7 +404,7 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        reservaPanel.addTab("Reseñar", reseñaFrame);
+        reservaPanel.addTab("Resennar", resennaFrame);
 
         volverButton.setText("Volver");
         volverButton.addActionListener(new java.awt.event.ActionListener() {
@@ -461,11 +461,11 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
         this.precioField.setText(String.valueOf(reservas.get(reservasList.getSelectedIndex()).getInmueble().getPrecioPorNoche()));
         this.calificacionField.setText(String.valueOf(reservas.get(reservasList.getSelectedIndex()).getInmueble().getCalificacion()));
         Inmueble i = reservas.get(reservasList.getSelectedIndex()).getInmueble();
-        this.datosArea.setText("Baños: "+i.getBaños()+"\nHuéspedes: "+i.getHuespedesMaximos()+"\nHabitaciones: "+i.getHabitaciones()+"Camas: "+i.getCamas());
+        this.datosArea.setText("Bannos: "+i.getBannos()+"\nHuespedes: "+i.getHuespedesMaximos()+"\nHabitaciones: "+i.getHabitaciones()+"Camas: "+i.getCamas());
         this.serviciosArea.setText(i.getServicios());
         this.fotoLabel.setIcon(i.getFotografia());
-        this.dueñoLabel.setText(reservas.get(reservasList.getSelectedIndex()).getInmueble().getDueño().isSuperAnfitrion()?"Dueño (¡Es superanfitrión!)":"Dueño");
-        this.dueñoField.setText(reservas.get(reservasList.getSelectedIndex()).getInmueble().getDueño().getNombre()+ "("+reservas.get(reservasList.getSelectedIndex()).getInmueble().getDueño().getCorreo()+")");
+        this.duennoLabel.setText(reservas.get(reservasList.getSelectedIndex()).getInmueble().getDuenno().isSuperAnfitrion()?"Duenno (¡Es superanfitrion!)":"Duenno");
+        this.duennoField.setText(reservas.get(reservasList.getSelectedIndex()).getInmueble().getDuenno().getNombre()+ "("+reservas.get(reservasList.getSelectedIndex()).getInmueble().getDuenno().getCorreo()+")");
     }//GEN-LAST:event_reservasListValueChanged
 
     private void volverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverButtonActionPerformed
@@ -474,24 +474,24 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
 
     private void reservaPanelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_reservaPanelStateChanged
         if(reservaPanel.getSelectedIndex()==2)
-            if (reservas.get(reservasList.getSelectedIndex()).getFechaSalida().isAfter(java.time.LocalDate.now()) || reservas.get(reservasList.getSelectedIndex()).isYaReseñado()){
+            if (reservas.get(reservasList.getSelectedIndex()).getFechaSalida().isAfter(java.time.LocalDate.now()) || reservas.get(reservasList.getSelectedIndex()).isYaResennado()){
                 noPuedesLabel.setVisible(true);
-                noPuedesLabel.setText(reservas.get(reservasList.getSelectedIndex()).isYaReseñado()?"Ya has reseñado este inmueble":"<html><body style=\"text-align:center;\"><p>No puedes reseñar el inmueble hasta<br/>completar tu estancia</body></html>");
-                setEnableRecursivo(reseñaFrame, false);
+                noPuedesLabel.setText(reservas.get(reservasList.getSelectedIndex()).isYaResennado()?"Ya has resennado este inmueble":"<html><body style=\"text-align:center;\"><p>No puedes resennar el inmueble hasta<br/>completar tu estancia</body></html>");
+                setEnableRecursivo(resennaFrame, false);
                 noPuedesLabel.setEnabled(true);
             }else{
                 noPuedesLabel.setVisible(false);
-                setEnableRecursivo(reseñaFrame, true);
+                setEnableRecursivo(resennaFrame, true);
             }
     }//GEN-LAST:event_reservaPanelStateChanged
 
-    private void verReseñasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReseñasButtonActionPerformed
-        GUI_dialogVerReseñas dialogoReservas = new GUI_dialogVerReseñas(this, true, reservas.get(reservasList.getSelectedIndex()).getInmueble());
+    private void verResennasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verResennasButtonActionPerformed
+        GUI_dialogVerResennas dialogoReservas = new GUI_dialogVerResennas(this, true, reservas.get(reservasList.getSelectedIndex()).getInmueble());
         dialogoReservas.setVisible(true);
-    }//GEN-LAST:event_verReseñasButtonActionPerformed
+    }//GEN-LAST:event_verResennasButtonActionPerformed
 
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
-        reservas.get(reservasList.getSelectedIndex()).getInmueble().añadirReseña(new Reseña(reservas.get(reservasList.getSelectedIndex()), this.calificacionButtonGroup.getSelection().equals(this.calificacion1RadioButton.getModel())?1:this.calificacionButtonGroup.getSelection().equals(this.calificacion2RadioButton.getModel())?2:this.calificacionButtonGroup.getSelection().equals(this.calificacion3RadioButton.getModel())?3:this.calificacionButtonGroup.getSelection().equals(this.calificacion4RadioButton.getModel())?4:5, this.comentarioArea.getText()));
+        reservas.get(reservasList.getSelectedIndex()).getInmueble().annadirResenna(new Resenna(reservas.get(reservasList.getSelectedIndex()), this.calificacionButtonGroup.getSelection().equals(this.calificacion1RadioButton.getModel())?1:this.calificacionButtonGroup.getSelection().equals(this.calificacion2RadioButton.getModel())?2:this.calificacionButtonGroup.getSelection().equals(this.calificacion3RadioButton.getModel())?3:this.calificacionButtonGroup.getSelection().equals(this.calificacion4RadioButton.getModel())?4:5, this.comentarioArea.getText()));
     }//GEN-LAST:event_aceptarButtonActionPerformed
     private void setEnableRecursivo(Component container, boolean enable) {
         container.setEnabled(enable);
@@ -560,8 +560,8 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
     private javax.swing.JTextArea comentarioArea;
     private javax.swing.JTextArea datosArea;
     private javax.swing.JTextField direccionField;
-    private javax.swing.JTextField dueñoField;
-    private javax.swing.JLabel dueñoLabel;
+    private javax.swing.JTextField duennoField;
+    private javax.swing.JLabel duennoLabel;
     private javax.swing.JTextField fechaEntradaField;
     private javax.swing.JTextField fechaSalidaField;
     private javax.swing.JLabel fotoLabel;
@@ -591,11 +591,11 @@ public class GUI_dialogReservas extends javax.swing.JDialog {
     private javax.swing.JTextField precioField;
     private javax.swing.JTabbedPane reservaPanel;
     private javax.swing.JList<String> reservasList;
-    private javax.swing.JInternalFrame reseñaFrame;
+    private javax.swing.JInternalFrame resennaFrame;
     private javax.swing.JTextArea serviciosArea;
     private javax.swing.JTextField tipoInmuebleField;
     private javax.swing.JTextField tituloField;
-    private javax.swing.JButton verReseñasButton;
+    private javax.swing.JButton verResennasButton;
     private javax.swing.JButton volverButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -70,14 +70,14 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         fotoLabel = new javax.swing.JLabel();
-        verReseñasButton = new javax.swing.JButton();
+        verResennasButton = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         direccionField = new javax.swing.JTextField();
-        dueñoLabel = new javax.swing.JLabel();
-        nombreDueñoField = new javax.swing.JTextField();
+        duennoLabel = new javax.swing.JLabel();
+        nombreDuennoField = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        correoDueñoField = new javax.swing.JTextField();
+        correoDuennoField = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jLabel4 = new javax.swing.JLabel();
@@ -97,7 +97,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaBnB");
 
-        cerrarSesionButton.setText("Cerrar Sesión");
+        cerrarSesionButton.setText("Cerrar Sesion");
         cerrarSesionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarSesionButtonActionPerformed(evt);
@@ -112,7 +112,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Búsqueda de inmuebles");
+        jLabel1.setText("Busqueda de inmuebles");
 
         inmueblesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -121,7 +121,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(inmueblesList);
 
-        filtroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mejores reseñas", "Más baratos" }));
+        filtroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mejores resennas", "Mas baratos" }));
         filtroComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 filtroComboBoxItemStateChanged(evt);
@@ -148,9 +148,9 @@ public class GUI_mainParticular extends javax.swing.JFrame {
 
         jInternalFrame1.setVisible(true);
 
-        jLabel8.setText("Título");
+        jLabel8.setText("Titulo");
 
-        jLabel11.setText("Dirección");
+        jLabel11.setText("Direccion");
 
         jLabel9.setText("Tipo");
 
@@ -162,7 +162,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
 
         precioField.setEditable(false);
 
-        jLabel15.setText("Calificación");
+        jLabel15.setText("Calificacion");
 
         calificacionField.setEditable(false);
 
@@ -184,25 +184,25 @@ public class GUI_mainParticular extends javax.swing.JFrame {
 
         fotoLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        verReseñasButton.setText("Ver reseñas");
-        verReseñasButton.addActionListener(new java.awt.event.ActionListener() {
+        verResennasButton.setText("Ver resennas");
+        verResennasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verReseñasButtonActionPerformed(evt);
+                verResennasButtonActionPerformed(evt);
             }
         });
 
         direccionField.setEditable(false);
         jScrollPane7.setViewportView(direccionField);
 
-        dueñoLabel.setText("Anfitrión");
+        duennoLabel.setText("Anfitrion");
 
-        nombreDueñoField.setEditable(false);
+        nombreDuennoField.setEditable(false);
 
         jLabel17.setText("Nombre");
 
         jLabel18.setText("Correo");
 
-        correoDueñoField.setEditable(false);
+        correoDuennoField.setEditable(false);
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -238,23 +238,23 @@ public class GUI_mainParticular extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dueñoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(duennoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nombreDueñoField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(nombreDuennoField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(verReseñasButton))
+                                .addComponent(verResennasButton))
                             .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel14)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(correoDueñoField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(correoDuennoField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(214, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -292,17 +292,17 @@ public class GUI_mainParticular extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(verReseñasButton)
+                    .addComponent(verResennasButton)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addComponent(dueñoLabel)
+                        .addComponent(duennoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nombreDueñoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreDuennoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17))))
                 .addGap(2, 2, 2)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(correoDueñoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(correoDuennoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -512,10 +512,10 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         dialogoModificarDatosPersonales.setVisible(true);
     }//GEN-LAST:event_modificarDatosPersonalesButtonActionPerformed
 
-    private void verReseñasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReseñasButtonActionPerformed
-        GUI_dialogVerReseñas dialogoVerReseñas = new GUI_dialogVerReseñas(this, true, inmueble);
-        dialogoVerReseñas.setVisible(true);
-    }//GEN-LAST:event_verReseñasButtonActionPerformed
+    private void verResennasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verResennasButtonActionPerformed
+        GUI_dialogVerResennas dialogoVerResennas = new GUI_dialogVerResennas(this, true, inmueble);
+        dialogoVerResennas.setVisible(true);
+    }//GEN-LAST:event_verResennasButtonActionPerformed
 
     private void inmueblesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_inmueblesListValueChanged
         this.inmueble = lista.get(inmueblesList.getSelectedIndex());
@@ -536,7 +536,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         for (int i=0; i<Inmueble.getInmuebles().size(); i++)
             if (Inmueble.getInmuebles().get(i).getTipo().toString().equals(this.tipoComboBox.getSelectedItem().toString().toUpperCase()))
                 lista.add(Inmueble.getInmuebles().get(i));
-        if (this.filtroComboBox.getSelectedItem().toString().equals("Mejores reseñas"))
+        if (this.filtroComboBox.getSelectedItem().toString().equals("Mejores resennas"))
             for (int i=0; i<lista.size()-1; i++)
                 for (int j=i; j<lista.size()-1; j++)
                     if (lista.get(j).getCalificacion() < lista.get(j+1).getCalificacion()){
@@ -635,8 +635,8 @@ public class GUI_mainParticular extends javax.swing.JFrame {
 
     private void reservaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservaButtonActionPerformed
         try{
-            Reserva.añadirReserva(LocalDate.now(), fechaEntrada, fechaSalida, inmueble, usuario);
-            javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            Reserva.annadirReserva(LocalDate.now(), fechaEntrada, fechaSalida, inmueble, usuario);
+            javax.swing.JOptionPane.showMessageDialog(this, "Reserva realizada", "exito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             try{
                 updateFechasOcupadas();
             }
@@ -663,12 +663,12 @@ public class GUI_mainParticular extends javax.swing.JFrame {
         this.precioField.setText(String.valueOf(inmueble.getPrecioPorNoche()));
         this.calificacionField.setText(String.valueOf(inmueble.getCalificacion()));
         this.serviciosArea.setText(inmueble.getServicios());
-        this.datosArea.setText("Baños: "+inmueble.getBaños()+"\nCamas: "+inmueble.getCamas()+"\nHabitaciones: "+inmueble.getHabitaciones()+"\nHuéspedes máximos: "+inmueble.getHuespedesMaximos());
+        this.datosArea.setText("Bannos: "+inmueble.getBannos()+"\nCamas: "+inmueble.getCamas()+"\nHabitaciones: "+inmueble.getHabitaciones()+"\nHuespedes maximos: "+inmueble.getHuespedesMaximos());
         this.fotoLabel.setIcon(inmueble.getFotografia());
-        this.dueñoLabel.setText(inmueble.getDueño().isSuperAnfitrion()?"Superanfitrión":"Anfitrión");
-        this.dueñoLabel.setForeground(inmueble.getDueño().isSuperAnfitrion()?Color.BLUE:Color.BLACK);
-        this.nombreDueñoField.setText(inmueble.getDueño().getNombre());
-        this.correoDueñoField.setText(inmueble.getDueño().getCorreo());
+        this.duennoLabel.setText(inmueble.getDuenno().isSuperAnfitrion()?"Superanfitrion":"Anfitrion");
+        this.duennoLabel.setForeground(inmueble.getDuenno().isSuperAnfitrion()?Color.BLUE:Color.BLACK);
+        this.nombreDuennoField.setText(inmueble.getDuenno().getNombre());
+        this.correoDuennoField.setText(inmueble.getDuenno().getCorreo());
     }
     
     private void updateFechasOcupadas(){
@@ -727,10 +727,10 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     private javax.swing.JButton actualizarButton;
     private javax.swing.JTextField calificacionField;
     private javax.swing.JButton cerrarSesionButton;
-    private javax.swing.JTextField correoDueñoField;
+    private javax.swing.JTextField correoDuennoField;
     private javax.swing.JTextArea datosArea;
     private javax.swing.JTextField direccionField;
-    private javax.swing.JLabel dueñoLabel;
+    private javax.swing.JLabel duennoLabel;
     private javax.swing.JButton elegirFechaEntradaButton;
     private javax.swing.JButton elegirFechaSalidaButton;
     private javax.swing.JTextField fechaEntradaField;
@@ -767,7 +767,7 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JButton modificarDatosPersonalesButton;
-    private javax.swing.JTextField nombreDueñoField;
+    private javax.swing.JTextField nombreDuennoField;
     private javax.swing.JTextField precioField;
     private javax.swing.JTextField precioReservaField;
     private javax.swing.JButton reservaButton;
@@ -776,6 +776,6 @@ public class GUI_mainParticular extends javax.swing.JFrame {
     private javax.swing.JTextField tipoInmuebleField;
     private javax.swing.JTextField tituloField;
     private javax.swing.JButton verReservasButton;
-    private javax.swing.JButton verReseñasButton;
+    private javax.swing.JButton verResennasButton;
     // End of variables declaration//GEN-END:variables
 }

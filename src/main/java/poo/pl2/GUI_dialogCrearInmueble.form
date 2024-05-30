@@ -84,7 +84,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel7" max="32767" attributes="0"/>
-                                          <Component id="bañosField" max="32767" attributes="0"/>
+                                          <Component id="bannosField" max="32767" attributes="0"/>
                                           <Component id="jLabel14" pref="100" max="32767" attributes="0"/>
                                           <Component id="codigoPostalField" max="32767" attributes="0"/>
                                       </Group>
@@ -165,7 +165,7 @@
                   <Component id="huespedesField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="habitacionesField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="camasField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bañosField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bannosField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>

@@ -69,7 +69,7 @@
                           <Component id="jLabel5" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="añoSpinner" alignment="0" max="32767" attributes="0"/>
+                              <Component id="annoSpinner" alignment="0" max="32767" attributes="0"/>
                               <Component id="mesSpinner" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -110,7 +110,7 @@
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="añoSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="annoSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="numTarjetaField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>

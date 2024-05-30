@@ -30,7 +30,7 @@ public class Particular extends Cliente {
     }
     /**
      * Obtiene una lista de todas las reservas hechas por este particular.
-     * Este método recorre todas las reservas, y si la reserva fue hecha por este particular, la añade a la lista.
+     * Este metodo recorre todas las reservas, y si la reserva fue hecha por este particular, la annade a la lista.
      * La lista de reservas se ordena por la fecha de entrada.
      *
      * @return Una lista de todas las reservas hechas por este particular.
@@ -50,12 +50,12 @@ public class Particular extends Cliente {
      * Inicializa un nuevo particular con los detalles proporcionados.
      *
      * @param correo El correo del particular.
-     * @param claveString La contraseña del particular.
+     * @param claveString La contrasenna del particular.
      * @param dni El DNI del particular.
      * @param nombre El nombre del particular.
-     * @param telefono El teléfono del particular.
+     * @param telefono El telefono del particular.
      * @param esVip Indica si el particular es VIP.
-     * @param tarjeta La tarjeta de crédito del particular.
+     * @param tarjeta La tarjeta de credito del particular.
      */
     public Particular(String correo, String claveString, String dni, String nombre, String telefono, boolean esVip, Tarjeta tarjeta){
         super(correo, claveString, dni, nombre, telefono);

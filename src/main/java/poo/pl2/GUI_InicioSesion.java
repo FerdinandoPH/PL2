@@ -50,7 +50,7 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
             }
         });
 
-        inicioSesionButton.setText("Iniciar Sesión");
+        inicioSesionButton.setText("Iniciar Sesion");
         inicioSesionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inicioSesionButtonActionPerformed(evt);
@@ -70,7 +70,7 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
         jLabel2.setToolTipText("");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("Iniciar sesión");
+        jLabel3.setText("Iniciar sesion");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,9 +120,9 @@ public class GUI_inicioSesion extends javax.swing.JFrame {
         try{
             Usuario usu=Usuario.iniciarSesion(correoField.getText(), new String(claveField.getPassword()).hashCode());
             if (usu instanceof Cliente)
-                JOptionPane.showMessageDialog(this, "Bienvenido, "+((Cliente) usu).getNombre(), "Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Bienvenido, "+((Cliente) usu).getNombre(), "Inicio de sesion correcto", JOptionPane.INFORMATION_MESSAGE);
             else
-                JOptionPane.showMessageDialog(this, "Bienvenido, administrador "+usu.getCorreo(), "Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Bienvenido, administrador "+usu.getCorreo(), "Inicio de sesion correcto", JOptionPane.INFORMATION_MESSAGE);
             
             switch(usu.getClass().getSimpleName()){
                 case "Particular":

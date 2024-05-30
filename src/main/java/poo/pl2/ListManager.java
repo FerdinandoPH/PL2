@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 /**
  * La clase ListManager gestiona las listas de usuarios y reservas del sistema.
  * Se encarga de mantener la persistencia de los datos de los usuarios y reservas entre sesiones.
- * También permite el acceso a las listas de usuarios y reservas desde cualquier parte del sistema.
+ * Tambien permite el acceso a las listas de usuarios y reservas desde cualquier parte del sistema.
  * 
  * @author perez
  * @version 1.0

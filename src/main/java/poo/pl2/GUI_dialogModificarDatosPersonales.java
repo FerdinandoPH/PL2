@@ -43,7 +43,7 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
 
         correoLabel = new javax.swing.JLabel();
         correoField = new javax.swing.JTextField();
-        cambiarContraseñaButton = new javax.swing.JButton();
+        cambiarContrasennaButton = new javax.swing.JButton();
         nombreLabel = new javax.swing.JLabel();
         nombreField = new javax.swing.JTextField();
         dniLabel = new javax.swing.JLabel();
@@ -58,8 +58,8 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
         numeroTarjetaField = new javax.swing.JTextField();
         mesCaducidadLabel = new javax.swing.JLabel();
         mesSpinner = new javax.swing.JSpinner();
-        añoCaducidadLabel = new javax.swing.JLabel();
-        añoSpinner = new javax.swing.JSpinner();
+        annoCaducidadLabel = new javax.swing.JLabel();
+        annoSpinner = new javax.swing.JSpinner();
         caducidadLabel = new javax.swing.JLabel();
         modificarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
@@ -79,10 +79,10 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
             }
         });
 
-        cambiarContraseñaButton.setText("Cambiar contraseña");
-        cambiarContraseñaButton.addActionListener(new java.awt.event.ActionListener() {
+        cambiarContrasennaButton.setText("Cambiar contrasenna");
+        cambiarContrasennaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cambiarContraseñaButtonActionPerformed(evt);
+                cambiarContrasennaButtonActionPerformed(evt);
             }
         });
 
@@ -90,7 +90,7 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
 
         dniLabel.setText("DNI");
 
-        telefonoLabel.setText("Teléfono");
+        telefonoLabel.setText("Telefono");
 
         fechaRegistroLabel.setText("Fecha de Registro");
 
@@ -98,15 +98,15 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
 
         nombreTitularTarjetaLabel.setText("<html><body style=\"text-align:center;\">Nombre del Titular <br> de la Tarjeta</body></html>");
 
-        numeroTarjetaLabel.setText("Número de la Tarjeta");
+        numeroTarjetaLabel.setText("Numero de la Tarjeta");
 
         mesCaducidadLabel.setText("Mes");
 
         mesSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
 
-        añoCaducidadLabel.setText("Año");
+        annoCaducidadLabel.setText("Anno");
 
-        añoSpinner.setModel(new javax.swing.SpinnerNumberModel(2024, 2024, null, 1));
+        annoSpinner.setModel(new javax.swing.SpinnerNumberModel(2024, 2024, null, 1));
 
         caducidadLabel.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         caducidadLabel.setText("Caducidad");
@@ -130,9 +130,9 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("MODIFICAR DATOS PERSONALES");
 
-        boolLabel.setText("¿Es Súper Propietario?");
+        boolLabel.setText("¿Es Super Propietario?");
 
-        boolComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sí", "No" }));
+        boolComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
         boolComboBox.setEditable(false);
         boolComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,11 +194,11 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(mesCaducidadLabel)
                                                         .addGap(27, 27, 27)
-                                                        .addComponent(añoCaducidadLabel))
+                                                        .addComponent(annoCaducidadLabel))
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(mesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(añoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(annoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(caducidadLabel)))
                                             .addComponent(fechaRegistroField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(fechaRegistroLabel))
@@ -212,7 +212,7 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cancelarButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cambiarContraseñaButton))))
+                                .addComponent(cambiarContrasennaButton))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(jLabel1)
@@ -263,18 +263,18 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(numeroTarjetaLabel)
                             .addComponent(mesCaducidadLabel)
-                            .addComponent(añoCaducidadLabel))))
+                            .addComponent(annoCaducidadLabel))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreTitularTarjetaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numeroTarjetaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(añoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(annoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modificarButton)
                     .addComponent(cancelarButton)
-                    .addComponent(cambiarContraseñaButton))
+                    .addComponent(cambiarContrasennaButton))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(volverButton)
@@ -289,29 +289,29 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
         
     }//GEN-LAST:event_correoFieldActionPerformed
 
-    private void cambiarContraseñaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContraseñaButtonActionPerformed
-        String nuevaContraseña = JOptionPane.showInputDialog(this, "Introduce la nueva contraseña", "Cambiar contraseña", JOptionPane.QUESTION_MESSAGE);
-        String nuevaContraseña2 = JOptionPane.showInputDialog(this, "Introduce la nueva contraseña de nuevo", "Cambiar contraseña", JOptionPane.QUESTION_MESSAGE);
+    private void cambiarContrasennaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContrasennaButtonActionPerformed
+        String nuevaContrasenna = JOptionPane.showInputDialog(this, "Introduce la nueva contrasenna", "Cambiar contrasenna", JOptionPane.QUESTION_MESSAGE);
+        String nuevaContrasenna2 = JOptionPane.showInputDialog(this, "Introduce la nueva contrasenna de nuevo", "Cambiar contrasenna", JOptionPane.QUESTION_MESSAGE);
         try{
-            Usuario.cambiarContraseña(this.cliente.getCorreo(), nuevaContraseña, nuevaContraseña2);
-            JOptionPane.showMessageDialog(this, "Contraseña cambiada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            Usuario.cambiarContrasenna(this.cliente.getCorreo(), nuevaContrasenna, nuevaContrasenna2);
+            JOptionPane.showMessageDialog(this, "Contrasenna cambiada correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
         }
         catch (IllegalArgumentException e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_cambiarContraseñaButtonActionPerformed
+    }//GEN-LAST:event_cambiarContrasennaButtonActionPerformed
 
     private void modificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarButtonActionPerformed
-        //Si no se ha hecho ningún cambio, return
-        //if (this.correoField.getText().equals(this.cliente.getCorreo()) && this.nombreField.getText().equals(this.cliente.getNombre()) && this.dniField.getText().equals(this.cliente.getDni()) && this.telefonoField.getText().equals(this.cliente.getTelefono()) &&( this.cliente instanceof Anfitrion || (this.cliente instanceof Particular && (this.numeroTarjetaField.getText().equals(Long.toString(((Particular)this.cliente).getTarjeta().getNumero())) && this.nombreTitularTarjetaField.getText().equals(((Particular)this.cliente).getTarjeta().getNombreTitular()) && (int)this.mesSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getMonthValue() && (int)this.añoSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getYear())))){
-            //System.out.println("No se ha hecho ningún cambio");
+        //Si no se ha hecho ningun cambio, return
+        //if (this.correoField.getText().equals(this.cliente.getCorreo()) && this.nombreField.getText().equals(this.cliente.getNombre()) && this.dniField.getText().equals(this.cliente.getDni()) && this.telefonoField.getText().equals(this.cliente.getTelefono()) &&( this.cliente instanceof Anfitrion || (this.cliente instanceof Particular && (this.numeroTarjetaField.getText().equals(Long.toString(((Particular)this.cliente).getTarjeta().getNumero())) && this.nombreTitularTarjetaField.getText().equals(((Particular)this.cliente).getTarjeta().getNombreTitular()) && (int)this.mesSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getMonthValue() && (int)this.annoSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getYear())))){
+            //System.out.println("No se ha hecho ningun cambio");
             //return;
         //}
         try{
             System.out.println("Se va a editar a "+this.cliente.toString());
             switch(this.cliente.getClass().getSimpleName()){
                 case "Particular":
-                Usuario.editarUsuario(this.cliente.getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.añoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
+                Usuario.editarUsuario(this.cliente.getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText(), this.boolComboBox.getSelectedIndex()==0, new Tarjeta(LocalDate.of((int)this.annoSpinner.getValue(), (int)this.mesSpinner.getValue(), 1), this.nombreTitularTarjetaField.getText(), Long.parseLong(this.numeroTarjetaField.getText())));
                 break;
                 case "Anfitrion":
                 Usuario.editarUsuario(this.cliente.getCorreo(), this.correoField.getText(), this.dniField.getText(), this.nombreField.getText(), this.telefonoField.getText());
@@ -320,7 +320,7 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
                 Usuario.editarUsuario(this.cliente.getCorreo(), this.correoField.getText());
                 break;
             }
-            JOptionPane.showMessageDialog(this, "Cambios realizados correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Cambios realizados correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
             modificarButton.setEnabled(false);
             cancelarButton.setEnabled(false);
         }
@@ -341,14 +341,14 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
 
     private void boolComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boolComboBoxActionPerformed
         if (this.cliente instanceof Particular && !((Particular)this.cliente).isVip() && boolComboBox.getSelectedIndex()==0){
-            String codigoVip=JOptionPane.showInputDialog(this, "Introduce el código VIP", "Código VIP", JOptionPane.QUESTION_MESSAGE);
+            String codigoVip=JOptionPane.showInputDialog(this, "Introduce el codigo VIP", "Codigo VIP", JOptionPane.QUESTION_MESSAGE);
             if (codigoVip!=null && codigoVip.equals(Usuario.getClaveVip())){
-                JOptionPane.showMessageDialog(this, "Código VIP correcto", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Codigo VIP correcto", "exito", JOptionPane.INFORMATION_MESSAGE);
                 indiceFijoBCB=0;
                 cambioRealizado();
             }
             else{
-                JOptionPane.showMessageDialog(this, "Código VIP incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Codigo VIP incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
                 boolComboBox.setSelectedIndex(indiceFijoBCB);
             }
         }
@@ -357,11 +357,11 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
     }//GEN-LAST:event_boolComboBoxActionPerformed
 
     private void borrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarButtonActionPerformed
-        boolean confirmacion = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres borrar tu cuenta?\n", "Borrar cuenta", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
+        boolean confirmacion = JOptionPane.showConfirmDialog(this, "¿Estas seguro de que quieres borrar tu cuenta?\n", "Borrar cuenta", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE)==JOptionPane.YES_OPTION;
         if (confirmacion){
             try{
                 Usuario.borrarUsuario(this.cliente.getCorreo());
-                JOptionPane.showMessageDialog(this, "Cuenta borrada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Cuenta borrada correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
                 this.forzarCierreSesion=true;
                 this.dispose();
             }
@@ -387,7 +387,7 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
         this.telefonoField.setText(clienteSeleccionado.getTelefono());
         if (clienteSeleccionado instanceof Anfitrion){
             Anfitrion anfitrionSeleccionado = (Anfitrion) clienteSeleccionado;
-            this.boolLabel.setText("¿Es Súper Anfitrión?");
+            this.boolLabel.setText("¿Es Super Anfitrion?");
             this.boolComboBox.setSelectedIndex(anfitrionSeleccionado.isSuperAnfitrion()?0:1);
             this.fechaRegistroLabel.setVisible(true);
             this.fechaRegistroField.setVisible(true);
@@ -399,8 +399,8 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
             this.caducidadLabel.setVisible(false);
             this.mesCaducidadLabel.setVisible(false);
             this.mesSpinner.setVisible(false);
-            this.añoCaducidadLabel.setVisible(false);
-            this.añoSpinner.setVisible(false);
+            this.annoCaducidadLabel.setVisible(false);
+            this.annoSpinner.setVisible(false);
         }else{
             Particular particularSeleccionado = (Particular) clienteSeleccionado;
             this.boolLabel.setText("¿Es VIP?");
@@ -414,17 +414,17 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
             this.caducidadLabel.setVisible(true);
             this.mesCaducidadLabel.setVisible(true);
             this.mesSpinner.setVisible(true);
-            this.añoCaducidadLabel.setVisible(true);
-            this.añoSpinner.setVisible(true);
+            this.annoCaducidadLabel.setVisible(true);
+            this.annoSpinner.setVisible(true);
             this.numeroTarjetaField.setText(Long.toString(particularSeleccionado.getTarjeta().getNumero()));
             this.nombreTitularTarjetaField.setText(particularSeleccionado.getTarjeta().getNombreTitular());
             this.mesSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getMonthValue());
-            this.añoSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getYear());
+            this.annoSpinner.setValue(particularSeleccionado.getTarjeta().getFechaCaducidad().getYear());
         }
         
     }
     private void cambioRealizado(){
-        if (this.nombreField.getText().equals(this.cliente.getNombre()) && this.correoField.getText().equals(this.cliente.getCorreo()) && this.dniField.getText().equals(this.cliente.getDni()) && this.telefonoField.getText().equals(this.cliente.getTelefono()) &&( this.cliente instanceof Anfitrion || (this.cliente instanceof Particular && (this.numeroTarjetaField.getText().equals(Long.toString(((Particular)this.cliente).getTarjeta().getNumero())) && this.nombreTitularTarjetaField.getText().equals(((Particular)this.cliente).getTarjeta().getNombreTitular()) && (int)this.mesSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getMonthValue() && (int)this.añoSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getYear()) && (this.boolComboBox.getSelectedIndex()==0)==((Particular)this.cliente).isVip()))){
+        if (this.nombreField.getText().equals(this.cliente.getNombre()) && this.correoField.getText().equals(this.cliente.getCorreo()) && this.dniField.getText().equals(this.cliente.getDni()) && this.telefonoField.getText().equals(this.cliente.getTelefono()) &&( this.cliente instanceof Anfitrion || (this.cliente instanceof Particular && (this.numeroTarjetaField.getText().equals(Long.toString(((Particular)this.cliente).getTarjeta().getNumero())) && this.nombreTitularTarjetaField.getText().equals(((Particular)this.cliente).getTarjeta().getNombreTitular()) && (int)this.mesSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getMonthValue() && (int)this.annoSpinner.getValue()==((Particular)this.cliente).getTarjeta().getFechaCaducidad().getYear()) && (this.boolComboBox.getSelectedIndex()==0)==((Particular)this.cliente).isVip()))){
             modificarButton.setEnabled(false);
             cancelarButton.setEnabled(false);
             return;
@@ -523,7 +523,7 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
                 cambioRealizado();
             }
         });
-        this.añoSpinner.addChangeListener(new ChangeListener() {
+        this.annoSpinner.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 cambioRealizado();
@@ -575,13 +575,13 @@ public class GUI_dialogModificarDatosPersonales extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel añoCaducidadLabel;
-    private javax.swing.JSpinner añoSpinner;
+    private javax.swing.JLabel annoCaducidadLabel;
+    private javax.swing.JSpinner annoSpinner;
     private javax.swing.JComboBox<String> boolComboBox;
     private javax.swing.JLabel boolLabel;
     private javax.swing.JButton borrarButton;
     private javax.swing.JLabel caducidadLabel;
-    private javax.swing.JButton cambiarContraseñaButton;
+    private javax.swing.JButton cambiarContrasennaButton;
     private javax.swing.JButton cancelarButton;
     private javax.swing.JTextField correoField;
     private javax.swing.JLabel correoLabel;

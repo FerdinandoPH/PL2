@@ -58,7 +58,7 @@ public class GUI_dialogRegistro extends javax.swing.JDialog {
 
         tipoLabel.setText("Tipo de usuario");
 
-        tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Particular", "Anfitrión" }));
+        tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Particular", "Anfitrion" }));
         tipoComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoComboBoxActionPerformed(evt);
@@ -69,7 +69,7 @@ public class GUI_dialogRegistro extends javax.swing.JDialog {
 
         jLabel6.setText("DNI");
 
-        jLabel7.setText("Teléfono");
+        jLabel7.setText("Telefono");
 
         aceptarButton.setText("Aceptar");
         aceptarButton.addActionListener(new java.awt.event.ActionListener() {

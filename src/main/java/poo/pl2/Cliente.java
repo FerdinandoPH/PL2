@@ -43,7 +43,7 @@ public class Cliente extends Usuario {
      * @param claveString La clave del cliente.
      * @param dni El DNI del cliente.
      * @param nombre El nombre del cliente.
-     * @param telefono El teléfono del cliente.
+     * @param telefono El telefono del cliente.
      */
     public Cliente(String correo, String claveString, String dni, String nombre, String telefono){
         super(correo, claveString);

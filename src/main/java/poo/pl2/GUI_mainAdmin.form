@@ -42,7 +42,7 @@
                       <Component id="jScrollPane1" min="-2" pref="393" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="añadirAdminButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="annadirAdminButton" min="-2" max="-2" attributes="0"/>
                           <Component id="borrarButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -88,7 +88,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="146" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="añadirAdminButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="annadirAdminButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="borrarButton" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -214,7 +214,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="tipoUsuarioField" min="-2" pref="100" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="cambiarContraseñaButton" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cambiarContrasennaButton" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="fechaRegistroLabel" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
@@ -227,12 +227,12 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="mesCaducidadLabel" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                                      <Component id="añoCaducidadLabel" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="annoCaducidadLabel" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="mesSpinner" min="-2" pref="45" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="añoSpinner" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="annoSpinner" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -273,7 +273,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="correoField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="tipoUsuarioField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cambiarContraseñaButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cambiarContrasennaButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -306,7 +306,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="numeroTarjetaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="mesCaducidadLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="añoCaducidadLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="annoCaducidadLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -315,7 +315,7 @@
                           <Component id="nombreTitularTarjetaField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="numeroTarjetaField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="mesSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="añoSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="annoSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="extenderButton" min="-2" max="-2" attributes="0"/>
@@ -699,7 +699,7 @@
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="camasField" min="-2" pref="75" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                                          <Component id="bañosField" min="-2" pref="100" max="-2" attributes="0"/>
+                                                          <Component id="bannosField" min="-2" pref="100" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="jLabel6" min="-2" pref="100" max="-2" attributes="0"/>
@@ -753,7 +753,7 @@
                                           <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="elegirFotoButton" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="verReseñasButton" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="verResennasButton" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -802,7 +802,7 @@
                               <Component id="huespedesField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="habitacionesField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="camasField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="bañosField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="bannosField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
@@ -831,7 +831,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="elegirFotoButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="verReseñasButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="verResennasButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="editarInmuebleButton" alignment="3" min="-2" max="-2" attributes="0"/>

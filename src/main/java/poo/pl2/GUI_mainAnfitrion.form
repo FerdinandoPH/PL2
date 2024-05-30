@@ -201,7 +201,7 @@
                                                               <Group type="102" attributes="0">
                                                                   <Component id="camasField" min="-2" pref="100" max="-2" attributes="0"/>
                                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                                  <Component id="bañosField" min="-2" pref="100" max="-2" attributes="0"/>
+                                                                  <Component id="bannosField" min="-2" pref="100" max="-2" attributes="0"/>
                                                               </Group>
                                                               <Group type="102" alignment="0" attributes="0">
                                                                   <Component id="jLabel13" min="-2" pref="100" max="-2" attributes="0"/>
@@ -263,7 +263,7 @@
                                           <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="elegirFotoButton" max="32767" attributes="0"/>
-                                              <Component id="verReseñasButton" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="verResennasButton" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -312,7 +312,7 @@
                               <Component id="huespedesField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="habitacionesField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="camasField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="bañosField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="bannosField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
@@ -341,7 +341,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="elegirFotoButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="verReseñasButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="verResennasButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="editarButton" alignment="3" min="-2" max="-2" attributes="0"/>

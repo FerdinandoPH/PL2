@@ -51,7 +51,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         camasField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        bañosField = new javax.swing.JTextField();
+        bannosField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         tipoComboBox = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -78,9 +78,9 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Crear inmueble");
 
-        jLabel2.setText("Título");
+        jLabel2.setText("Titulo");
 
-        jLabel3.setText("Huéspedes");
+        jLabel3.setText("Huespedes");
 
         jLabel4.setText("Datos");
 
@@ -88,7 +88,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
 
         jLabel6.setText("Camas");
 
-        jLabel7.setText("Baños");
+        jLabel7.setText("Bannos");
 
         jLabel8.setText("Tipo de inmueble");
 
@@ -96,15 +96,15 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
 
         jLabel9.setText("Precio por noche");
 
-        jLabel10.setText("Dirección");
+        jLabel10.setText("Direccion");
 
         jLabel11.setText("Ciudad");
 
         jLabel12.setText("Calle");
 
-        jLabel13.setText("Número");
+        jLabel13.setText("Numero");
 
-        jLabel14.setText("Código postal");
+        jLabel14.setText("Codigo postal");
 
         crearButton.setText("Crear");
         crearButton.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +183,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(bañosField)
+                                            .addComponent(bannosField)
                                             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                                             .addComponent(codigoPostalField)))
                                     .addGroup(layout.createSequentialGroup()
@@ -242,7 +242,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
                     .addComponent(huespedesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(habitacionesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(camasField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bañosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bannosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -287,7 +287,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
             System.out.println(archivoSeleccionado.getAbsolutePath());
             Path rutaOrigen = Paths.get(archivoSeleccionado.getAbsolutePath());
             if (!(archivoSeleccionado.getAbsolutePath().endsWith(".jpg") || archivoSeleccionado.getAbsolutePath().endsWith(".jpeg") ||archivoSeleccionado.getAbsolutePath().endsWith(".png") || archivoSeleccionado.getAbsolutePath().endsWith(".gif") || archivoSeleccionado.getAbsolutePath().endsWith(".bmp"))){
-                JOptionPane.showMessageDialog(this, "El archivo seleccionado no tiene un formato de imagen reconocido (válidos: png, jpg, bmp, gif)", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El archivo seleccionado no tiene un formato de imagen reconocido (validos: png, jpg, bmp, gif)", "Error", JOptionPane.ERROR_MESSAGE);
                 rutaImagenInmueble="";
                 return;
             }
@@ -309,13 +309,13 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
     private void crearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearButtonActionPerformed
         try{
 
-            this.anfitrion.añadirInmueble(new Direccion(calleField.getText(), numeroField.getText(), ciudadField.getText(),codigoPostalField.getText()), tituloField.getText(), Integer.parseInt(bañosField.getText()),Integer.parseInt(camasField.getText()),rutaImagenInmueble,Integer.parseInt(habitacionesField.getText()),Integer.parseInt(huespedesField.getText()),Double.parseDouble(precioField.getText()),serviciosField.getText(),Inmueble.tipoPropiedad.valueOf(tipoComboBox.getSelectedItem().toString().toUpperCase()));
-            JOptionPane.showMessageDialog(this, "Inmueble creado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            this.anfitrion.annadirInmueble(new Direccion(calleField.getText(), numeroField.getText(), ciudadField.getText(),codigoPostalField.getText()), tituloField.getText(), Integer.parseInt(bannosField.getText()),Integer.parseInt(camasField.getText()),rutaImagenInmueble,Integer.parseInt(habitacionesField.getText()),Integer.parseInt(huespedesField.getText()),Double.parseDouble(precioField.getText()),serviciosField.getText(),Inmueble.tipoPropiedad.valueOf(tipoComboBox.getSelectedItem().toString().toUpperCase()));
+            JOptionPane.showMessageDialog(this, "Inmueble creado correctamente", "exito", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
         catch (IllegalArgumentException i){
             if (i instanceof NumberFormatException){
-                JOptionPane.showMessageDialog(this, "Los datos introducidos no son válidos", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Los datos introducidos no son validos", "Error", JOptionPane.ERROR_MESSAGE);
             }
             else
                 JOptionPane.showMessageDialog(this, i.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -371,7 +371,7 @@ public class GUI_dialogCrearInmueble extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bañosField;
+    private javax.swing.JTextField bannosField;
     private javax.swing.JTextField calleField;
     private javax.swing.JTextField camasField;
     private javax.swing.JTextField ciudadField;

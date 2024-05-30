@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 /**
  * La clase PL2 es la clase principal del programa.
- * Se encarga de la gestión de la persistencia del ListManager y de iniciar la GUI (comienza en el inicio de sesión).
+ * Se encarga de la gestion de la persistencia del ListManager y de iniciar la GUI (comienza en el inicio de sesion).
  * Intenta cargar el ListManager de un archivo de guardado, si no puede, crea un nuevo ListManager con los administradores por defecto.
  * 
  * @author perez
@@ -26,9 +26,9 @@ public class PL2 {
 
     private static ListManager listManager;
     /** 
-     * El método principal del programa.
-     * Intenta cargar los datos de una sesión anterior, crea un nuevo ListManager si no puede cargar los datos,
-     * guarda los datos actuales al cerrar, e inicia la interfaz gráfica de usuario.
+     * El metodo principal del programa.
+     * Intenta cargar los datos de una sesion anterior, crea un nuevo ListManager si no puede cargar los datos,
+     * guarda los datos actuales al cerrar, e inicia la interfaz grafica de usuario.
      *
      * @param args 
      */
